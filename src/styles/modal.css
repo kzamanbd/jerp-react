@@ -1,0 +1,178 @@
+
+
+/* add backdrop background */
+.modal-backdrop {
+	opacity: .5;
+	background-color: #000 !important;
+}
+
+/*--------- Start Popup Modal Area ---------*/
+.jerp-alert-modal{
+	z-index: 99999 !important;
+}
+.jerp-alert-modal .modal-dialog {
+	width: 400px !important;
+}
+
+.jerp-alert-modal .modal-body {
+	min-height: 160px !important;
+}
+
+.jerp-alert-modal .modal-body .close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: .5;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	opacity: .5;
+}
+
+.jerp-alert-modal .modal-body .popup-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+	padding-top: 5px;
+}
+
+.jerp-alert-modal .modal-body .popup-content .icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 3rem;
+	color: var(--blue);
+	background-color: var(--bluish-white);
+	width: 65px;
+	height: 65px;
+	border-radius: 100px;
+}
+
+.jerp-alert-modal .modal-body .popup-content .icon .material-icons {
+	font-family: 'Material Icons';
+	font-size: 3rem;
+}
+
+.jerp-alert-modal .modal-body .popup-content .context {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 15px;
+}
+
+.jerp-alert-modal .modal-body .popup-content .context h5 {
+	color: var(--text-black);
+	font-size: var(--font18);
+}
+
+.jerp-alert-modal .modal-body .popup-content .context p {
+	opacity: .7;
+	text-align: center;
+	color: var(--text-black);
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.jerp-alert-modal .btn-group {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.jerp-alert-modal .btn-group button {
+	width: 150px !important;
+	height: 40px !important;
+	margin: 0px 10px !important;
+	font-size: var(--font14) !important;
+	text-transform: uppercase !important;
+	font-weight: 500 !important;
+	border-radius: 2px !important;
+	border: none !important;
+	transition: all 0.3s ease 0s !important;
+	background-color: transparent !important;
+}
+
+.jerp-alert-modal.confirm .btn-group .btn-discard {
+	color: var(--red) !important;
+	/* background-color: var(--white)!important;
+  border: 1px solid var(--red)!important; */
+}
+
+.jerp-alert-modal.confirm .btn-group .btn-continue {
+	color: var(--blue);
+	/* background-color: var(--blue)!important;
+  border: 1px solid var(--blue)!important; */
+}
+
+
+/*--------- Start Success Popup Modal Area ---------*/
+
+.jerp-alert-modal.success .popup-content .icon {
+	color: var(--green);
+	background-color: var(--greenish-white);
+}
+.jerp-alert-modal.success .btn-group {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.jerp-alert-modal.success .btn-group .btn-continue {
+	color: var(--green);
+}
+/* Error modal */
+.jerp-alert-modal.error .popup-content .icon {
+	color: var(--red);
+	background-color: var(--redish-white);
+}
+.jerp-alert-modal.info .popup-content .icon {
+	color: var(--blue);
+	background-color: #E2EDFA;
+}
+.jerp-alert-modal.error .btn-group {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.jerp-alert-modal.error .btn-group .btn-continue {
+	color: var(--red);
+}
+
+.jerp-alert-modal.info .btn-group .btn-continue {
+	color: var(--blue);
+}
+
+/*--------- End Popup Modal Area ---------*/
+
+
+
+.loader {
+	-webkit-animation: spin 1s linear infinite;
+			animation: spin 1s linear infinite;
+	border: 5px solid var(--white);
+	border-top: 5px solid var(--blue);
+	border-radius: 50%;
+	height: 45px;
+	width: 45px;
+  }
+  
+  @-webkit-keyframes spin {
+	to {
+	  border-top-color: var(--blue);
+	  -webkit-transform: rotate(360deg);
+			  transform: rotate(360deg);
+	}
+  }
+  
+  @keyframes spin {
+	to {
+	  border-top-color:  var(--blue);
+	  -webkit-transform: rotate(360deg);
+			  transform: rotate(360deg);
+	}
+  }

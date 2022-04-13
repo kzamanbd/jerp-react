@@ -1,0 +1,1195 @@
+/* ==================== Start Undefined Global CSS ==================== */
+
+.multiselect * {
+    box-sizing: border-box;
+}
+
+.multiselect__tags {
+    min-height: 40px;
+    display: block;
+    padding: 8px 40px 0 8px;
+    border-radius: 5px;
+    border: 1px solid #e8e8e8;
+    background: #fff;
+    font-size: 14px;
+}
+
+.multiselect__select {
+    position: absolute;
+    width: 40px;
+    height: 38px;
+    right: 1px;
+    top: 1px;
+    padding: 4px 8px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.multiselect__current,
+.multiselect__select {
+    line-height: 16px;
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.multiselect__content-wrapper {
+    position: absolute;
+    display: block;
+    background: #fff;
+    width: 100%;
+    max-height: 240px;
+    overflow: auto;
+    border: 1px solid #e8e8e8;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 3;
+    -webkit-overflow-scrolling: touch;
+}
+
+.multiselect__input,
+.multiselect__single {
+    position: relative;
+    display: inline-block;
+    min-height: 20px;
+    line-height: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    padding: 0 0 0 5px;
+    width: 100%;
+    transition: border 0.1s ease;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    vertical-align: top;
+}
+
+.multiselect__spinner {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 48px;
+    height: 35px;
+    background: #fff;
+    display: block;
+}
+
+.multiselect__tag {
+    position: relative;
+    display: inline-block;
+    padding: 4px 26px 4px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    color: #fff;
+    line-height: 1;
+    background: #41b883;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
+.multiselect__tag-icon {
+    cursor: pointer;
+    margin-left: 7px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-weight: 700;
+    font-style: normal;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    transition: all 0.2s ease;
+    border-radius: 5px;
+}
+
+.multiselect__tag-icon:after {
+    content: "\D7";
+    color: #266d4d;
+    font-size: 14px;
+}
+
+.hide {
+    display: none !important;
+}
+
+
+/* Multi Select Dropdown */
+
+
+/* JMI SCROLL */
+
+.jmi-scroll-style::-webkit-scrollbar {
+    width: 4px;
+}
+
+.jmi-scroll-style::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+.jmi-scroll-style::-webkit-scrollbar-thumb {
+    background: #168fff;
+    border-radius: 10px;
+}
+
+.jmi-scroll-style::-webkit-scrollbar-thumb:hover {
+    background: #004e98;
+}
+
+
+/* JMI SCROLL */
+
+
+/* .btn.btn-primary.btn-global.btn-cancle {
+      background-color: #FFFFFF !important;
+      color: #ED2F48 !important;
+      border: 1px solid #ED2F48 !important;
+  } */
+
+
+/* MODAL - PROGRESS */
+
+.modal-popup-section {
+    position: fixed;
+    left: calc((100vw / 2) - 200px);
+    z-index: 9999 !important;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgb(0 18 35 / 86%);
+}
+
+.modal-popup-section .modal-popup-section-inner {
+    padding: 20px;
+    text-align: center;
+    width: 400px;
+    background: #ffffff;
+    position: absolute;
+    top: calc((100vh / 2) - 100px);
+    left: calc((100vw / 2) - 200px);
+    opacity: 1;
+    /* z-index      : 9999; */
+    border-radius: 2px;
+}
+
+.modal-popup-section .modal-popup-section-inner span.proceed-popup-icon i {
+    font-size: 28px;
+    color: #026cd1;
+}
+
+.modal-popup-section .modal-popup-section-inner .popup-text {
+    font-size: 24px;
+    margin: 0;
+    line-height: 1;
+    margin-bottom: 10px;
+    display: block;
+    color: #c11616;
+}
+
+
+/* CONFIRMATION MODAL - STARTS */
+
+
+/* 
+  .flex-center {
+      display: flex;
+      align-items: center;
+  }
+  
+  .justyfy_content_space_between {
+      justify-content: space-between;
+  } */
+
+
+/* MATERIAL ICON STYLE */
+
+.material-icons {
+    cursor: pointer;
+}
+
+.material-icons.pencil,
+.material-icons.list,
+.material-icons.plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    margin: 0 5px;
+    border-radius: 100px;
+    font-weight: 200;
+    font-size: var(--font16);
+    background-color: #e5f0fa;
+    color: #026cd1;
+    cursor: pointer;
+}
+
+.material-icons.delete {
+    background-color: #f5bec6;
+    color: #df2a43;
+}
+
+.material-icons.plus {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.material-icons.pencil:hover {
+    color: #ffffff;
+    background-color: #026cd1;
+}
+
+.material-icons.password {
+    color: #000000;
+    font-size: 18px;
+    width: 15px;
+}
+
+.material-icons.search {
+    cursor: unset;
+}
+
+span.summarize-icon {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 4px;
+    padding-right: 4px;
+    position: relative;
+}
+
+.material-icons.summarize {
+    display: flex !important;
+    width: 28px;
+    height: 28px;
+    color: #026cd1;
+    background-color: #e2edfa;
+    border-radius: 50%;
+    font-size: 16px !important;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.material-icons.summarize:hover {
+    color: #e2edfa;
+    background-color: #026cd1;
+}
+
+.toggle-switch {
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.toggle-switch label {
+    margin: 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 16px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background-color: #026cd1;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* .on-hover-show {
+    opacity: 0;
+    transition: .5s;
+  }
+  
+  .on-parent-hover-show:hover .on-hover-show {
+    opacity: 1;
+  }
+  
+  .on-hover-show:hover {
+    opacity: 1;
+  }
+  
+  .focus\:outline-none:focus {
+    outline: none !important;
+  }
+  
+  .select\:appearance-auto {
+    -moz-appearance: auto !important;
+    -webkit-appearance: auto !important;
+  }
+  
+  .overflow-y-auto {
+    overflow-y: auto !important;
+  } */
+
+
+/* ==================== End Undefined Global CSS ==================== */
+
+
+/* ==================== Start Global CSS Area v1.00 ==================== */
+
+:root {
+    --blue: #026cd1;
+    --black: #000000;
+    --white: #ffffff;
+    --ice-white: #fbfcfe;
+    --bluish-white: #e2edfa;
+    --border-color: #e2edfa;
+    --red: #df2a43;
+    --redish-white: #f5bec6;
+    --yellow: #fcc428;
+    --yellowish-white: #fff7e3;
+    --green: #28a411;
+    --greenish-white: #d2fccc;
+    --gray: #526471;
+    --text-red: #df2a43;
+    --text-black: #36454f;
+    --text-label: #36454f;
+    --font22: 22px;
+    --font20: 20px;
+    --font18: 18px;
+    --font16: 16px;
+    --font14: 14px;
+    --font12: 12px;
+    --font10: 10px;
+    --table-height: 40px;
+    --table-height-2: 45px;
+    --table-height-25: 25px;
+    --navbar-height: 74px;
+    --breadcrumb-height: 86px;
+    --used-height: calc(var(--navbar-height) + var(--breadcrumb-height) + 25px);
+    --layout-menubar-width: 74px;
+    --sidebar-width: 300px;
+    --sidebar-width-extend: calc(var(--sidebar-width) + 100px);
+}
+
+@media screen and (max-width: 1440px) {
+     :root {
+        --font22: 21px;
+        --font20: 19px;
+        --font18: 17px;
+        --font16: 15px;
+        --font14: 12px;
+        --font12: 11px;
+        --font10: 9px;
+        --navbar-height: 64px;
+        --breadcrumb-height: 66px;
+        --layout-menubar-width: 64px;
+        --sidebar-width: 260px;
+    }
+}
+
+@media screen and (max-width: 1536px) {
+     :root {
+        --font22: 21px;
+        --font20: 19px;
+        --font18: 17px;
+        --font16: 15px;
+        --font14: 12px;
+        --font12: 11px;
+        --font10: 9px;
+        --navbar-height: 64px;
+        --breadcrumb-height: 66px;
+        --layout-menubar-width: 64px;
+        --sidebar-width: 260px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+     :root {
+        --font22: 20px;
+        --font20: 18px;
+        --font18: 16px;
+        --font16: 14px;
+        --font14: 12px;
+        --font12: 10px;
+        --font10: 8px;
+    }
+}
+
+
+/*-------->> Start Layout Area --------*/
+
+.grid-container {
+    background-color: transparent;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: var(--navbar-height) var(--breadcrumb-height) auto 25px;
+    grid-template-columns: var(--layout-menubar-width) auto;
+}
+
+.layout-navbar {
+    grid-column: 1/-1;
+    background-color: var(--ice-white);
+    box-shadow: 0px 0px 5px #026cd129;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.layout-menubar {
+    grid-row: 2/4;
+    background-color: var(--ice-white);
+    box-shadow: 1px 5px 5px #026cd129;
+    z-index: 1001;
+}
+
+.layout-menubar:hover {
+    width: 300px;
+}
+
+.layout-breadcrumb {
+    grid-column: 2/-1;
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: var(--navbar-height);
+    z-index: 999;
+}
+
+.layout-footer {
+    grid-row: 4/-1;
+    grid-column: 1/-1;
+    background-color: var(--blue);
+    z-index: 1002;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.layout-body {
+    display: grid;
+    grid-template-columns: min-content auto;
+}
+
+.layout-sidebar {
+    background-color: transparent;
+}
+
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0px;
+    height: calc(100vh - var(--used-height));
+    overflow-y: auto;
+    background-color: transparent;
+}
+
+.layout-container .container-fluid {
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .grid-container {
+        display: grid;
+        grid-template-rows: var(--navbar-height) var(--breadcrumb-height) auto 25px;
+        grid-template-columns: auto;
+    }
+    .layout-menubar {
+        display: none;
+    }
+    .layout-breadcrumb {
+        grid-column: auto;
+        background-color: var(--white);
+        border-bottom: 1px solid var(--border-color);
+    }
+    .layout-body {
+        display: grid;
+        grid-template-columns: auto;
+        grid-auto-rows: 230px auto;
+    }
+    .layout-sidebar {
+        height: 232px;
+        background-color: transparent;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .layout-container {
+        background-color: transparent;
+    }
+}
+
+
+/*-------- End Layout Area <<--------*/
+
+
+/*-------->> Start Default HTML Customize Area --------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+.text-linked {
+    color: var(--blue)!important;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+/* Start Input Type Number Spin */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
+/* End Input Type Number Spin */
+
+
+/* Start Schroll Style */
+
+ ::-webkit-scrollbar {
+    width: 1px;
+}
+
+ ::-webkit-scrollbar-track {
+    background: none;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: var(--blue);
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: var(--blue);
+}
+
+
+/* Start Horizontal Schroll */
+
+ ::-webkit-scrollbar-track:horizontal {
+    background: var(--bluish-white);
+}
+
+ ::-webkit-scrollbar-thumb:horizontal {
+    background: var(--blue);
+}
+
+ ::-webkit-scrollbar-thumb:horizontal:hover {
+    background: var(--blue);
+}
+
+
+/* End Schroll Style */
+
+
+/*-------- End Default HTML Customize Area <<--------*/
+
+
+/*-------->> Start JERP Color Area --------*/
+
+.color-primary {
+    color: var(--blue) !important;
+}
+
+.approved,
+.APPROVED,
+.available,
+.verified,
+.delivered {
+    color: var(--green) !important;
+    font-weight: 500;
+}
+
+.pending,
+.PENDING,
+.occupied,
+.undelivered {
+    color: var(--yellow) !important;
+    font-weight: 500;
+}
+
+.submitted,
+.SUBMITTED,
+.completed {
+    color: var(--blue) !important;
+    font-weight: 500;
+}
+
+.drafted,
+.DRAFTED {
+    color: var(--gray) !important;
+    font-weight: 500;
+}
+
+.closed,
+.CLOSED,
+.rejected,
+.REJECTED {
+    color: var(--red) !important;
+    font-weight: 500;
+}
+
+.partial-approved {
+    color: lawngreen !important;
+    font-weight: 500;
+}
+
+.partial-closed {
+    color: crimson !important;
+    font-weight: 500;
+}
+
+
+/*-------- End JERP Color Area <<--------*/
+
+
+/*-------->> Start Button Style Area --------*/
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    height: 40px;
+    padding: 0px 10px;
+    border-radius: 2px;
+    font-size: var(--font14);
+    transition: all 0.3s ease 0s;
+}
+
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-primary {
+    background-color: var(--blue);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0285ff;
+}
+
+.btn-close,
+.btn-discard,
+.btn-reject {
+    color: var(--red);
+    border: 1px solid var(--red);
+    background-color: var(--white);
+}
+
+.btn-draft,
+.btn-back {
+    color: #6d7a85;
+    border: 1px solid #6d7a85;
+    background-color: var(--white);
+}
+
+.disable,
+.disabled {
+    cursor: not-allowed !important;
+    opacity: 0.5 !important;
+}
+
+.btn-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.btn-group>.btn {
+    position: relative;
+    flex: 0 1 auto;
+}
+
+.circular-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0px 5px;
+    border-radius: 50%;
+    font-weight: 300;
+    color: var(--blue);
+    font-size: var(--font16);
+    background-color: var(--bluish-white);
+}
+
+.circular-btn.save {
+    font-weight: 600;
+    color: var(--white);
+    font-size: var(--font16);
+    background-color: var(--blue);
+}
+
+.circular-btn.remove {
+    color: var(--red);
+    font-size: var(--font16);
+    background-color: var(--redish-white);
+}
+
+
+/*-------- End Button Style Area <<--------*/
+
+
+/*-------->> Start Form Style --------*/
+
+.form-group label {
+    color: var(--blue);
+    font-size: var(--font14);
+}
+
+.form-group label span {
+    color: var(--red);
+}
+
+.form-group select {
+    -moz-appearance: auto;
+    -webkit-appearance: auto !important;
+}
+
+.form-group .form-control {
+    font-size: var(--font14);
+    color: var(--text-black);
+    padding: 0.469rem 0.75rem;
+    height: 38px;
+}
+
+.form-group input {
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+}
+
+.form-group input::placeholder {
+    font-size: var(--font14);
+    color: #aac0d9;
+}
+
+.form-group input:focus {
+    border-color: var(--blue) !important;
+    box-shadow: none;
+}
+
+.form-group input.invalid,
+.form-group .form-control.invalid {
+    border-color: var(--red) !important;
+    background-color: rgb(255, 249, 249);
+    box-shadow: none;
+}
+
+.form-group input:focus.valid,
+.form-group .form-control:focus.valid {
+    border-color: var(--green) !important;
+    background-color: rgb(236, 253, 236);
+    box-shadow: none;
+}
+
+.form-group input[type="file"] {
+    padding: 3px;
+}
+
+.form-group textarea {
+    padding-left: 10px;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+}
+
+.form-group textarea::placeholder {
+    font-size: var(--font14);
+    color: #aac0d9;
+}
+
+.form-group textarea:focus {
+    outline: none !important;
+    border-color: var(--blue) !important;
+    box-shadow: none;
+}
+
+.form-group select {
+    border-radius: 2px;
+    font-size: var(--font14);
+    border: 1px solid var(--border-color);
+    -webkit-appearance: auto !important;
+}
+
+.form-group select::placeholder {
+    font-size: var(--font14);
+    color: #aac0d9;
+}
+
+.form-group select:focus {
+    outline: none !important;
+    border-color: var(--blue) !important;
+    box-shadow: none;
+}
+
+.form-group small {
+    font-size: var(--font10);
+    font-weight: 500;
+    letter-spacing: 0.4px;
+}
+
+.form-group small.form-text {
+    display: block;
+    margin-top: 0.15rem;
+}
+
+
+/*-------- End Form Style <<--------*/
+
+
+/*-------->> Start Breadcrumb Area --------*/
+
+.breadcrumb_area h5 {
+    font-size: var(--font20);
+    padding: 0.2rem 1rem;
+}
+
+.breadcrumb_area .breadcrumb {
+    font-size: var(--font12);
+    background: unset;
+    padding: 0.2rem 1rem;
+    margin: 0px;
+}
+
+
+/*-------- End Breadcrumb Area <<--------*/
+
+
+/*-------->> Start Filter Dropdown Area --------*/
+
+.jerp-filter-section.dropdown .filter-search-btn {
+    cursor: pointer;
+    color: #aac0d9;
+    font-size: var(--font14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    height: 38px;
+    width: 38px;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+    margin-left: 10px;
+}
+
+.jerp-filter-section.dropdown .filter-search-btn[aria-expanded="true"] {
+    color: var(--white);
+    background-color: var(--blue);
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu {
+    max-width: 280px;
+    padding: 0px;
+    margin: 0.5rem 0 0;
+    border-radius: 4px;
+    box-shadow: 0px 0px 18px #026cd11a;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-header {
+    display: block;
+    font-size: var(--font12);
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    color: #6c757d;
+    white-space: nowrap;
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-item,
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-item:active {
+    color: var(--text-black);
+    font-size: var(--font14);
+    padding: 0.5rem 1rem;
+    background-color: white;
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-item:hover {
+    background-color: var(--bluish-white);
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-item .form-check {
+    display: flex;
+    align-items: center;
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-item .form-check input {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-item.form-group .form-control-sm {
+    width: 100%;
+    display: flex;
+    align-self: start;
+    padding: 0rem 0.5rem;
+    border-radius: 2px;
+    font-size: var(--font14);
+    border: 1px solid var(--border-color);
+    height: 35px !important;
+    padding-left: 15px;
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-item.form-group .form-control-sm:focus {
+    outline: none !important;
+    border-color: var(--blue) !important;
+    box-shadow: none;
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .filter-btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .filter-btn-group .btn-primary,
+.jerp-filter-section.dropdown .dropdown-menu.filter-menu .filter-btn-group .btn-draft {
+    height: 35px;
+    min-width: 100px;
+}
+
+
+/*-------- End Filter Dropdown Area <<--------*/
+
+
+/*-------->> Start Multipurpose Dropdown --------*/
+
+.jerp-multiPurpose-dropdown {
+    padding: 0px;
+    margin: 0px;
+    min-width: 180px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 18px #026cd11a;
+    border: 1px solid var(--border-color);
+}
+
+.jerp-multiPurpose-dropdown .dropdown-header {
+    color: var(--gray);
+    font-size: var(--font14);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+}
+
+.jerp-multiPurpose-dropdown .form-group {
+    margin: 5px 10px 5px 10px !important;
+}
+
+.jerp-multiPurpose-dropdown ul {
+    list-style: none;
+    margin: 0px 0px;
+    padding: 0;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.jerp-multiPurpose-dropdown ul li {
+    cursor: pointer;
+    color: var(--text-black);
+    font-size: var(--font12);
+    padding: 7px 10px;
+}
+
+.jerp-multiPurpose-dropdown ul li:hover {
+    color: var(--text-black);
+    background-color: var(--bluish-white);
+}
+
+
+/*-------- End Multipurpose Dropdown <<--------*/
+
+
+/*-------->> Start Custom Modal Area --------*/
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.modal-header button span {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 4px;
+}
+
+.modal-header button span:hover {
+    background-color: var(--bluish-white);
+}
+
+.modal-header .modal-title {
+    color: var(--black) !important;
+    font-size: var(--font16) !important;
+}
+
+.modal-header .modal-title span {
+    font-size: var(--font16);
+    color: var(--blue);
+    margin-left: 5px;
+}
+
+.modal-body textarea {
+    height: 100px !important;
+}
+
+
+/*-------- End Custom Modal Area <<--------*/
+
+
+/*-------->> Start JERP Quantity Input Area --------*/
+
+.jerp-quantity-input {
+    display: flex;
+    align-items: center;
+    width: 110px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: var(--white);
+}
+
+.jerp-quantity-input .quantity {
+    width: 60px;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    font-size: var(--font14);
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-right: none;
+    border-left: none;
+}
+
+.jerp-quantity-input .quantity::placeholder {
+    color: #aac0d9;
+}
+
+.jerp-quantity-input .quantity:focus {
+    color: var(--blue);
+    outline: none !important;
+    box-shadow: none;
+    border-color: var(--blue) !important;
+    border-left: 1px solid var(--blue);
+    border-right: 1px solid var(--blue);
+}
+
+.jerp-quantity-input input[type="button"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 25px;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-weight: 700;
+    font-size: var(--font18);
+    color: var(--text-black);
+    background-color: var(--white);
+}
+
+.jerp-quantity-input .minus {
+    border-radius: 2px 0px 0px 2px;
+    border: 1px solid var(--border-color);
+    border-right: none;
+}
+
+.jerp-quantity-input .plus {
+    border-radius: 0px 2px 2px 0px;
+    border: 1px solid var(--border-color);
+    border-left: none;
+}
+
+.jerp-quantity-input .minus:hover,
+.jerp-quantity-input .plus:hover,
+.jerp-quantity-input .minus:focus,
+.jerp-quantity-input .plus:focus {
+    color: var(--white);
+    outline: none !important;
+    box-shadow: none;
+    background-color: var(--blue);
+}
+
+
+/*-------- End JERP Quantity Input Area <<--------*/
+
+
+/* ==================== End Global CSS Area v1.00 ==================== */

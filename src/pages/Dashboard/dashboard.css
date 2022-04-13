@@ -1,0 +1,214 @@
+.layout-container.dic-dashboard-bg {
+    background-color: #F9FAFF;
+    height: calc(100vh - (var(--used-height) - 86px));
+    ;
+}
+
+.dic-dashboard-area {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.dic-dashboard-area .dashboard-header {
+    display: flex;
+    align-items: flex-start;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-greetings {
+    margin-bottom: 5px;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-greetings h4 {
+    font-size: var(--font20);
+    color: var(--text-black);
+    margin-bottom: 10px;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-greetings h5 {
+    font-size: var(--font14);
+    color: var(--text-black);
+    margin-bottom: 3px;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-greetings h5 span {
+    font-size: var(--font14);
+    color: var(--blue);
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-greetings p {
+    font-size: var(--font14);
+    color: var(--text-black);
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-option .option-group {
+    width: 100%;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-option .option-group p {
+    font-size: var(--font14);
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-option .option-group .form-group {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-option .option-group .form-group .form-control {
+    border-radius: 4px;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-option .option-group .redio-group {
+    display: flex;
+    align-items: center;
+    height: 38px;
+    background-color: var(--white);
+    border: 1px solid var(--bluish-white);
+    border-radius: 4px;
+    padding: 0 5px;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-option .option-group .redio-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 5px;
+    margin-bottom: 0;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-option .option-group .redio-group label input {
+    margin: 5px;
+}
+
+.dic-dashboard-area .dashboard-header .dashboard-option .option-group .redio-group label span {
+    font-size: var(--font14);
+    color: var(--text-black);
+}
+
+.dic-dashboard-area .chart-box {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.dic-dashboard-area .content-box {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    /* min-height: calc(100vh - (var(--used-height) + 30px)); */
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.dic-dashboard-area .content-box.mt-22 {
+    margin-top: 22px;
+}
+
+.dic-dashboard-area .content-box .sidebar-title {
+    font-size: var(--font16);
+    margin-bottom: 15px;
+}
+
+.dic-dashboard-area .content-box .dic-sidebar-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dic-dashboard-area .content-box .dic-sidebar-info .dic-single-info {
+    width: 100%;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.dic-dashboard-area .content-box .dic-sidebar-info .dic-single-info:nth-child(1) {
+    border-right: 2px solid var(--border-color);
+}
+
+.dic-dashboard-area .content-box .dic-sidebar-info .dic-single-info p {
+    font-size: var(--font14);
+    color: var(--text-black);
+    margin-bottom: 5px;
+}
+
+.dic-dashboard-area .content-box .dic-sidebar-info .dic-single-info h5 {
+    font-size: var(--font16);
+    color: var(--blue);
+}
+
+.dic-dashboard-area .content-box .dic-recent-activities .activites-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dic-dashboard-area .content-box .dic-recent-activities .activites-group .single-activites {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.dic-dashboard-area .content-box .dic-recent-activities .activites-group .single-activites span {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue);
+    font-size: var(--font20);
+    text-align: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: var(--bluish-white);
+}
+
+.dic-dashboard-area .content-box .dic-recent-activities .activites-group .single-activites:hover span {
+    color: var(--white);
+    background-color: var(--blue);
+}
+
+.dic-dashboard-area .content-box .dic-recent-activities .activites-group .single-activites p {
+    font-size: var(--font14);
+    color: var(--text-black);
+}
+
+.dic-dashboard-area .content-box .dic-recent-activities .activites-group .single-activites:hover p {
+    font-size: var(--font14);
+    color: var(--blue);
+}
+
+
+#product-class-chart .apexcharts-canvas {
+    width: 100% !important;
+}
+
+#product-class-chart .apexcharts-canvas .apexcharts-svg {
+    width: 100% !important;
+}
+
+#product-class-chart foreignObject {
+    width: 100% !important;
+}
+
+#product-class-chart .apexcharts-pie {
+    padding: 200px !important;
+}

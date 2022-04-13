@@ -1,0 +1,698 @@
+[
+    {
+       "id":25300,
+       "lvl":"1",
+       "nav_type":"F",
+       "menu_name":"HOME",
+       "nav_description":"DISTRIBUTION DEPOT MANAGER NAVIGATION",
+       "icon_class":"zmdi zmdi-view-dashboard",
+       "feature_id":"114",
+       "feature":{
+          "feature_name":"Dashboard",
+          "feature_description":"Users > Dashboard",
+          "url":"/features/users/dashboard",
+          "icon_url":"./Icons/Group 1383.svg"
+       }
+    },
+    {
+       "id":25301,
+       "lvl":"1",
+       "nav_type":"M",
+       "menu_name":"CONFIGURATION",
+       "nav_description":"DISTRIBUTION DEPOT MANAGER NAVIGATION",
+       "icon_class":"zmdi zmdi-wrench",
+       "feature_id":null,
+       "menu":[
+          {
+             "id":25302,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"SALES CODES",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"401",
+             "feature":{
+                "feature_name":"Sales Codes",
+                "feature_description":"Configuration > Sales Codes",
+                "url":"/features/configuration/sales_codes",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25303,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"SALES AREA",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"403",
+             "feature":{
+                "feature_name":"Sales Area",
+                "feature_description":"Configuration > Sales Area",
+                "url":"/features/configuration/sales_area",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25304,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"SALES FORCE",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"404",
+             "feature":{
+                "feature_name":"Sales Force",
+                "feature_description":"Configuration > Sales Force",
+                "url":"/features/configuration/sales_force",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25305,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"PRODUCT OFFERS",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"405",
+             "feature":{
+                "feature_name":"Product Offers",
+                "feature_description":"Configuration > Product Offers",
+                "url":"/features/configuration/product_offers",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25306,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"COMPETITORS",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"406",
+             "feature":{
+                "feature_name":"Competitors",
+                "feature_description":"Configuration > Competitors",
+                "url":"/features/configuration/competitors",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          }
+       ]
+    },
+    {
+       "id":25307,
+       "lvl":"1",
+       "nav_type":"M",
+       "menu_name":"INVENTORY",
+       "nav_description":"DISTRIBUTION DEPOT MANAGER NAVIGATION",
+       "icon_class":"zmdi zmdi-storage",
+       "feature_id":null,
+       "menu":[
+          {
+             "id":25308,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"PRODUCTS",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"407",
+             "feature":{
+                "feature_name":"Products",
+                "feature_description":"Inventory > Products",
+                "url":"/features/inventory/products",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25309,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"STOCK POSITION",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"409",
+             "feature":{
+                "feature_name":"Stock Position",
+                "feature_description":"Inventory > Stock Position",
+                "url":"/features/inventory/stock_position",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25310,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"REQUISITION",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"411",
+             "feature":{
+                "feature_name":"Requisition",
+                "feature_description":"Inventory > Requisition",
+                "url":"/features/inventory/requisition",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25311,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"TRANSFER",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"413",
+             "feature":{
+                "feature_name":"Transfer",
+                "feature_description":"Inventory > Transfer",
+                "url":"/features/inventory/transfer",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25312,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"GRN",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"415",
+             "feature":{
+                "feature_name":"GRN",
+                "feature_description":"Inventory > GRN",
+                "url":"/features/inventory/grn",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25313,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"INSPECTION",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"416",
+             "feature":{
+                "feature_name":"Inspection",
+                "feature_description":"Inventory > Inspection",
+                "url":"/features/inventory/inspection",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25314,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"RETURN",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"417",
+             "feature":{
+                "feature_name":"Return",
+                "feature_description":"Inventory > Return",
+                "url":"/features/inventory/return",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25315,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"RECONCILIATION",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"418",
+             "feature":{
+                "feature_name":"Reconciliation",
+                "feature_description":"Inventory > Reconciliation",
+                "url":"/features/inventory/reconciliation",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25316,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"DISPOSAL",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"419",
+             "feature":{
+                "feature_name":"Disposal",
+                "feature_description":"Inventory > Disposal",
+                "url":"/features/inventory/disposal",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          }
+       ]
+    },
+    {
+       "id":25317,
+       "lvl":"1",
+       "nav_type":"M",
+       "menu_name":"STAKEHOLDERS",
+       "nav_description":"DISTRIBUTION DEPOT MANAGER NAVIGATION",
+       "icon_class":"icofont-users-alt-1",
+       "feature_id":null,
+       "menu":[
+          {
+             "id":25318,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"RETAILER",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"408",
+             "feature":{
+                "feature_name":"Retailer",
+                "feature_description":"Stakeholders > Retailer",
+                "url":"/features/stakeholders/retailer",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25319,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"WHOLESALER",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"410",
+             "feature":{
+                "feature_name":"Wholesaler",
+                "feature_description":"Stakeholders > Wholesaler",
+                "url":"/features/stakeholders/wholesaler",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25320,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"DIRECT CUSTOMER",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"412",
+             "feature":{
+                "feature_name":"Direct Customer",
+                "feature_description":"Stakeholders > Direct Customer",
+                "url":"/features/stakeholders/direct_customer",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25321,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"PROMOTER",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"414",
+             "feature":{
+                "feature_name":"Promoter",
+                "feature_description":"Stakeholders > Promoter",
+                "url":"/features/stakeholders/promoter",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          }
+       ]
+    },
+    {
+       "id":25322,
+       "lvl":"1",
+       "nav_type":"M",
+       "menu_name":"LOCAL SALES",
+       "nav_description":"DISTRIBUTION DEPOT MANAGER NAVIGATION",
+       "icon_class":"icofont-flag",
+       "feature_id":null,
+       "menu":[
+          {
+             "id":25323,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"DELIVERY PLAN",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"425",
+             "feature":{
+                "feature_name":"Delivery Plan",
+                "feature_description":"Local Sales > Delivery Plan",
+                "url":"/features/local_sales/delivery_plan",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25324,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"DELIVERY SCHEDULE",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"426",
+             "feature":{
+                "feature_name":"Delivery Schedule",
+                "feature_description":"Local Sales > Delivery Schedule",
+                "url":"/features/local_sales/delivery_schedule",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25325,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"SALES ORDER",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"427",
+             "feature":{
+                "feature_name":"Sales Order",
+                "feature_description":"Local Sales > Sales Order",
+                "url":"/features/local_sales/sales_order",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25326,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"ORDER APPROVAL",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"428",
+             "feature":{
+                "feature_name":"Order Approval",
+                "feature_description":"Local Sales > Order Approval",
+                "url":"/features/local_sales/order_approval",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25327,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"SALES INVOICE",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"429",
+             "feature":{
+                "feature_name":"Sales Invoice",
+                "feature_description":"Local Sales > Sales Invoice",
+                "url":"/features/local_sales/sales_invoice",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25328,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"INVOICE DELIVERY",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"430",
+             "feature":{
+                "feature_name":"Invoice Delivery",
+                "feature_description":"Local Sales > Invoice Delivery",
+                "url":"/features/local_sales/invoice_delivery",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25329,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"SALES RETURN",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"431",
+             "feature":{
+                "feature_name":"Sales Return",
+                "feature_description":"Local Sales > Sales Return",
+                "url":"/features/local_sales/sales_return",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25330,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"BACK DATED SALES",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"432",
+             "feature":{
+                "feature_name":"Back Dated Sales",
+                "feature_description":"Local Sales > Back Dated Sales",
+                "url":"/features/local_sales/back_dated_sales",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          }
+       ]
+    },
+    {
+       "id":25331,
+       "lvl":"1",
+       "nav_type":"M",
+       "menu_name":"OPERATIONS",
+       "nav_description":"DISTRIBUTION DEPOT MANAGER NAVIGATION",
+       "icon_class":"icofont-site-map",
+       "feature_id":null,
+       "menu":[
+          {
+             "id":25332,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"RECEIVE VOUCHER",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"437",
+             "feature":{
+                "feature_name":"Receive Voucher",
+                "feature_description":"Operations > Receive Voucher",
+                "url":"/features/operations/receive_voucher",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25333,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"PAYMENT VOUCHER",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"438",
+             "feature":{
+                "feature_name":"Payment Voucher",
+                "feature_description":"Operations > Payment Voucher",
+                "url":"/features/operations/payment_voucher",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25334,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"BANK DEPOSIT",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"439",
+             "feature":{
+                "feature_name":"Bank Deposit",
+                "feature_description":"Operations > Bank Deposit",
+                "url":"/features/operations/bank_deposit",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25335,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"ADVANCE COLLECTION",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"440",
+             "feature":{
+                "feature_name":"Advance Collection",
+                "feature_description":"Operations > Advance Collection",
+                "url":"/features/operations/advance_collection",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25336,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"EXPENDITURE",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"441",
+             "feature":{
+                "feature_name":"Expenditure",
+                "feature_description":"Operations > Expenditure",
+                "url":"/features/operations/expenditure",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25337,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"COLLECTION",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"442",
+             "feature":{
+                "feature_name":"Collection",
+                "feature_description":"Operations > Collection",
+                "url":"/features/operations/collection",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25338,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"BILL PREPARATION",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"443",
+             "feature":{
+                "feature_name":"Bill Preparation",
+                "feature_description":"Operations > Bill Preparation",
+                "url":"/features/operations/bill_preparation",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25339,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"INVOICE PRINT",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"444",
+             "feature":{
+                "feature_name":"Invoice Print",
+                "feature_description":"Operations > Invoice Print",
+                "url":"/features/operations/invoice_print",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25340,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"DELIVERY DISPATCH",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"445",
+             "feature":{
+                "feature_name":"Delivery Dispatch",
+                "feature_description":"Operations > Delivery Dispatch",
+                "url":"/features/operations/delivery_dispatch",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          }
+       ]
+    },
+    {
+       "id":25341,
+       "lvl":"1",
+       "nav_type":"M",
+       "menu_name":"REPORTS",
+       "nav_description":"DISTRIBUTION DEPOT MANAGER NAVIGATION",
+       "icon_class":"icofont-ui-file",
+       "feature_id":null,
+       "menu":[
+          {
+             "id":25342,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"EXECUTIVE SUMMARY REPORTS",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"460",
+             "feature":{
+                "feature_name":"Executive Summary Reports",
+                "feature_description":"Reports > Executive Summary Reports",
+                "url":"/features/reports/executive_summary_reports",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25343,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"CUSTOMER WISE SALES REPORTS",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"461",
+             "feature":{
+                "feature_name":"Customer wise Sales Reports",
+                "feature_description":"Reports > Customer wise Sales Reports",
+                "url":"/features/reports/customer_wise_sales_reports",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25344,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"INVENTORY REPORTS",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"462",
+             "feature":{
+                "feature_name":"Inventory Reports",
+                "feature_description":"Reports > Inventory Reports",
+                "url":"/features/reports/inventory_reports",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25345,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"SALES FORCE OPERATIONAL REPORTS",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"463",
+             "feature":{
+                "feature_name":"Sales Force Operational Reports",
+                "feature_description":"Reports > Sales Force Operational Reports",
+                "url":"/features/reports/sales_force_operational_reports",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25346,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"SALES PERFORMANCE REPORTS",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"464",
+             "feature":{
+                "feature_name":"Sales Performance Reports",
+                "feature_description":"Reports > Sales Performance Reports",
+                "url":"/features/reports/sales_performance_reports",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          },
+          {
+             "id":25347,
+             "lvl":"2",
+             "nav_type":"F",
+             "menu_name":"SALES PROMOTIONAL REPORTS",
+             "nav_description":null,
+             "icon_class":null,
+             "feature_id":"465",
+             "feature":{
+                "feature_name":"Sales Promotional Reports",
+                "feature_description":"Reports > Sales Promotional Reports",
+                "url":"/features/reports/sales_promotional_reports",
+                "icon_url":"./Icons/Group 1383.svg"
+             }
+          }
+       ]
+    }
+ ]
