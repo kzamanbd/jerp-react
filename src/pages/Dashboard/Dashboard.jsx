@@ -10,26 +10,26 @@ export default function Dashboard() {
             {
                 name: 'Sales',
                 type: 'column',
-                data: [30000, 30000, 36000, 30000, 45000, 40000, 60000, 42000, 60200, 70000, 44662]
+                data: [30000, 30000, 36000, 30000, 45000, 40000, 60000, 42000, 60200, 70000, 44662],
             },
             {
                 name: 'Collection',
                 type: 'column',
-                data: [30200, 20000, 30000, 30000, 40000, 50000, 65000, 48000, 35000, 45000, 90000]
+                data: [30200, 20000, 30000, 30000, 40000, 50000, 65000, 48000, 35000, 45000, 90000],
             },
             {
                 name: 'Target',
                 type: 'line',
-                data: [30000, 25000, 36000, 30000, 45000, 35000, 64000, 52000, 59000, 36000, 39000]
-            }
+                data: [30000, 25000, 36000, 30000, 45000, 35000, 64000, 52000, 59000, 36000, 39000],
+            },
         ],
         chart: {
             height: 350,
             type: 'line',
             stacked: false,
             toolbar: {
-                show: false
-            }
+                show: false,
+            },
         },
         title: {
             text: 'Target vs Sales & Collection',
@@ -37,17 +37,17 @@ export default function Dashboard() {
                 fontSize: '14px',
                 fontWeight: '600',
                 fontFamily: undefined,
-                color: '#36454F'
-            }
+                color: '#36454F',
+            },
         },
         stroke: {
             width: [0, 2, 5],
-            curve: 'smooth'
+            curve: 'smooth',
         },
         plotOptions: {
             bar: {
-                columnWidth: '50%'
-            }
+                columnWidth: '50%',
+            },
         },
 
         labels: [
@@ -61,13 +61,13 @@ export default function Dashboard() {
             '08/01/2021',
             '09/01/2021',
             '10/01/2021',
-            '11/01/2021'
+            '11/01/2021',
         ],
         markers: {
-            size: 0
+            size: 0,
         },
         xaxis: {
-            type: 'datetime'
+            type: 'datetime',
         },
         yaxis: {
             labels: {
@@ -75,8 +75,8 @@ export default function Dashboard() {
                     const d = 1000;
                     const s = 'k';
                     return value / d + s;
-                }
-            }
+                },
+            },
         },
         tooltip: {
             shared: true,
@@ -87,9 +87,9 @@ export default function Dashboard() {
                         return `${y.toFixed(0)} points`;
                     }
                     return y;
-                }
-            }
-        }
+                },
+            },
+        },
     };
 
     // Start Product Class
@@ -97,7 +97,7 @@ export default function Dashboard() {
         series: [45, 20, 10, 6, 4],
         chart: {
             width: 465,
-            type: 'pie'
+            type: 'pie',
         },
         title: {
             text: 'Product Class',
@@ -105,8 +105,8 @@ export default function Dashboard() {
                 fontSize: '14px',
                 fontWeight: '600',
                 fontFamily: undefined,
-                color: '#36454F'
-            }
+                color: '#36454F',
+            },
         },
         labels: ['Top 20', 'Priority', 'General', 'Injectable', 'Cardiac'],
         responsive: [
@@ -114,28 +114,28 @@ export default function Dashboard() {
                 breakpoint: 480,
                 options: {
                     chart: {
-                        width: 200
+                        width: 200,
                     },
                     legend: {
-                        position: 'bottom'
-                    }
-                }
+                        position: 'bottom',
+                    },
+                },
             },
             {
                 breakpoint: 1536,
                 options: {
                     chart: {
-                        width: 440
-                    }
-                }
-            }
-        ]
+                        width: 440,
+                    },
+                },
+            },
+        ],
     };
     const today = new Date().toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
-        day: 'numeric'
+        day: 'numeric',
     });
     return (
         <div className="layout-container dic-dashboard-bg">
