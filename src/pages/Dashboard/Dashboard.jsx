@@ -1,124 +1,142 @@
-import React from 'react'
-import './dashboard.css'
-import Chart from "react-apexcharts";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React from 'react';
+import './dashboard.css';
+import Chart from 'react-apexcharts';
 
 export default function Dashboard() {
     // today date
-    var targetVsSalesOption = {
+    const targetVsSalesOption = {
         series: [
             {
-                name: "Sales",
-                type: "column",
-                data: [30000, 30000, 36000, 30000, 45000, 40000, 60000, 42000, 60200, 70000, 44662],
+                name: 'Sales',
+                type: 'column',
+                data: [30000, 30000, 36000, 30000, 45000, 40000, 60000, 42000, 60200, 70000, 44662]
             },
             {
-                name: "Collection",
-                type: "column",
-                data: [30200, 20000, 30000, 30000, 40000, 50000, 65000, 48000, 35000, 45000, 90000],
+                name: 'Collection',
+                type: 'column',
+                data: [30200, 20000, 30000, 30000, 40000, 50000, 65000, 48000, 35000, 45000, 90000]
             },
             {
-                name: "Target",
-                type: "line",
-                data: [30000, 25000, 36000, 30000, 45000, 35000, 64000, 52000, 59000, 36000, 39000],
+                name: 'Target',
+                type: 'line',
+                data: [30000, 25000, 36000, 30000, 45000, 35000, 64000, 52000, 59000, 36000, 39000]
             }
         ],
         chart: {
             height: 350,
-            type: "line",
+            type: 'line',
             stacked: false,
             toolbar: {
-                show: false,
-            },
+                show: false
+            }
         },
         title: {
-            text: "Target vs Sales & Collection",
+            text: 'Target vs Sales & Collection',
             style: {
-                fontSize: "14px",
-                fontWeight: "600",
+                fontSize: '14px',
+                fontWeight: '600',
                 fontFamily: undefined,
-                color: "#36454F",
-            },
+                color: '#36454F'
+            }
         },
         stroke: {
             width: [0, 2, 5],
-            curve: "smooth",
+            curve: 'smooth'
         },
         plotOptions: {
             bar: {
-                columnWidth: "50%",
-            },
+                columnWidth: '50%'
+            }
         },
-    
-        labels: ["01/01/2021", "02/01/2021", "03/01/2021", "04/01/2021", "05/01/2021", "06/01/2021", "07/01/2021", "08/01/2021", "09/01/2021", "10/01/2021", "11/01/2021"],
+
+        labels: [
+            '01/01/2021',
+            '02/01/2021',
+            '03/01/2021',
+            '04/01/2021',
+            '05/01/2021',
+            '06/01/2021',
+            '07/01/2021',
+            '08/01/2021',
+            '09/01/2021',
+            '10/01/2021',
+            '11/01/2021'
+        ],
         markers: {
-            size: 0,
+            size: 0
         },
         xaxis: {
-            type: "datetime",
+            type: 'datetime'
         },
         yaxis: {
             labels: {
-                formatter: function (value) {
-                    let d = 1000;
-                    let s = "k";
+                formatter(value) {
+                    const d = 1000;
+                    const s = 'k';
                     return value / d + s;
-                },
-            },
+                }
+            }
         },
         tooltip: {
             shared: true,
             intersect: false,
             y: {
-                formatter: function (y) {
-                    if (typeof y !== "undefined") {
-                        return y.toFixed(0) + " points";
+                formatter(y) {
+                    if (typeof y !== 'undefined') {
+                        return `${y.toFixed(0)} points`;
                     }
                     return y;
-                },
-            },
-        },
+                }
+            }
+        }
     };
 
     // Start Product Class
-    var productClassOption = {
+    const productClassOption = {
         series: [45, 20, 10, 6, 4],
         chart: {
             width: 465,
-            type: "pie",
+            type: 'pie'
         },
         title: {
-            text: "Product Class",
+            text: 'Product Class',
             style: {
-                fontSize: "14px",
-                fontWeight: "600",
+                fontSize: '14px',
+                fontWeight: '600',
                 fontFamily: undefined,
-                color: "#36454F",
-            },
+                color: '#36454F'
+            }
         },
-        labels: ["Top 20", "Priority", "General", "Injectable", "Cardiac"],
+        labels: ['Top 20', 'Priority', 'General', 'Injectable', 'Cardiac'],
         responsive: [
             {
                 breakpoint: 480,
                 options: {
                     chart: {
-                        width: 200,
+                        width: 200
                     },
                     legend: {
-                        position: "bottom",
-                    },
-                },
+                        position: 'bottom'
+                    }
+                }
             },
             {
                 breakpoint: 1536,
                 options: {
                     chart: {
-                        width: 440,
-                    },
-                },
-            },
-        ],
+                        width: 440
+                    }
+                }
+            }
+        ]
     };
-    const today = new Date().toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const today = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
     return (
         <div className="layout-container dic-dashboard-bg">
             <div className="container-fluid">
@@ -130,7 +148,9 @@ export default function Dashboard() {
                                     <div className="row dashboard-header">
                                         <div className="col-lg-6 col-12 dashboard-greetings">
                                             <h4>Dashboard</h4>
-                                            <h5>Good Morning, <span>John Doe!</span></h5>
+                                            <h5>
+                                                Good Morning, <span>John Doe!</span>
+                                            </h5>
                                             <p>Today is {today}</p>
                                         </div>
                                         <div className="col-lg-6 col-12 dashboard-option">
@@ -138,17 +158,29 @@ export default function Dashboard() {
                                                 <p>Period Type</p>
                                                 <div className="redio-group mr-2">
                                                     <label>
-                                                        <input type="radio" name="flexRadioDefault" id="period-monthly" />
+                                                        <input
+                                                            type="radio"
+                                                            name="flexRadioDefault"
+                                                            id="period-monthly"
+                                                        />
                                                         <span>Monthly</span>
                                                     </label>
 
                                                     <label>
-                                                        <input type="radio" name="flexRadioDefault" id="period-quarterly" />
+                                                        <input
+                                                            type="radio"
+                                                            name="flexRadioDefault"
+                                                            id="period-quarterly"
+                                                        />
                                                         <span>Quarterly</span>
                                                     </label>
 
                                                     <label>
-                                                        <input type="radio" name="flexRadioDefault" id="period-yearly" />
+                                                        <input
+                                                            type="radio"
+                                                            name="flexRadioDefault"
+                                                            id="period-yearly"
+                                                        />
                                                         <span>Year&nbsp;to&nbsp;Date</span>
                                                     </label>
                                                 </div>
@@ -168,12 +200,22 @@ export default function Dashboard() {
                                     <div className="row">
                                         <div className="col-lg-6 col-12">
                                             <div id="target-sales-chart" className="chart-box">
-                                                <Chart options={targetVsSalesOption} series={targetVsSalesOption.series} type="line" height={350} />
+                                                <Chart
+                                                    options={targetVsSalesOption}
+                                                    series={targetVsSalesOption.series}
+                                                    type="line"
+                                                    height={350}
+                                                />
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-12 d-flex justify-content-center">
                                             <div id="product-className-chart" className="chart-box">
-                                                <Chart options={productClassOption} series={productClassOption.series} type="pie" height={350} />
+                                                <Chart
+                                                    options={productClassOption}
+                                                    series={productClassOption.series}
+                                                    type="pie"
+                                                    height={350}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -184,12 +226,12 @@ export default function Dashboard() {
                                             <div className="content-box mt-22">
                                                 <div className="dic-sidebar-info">
                                                     <div className="dic-single-info">
-                                                        <p>Today's Sales</p>
+                                                        <p>Today Sales</p>
                                                         <h5>55</h5>
                                                     </div>
-                                                    <div className="verticle-line"></div>
+                                                    <div className="verticle-line" />
                                                     <div className="dic-single-info">
-                                                        <p>Today's Collection</p>
+                                                        <p>Today Collection</p>
                                                         <h5>455K</h5>
                                                     </div>
                                                 </div>
@@ -202,7 +244,7 @@ export default function Dashboard() {
                                                         <p>JUL-21 Sales</p>
                                                         <h5>557</h5>
                                                     </div>
-                                                    <div className="verticle-line"></div>
+                                                    <div className="verticle-line" />
                                                     <div className="dic-single-info">
                                                         <p>JUL-21 Collection</p>
                                                         <h5>455K</h5>
@@ -216,19 +258,31 @@ export default function Dashboard() {
                                                 <div className="dic-recent-activities">
                                                     <div className="activites-group">
                                                         <div className="single-activites">
-                                                            <span className="material-icons"> fact_check </span>
+                                                            <span className="material-icons">
+                                                                {' '}
+                                                                fact_check{' '}
+                                                            </span>
                                                             <p>Approve Order</p>
                                                         </div>
                                                         <div className="single-activites">
-                                                            <span className="material-icons"> payments </span>
+                                                            <span className="material-icons">
+                                                                {' '}
+                                                                payments{' '}
+                                                            </span>
                                                             <p>Collection</p>
                                                         </div>
                                                         <div className="single-activites">
-                                                            <span className="material-icons"> local_shipping </span>
+                                                            <span className="material-icons">
+                                                                {' '}
+                                                                local_shipping{' '}
+                                                            </span>
                                                             <p>Delivery Schedule</p>
                                                         </div>
                                                         <div className="single-activites">
-                                                            <span className="material-icons"> store </span>
+                                                            <span className="material-icons">
+                                                                {' '}
+                                                                store{' '}
+                                                            </span>
                                                             <p>Customer</p>
                                                         </div>
                                                     </div>
@@ -241,19 +295,31 @@ export default function Dashboard() {
                                                 <div className="dic-recent-activities">
                                                     <div className="activites-group">
                                                         <div className="single-activites">
-                                                            <span className="material-icons"> fact_check </span>
+                                                            <span className="material-icons">
+                                                                {' '}
+                                                                fact_check{' '}
+                                                            </span>
                                                             <p>Approve Order</p>
                                                         </div>
                                                         <div className="single-activites">
-                                                            <span className="material-icons"> payments </span>
+                                                            <span className="material-icons">
+                                                                {' '}
+                                                                payments{' '}
+                                                            </span>
                                                             <p>Collection</p>
                                                         </div>
                                                         <div className="single-activites">
-                                                            <span className="material-icons"> local_shipping </span>
+                                                            <span className="material-icons">
+                                                                {' '}
+                                                                local_shipping{' '}
+                                                            </span>
                                                             <p>Delivery Schedule</p>
                                                         </div>
                                                         <div className="single-activites">
-                                                            <span className="material-icons"> store </span>
+                                                            <span className="material-icons">
+                                                                {' '}
+                                                                store{' '}
+                                                            </span>
                                                             <p>Customer</p>
                                                         </div>
                                                     </div>
@@ -268,5 +334,5 @@ export default function Dashboard() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
