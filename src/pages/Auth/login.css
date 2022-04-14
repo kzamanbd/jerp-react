@@ -1,0 +1,291 @@
+.wrapper {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #FBFBFD;
+        margin-bottom: -32px;
+    }
+
+    .main-content {
+        padding-bottom: 46px;
+    }
+
+    /* Right column start */
+
+    .right-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    /* Right column end */
+
+    /* START Possibilities */
+    .possibilities > h2 {
+        margin: 26px 0 17px 0;
+        color:#026CD1;
+        font-weight: inherit;
+    }
+
+    .possibilities > p {
+        font-size: 14px;
+        color: #2E384D;
+        margin-bottom: 20px;
+        line-height: 24px;
+        max-width: 517px;
+    }
+
+    .possibilities > .status {
+        list-style: none;
+    }
+
+    .possibilities > .status > li {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 14px;
+        color: #2E384D;
+        margin-bottom: 10px;
+    }
+
+    .possibilities > .status > li > i {
+        margin-right: 10px;
+        font-size: 16px;
+        height: 100%;
+    }
+
+    .possibilities .text-default {
+        color: #026CD1;
+    }
+
+    .possibilities > .status > li > p {
+        margin-bottom: 0;
+    }
+    /* END Possibilities */
+
+    /* START Email Password Input Field */
+
+    .email-pass-input .msg-text {
+        margin-left: 10px;
+    }
+
+    .email-pass-input .active-input-label {
+        color: #026CD1;
+    }
+    .email-pass-input .active-input {
+        border-color: #026CD1;
+        outline: 0 none;
+        box-shadow: none;
+    }
+    .email-pass-input .input-error {
+        border-color: #D0404B;
+        outline: 0 none;
+        box-shadow: none;
+    }
+
+    .email-pass-input label {
+        color: #8C98A9;
+        font-size: 12px;
+    }
+
+    .email-pass-input input {
+        border: 1px solid#DCEAF5;
+    }
+
+    .email-pass-input input:focus {
+        border-color: #026CD1;
+        outline: 0 none;
+        box-shadow: none;
+    }
+
+    .email-pass-input .pass-input-group {
+        position: relative;
+    }
+
+    .email-pass-input .submit-btn {
+        margin-top: 30px;
+        background:#026CD1;
+        border: none;
+        height: 38px !important;
+        border-radius: 2px;
+    }
+
+    .email-pass-input .submit-btn:hover {
+        background: #0163be;
+    }
+
+    .email-pass-input .submit-btn:focus {
+        border: none;
+        outline: 0 none;
+        box-shadow: none;
+    }
+
+    .email-pass-input .submit-btn-disabled {
+        background: #8C98A9;
+        pointer-events: none;
+    }
+
+    .email-pass-input #pwd {
+        padding-right: 60px;
+    }
+
+    .email-pass-input #show {
+        position: absolute;
+        right: 15px;
+        top: 42px;
+        font-size: 12px;
+        color: #026CD1;
+        font-weight: 500;
+        text-transform: uppercase;
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    .email-pass-input .right-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .email-pass-input .login-card {
+        position: relative;
+        padding: 30px 20px;
+        border: none;
+        box-shadow: 0 0 40px 15px rgba(0, 0, 0, 0.035);
+    }
+
+    /* Message Absolutely Positioned */
+    .message {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        top: -70px;
+        left: 0;
+        right: 0;
+        z-index: 5;
+    }
+
+    .email-pass-input .forgotten {
+        margin-top: 18px;
+    }
+
+    .email-pass-input .forgotten a {
+        text-decoration: none;
+        color: #026CD1;
+        font-size: 14px;
+    }
+
+    .email-pass-input .forgotten:hover {
+        color: #033d74 !important;
+    }
+
+    /* Cross Browser Issues */
+
+    /* For Removing default eye icon to hide or reveal password in Edge. */
+    .email-pass-input ::-ms-reveal,
+    .email-pass-input ::-ms-clear {
+        display: none;
+    }
+    /* END Email Password Input Field */
+
+    /* spinner */
+    .spin-animation {
+          animation: spin 0.75s linear infinite;
+      }
+
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* footer start */
+
+    .footer {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        bottom: 0;
+        width: 100%;
+        padding: 30px 0 20px 0;
+        background: #F7F7F7;
+        font-size: 12px;
+    }
+
+    #jerp {
+        color:#026CD1;
+    }
+
+    .footer ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .footer ul li {
+        margin-right: 36px;
+    }
+
+    .footer ul > li > a {
+        color: #2e384d;
+        text-decoration: none;
+    }
+
+    .footer ul > li > a:hover {
+        color: #026CD1;
+    }
+
+    .footer ul li:last-child {
+        margin-right: 0;
+    }
+
+    .li-logo {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .li-logo > p {
+        padding-right: 10px;
+        margin-bottom: 0;
+    }
+
+    .li-logo > .mono-logo {
+        width: 75px;
+        height: 100%;
+    }
+
+    .mono-logo img {
+        object-fit: contain;
+    }
+	
+	.material-icons.check_circle_outline {
+		font-size: 16px;
+		color: #026CD1;
+	}
+	
+	.jmi-mr-4 {
+		margin-right: 4px;
+	}
+	
+	.jmi-pl-0 {
+		padding-left: 0px;
+	}
+
+    /* END Footer */

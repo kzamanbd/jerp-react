@@ -3,6 +3,8 @@ import React from 'react';
 import './dashboard.css';
 import Chart from 'react-apexcharts';
 
+import AppLayout from '../../components/AppLayout';
+
 export default function Dashboard() {
     // today date
     const targetVsSalesOption = {
@@ -138,189 +140,195 @@ export default function Dashboard() {
         day: 'numeric',
     });
     return (
-        <div className="layout-container dic-dashboard-bg">
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-12">
-                        <div className="dic-dashboard-area">
-                            <div className="row">
-                                <div className="col-lg-9 col-12">
-                                    <div className="row dashboard-header">
-                                        <div className="col-lg-6 col-12 dashboard-greetings">
-                                            <h4>Dashboard</h4>
-                                            <h5>
-                                                Good Morning, <span>John Doe!</span>
-                                            </h5>
-                                            <p>Today is {today}</p>
-                                        </div>
-                                        <div className="col-lg-6 col-12 dashboard-option">
-                                            <div className="option-group">
-                                                <p>Period Type</p>
-                                                <div className="redio-group mr-2">
-                                                    <label>
-                                                        <input
-                                                            type="radio"
-                                                            name="flexRadioDefault"
-                                                            id="period-monthly"
-                                                        />
-                                                        <span>Monthly</span>
-                                                    </label>
+        <AppLayout>
+            <div className="layout-container dic-dashboard-bg">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="dic-dashboard-area">
+                                <div className="row">
+                                    <div className="col-lg-9 col-12">
+                                        <div className="row dashboard-header">
+                                            <div className="col-lg-6 col-12 dashboard-greetings">
+                                                <h4>Dashboard</h4>
+                                                <h5>
+                                                    Good Morning, <span>John Doe!</span>
+                                                </h5>
+                                                <p>Today is {today}</p>
+                                            </div>
+                                            <div className="col-lg-6 col-12 dashboard-option">
+                                                <div className="option-group">
+                                                    <p>Period Type</p>
+                                                    <div className="redio-group mr-2">
+                                                        <label>
+                                                            <input
+                                                                type="radio"
+                                                                name="flexRadioDefault"
+                                                                id="period-monthly"
+                                                            />
+                                                            <span>Monthly</span>
+                                                        </label>
 
-                                                    <label>
-                                                        <input
-                                                            type="radio"
-                                                            name="flexRadioDefault"
-                                                            id="period-quarterly"
-                                                        />
-                                                        <span>Quarterly</span>
-                                                    </label>
+                                                        <label>
+                                                            <input
+                                                                type="radio"
+                                                                name="flexRadioDefault"
+                                                                id="period-quarterly"
+                                                            />
+                                                            <span>Quarterly</span>
+                                                        </label>
 
-                                                    <label>
-                                                        <input
-                                                            type="radio"
-                                                            name="flexRadioDefault"
-                                                            id="period-yearly"
-                                                        />
-                                                        <span>Year&nbsp;to&nbsp;Date</span>
-                                                    </label>
+                                                        <label>
+                                                            <input
+                                                                type="radio"
+                                                                name="flexRadioDefault"
+                                                                id="period-yearly"
+                                                            />
+                                                            <span>Year&nbsp;to&nbsp;Date</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div className="option-group">
+                                                    <p>Sales Area</p>
+                                                    <div className="form-group">
+                                                        <select className="form-control">
+                                                            <option>Depot/Sales Area</option>
+                                                            <option>Region 1</option>
+                                                            <option>Region 2</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className="option-group">
-                                                <p>Sales Area</p>
-                                                <div className="form-group">
-                                                    <select className="form-control">
-                                                        <option>Depot/Sales Area</option>
-                                                        <option>Region 1</option>
-                                                        <option>Region 2</option>
-                                                    </select>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-lg-6 col-12">
+                                                <div id="target-sales-chart" className="chart-box">
+                                                    <Chart
+                                                        options={targetVsSalesOption}
+                                                        series={targetVsSalesOption.series}
+                                                        type="line"
+                                                        height={350}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-6 col-12 d-flex justify-content-center">
+                                                <div
+                                                    id="product-className-chart"
+                                                    className="chart-box">
+                                                    <Chart
+                                                        options={productClassOption}
+                                                        series={productClassOption.series}
+                                                        type="pie"
+                                                        height={350}
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="row">
-                                        <div className="col-lg-6 col-12">
-                                            <div id="target-sales-chart" className="chart-box">
-                                                <Chart
-                                                    options={targetVsSalesOption}
-                                                    series={targetVsSalesOption.series}
-                                                    type="line"
-                                                    height={350}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6 col-12 d-flex justify-content-center">
-                                            <div id="product-className-chart" className="chart-box">
-                                                <Chart
-                                                    options={productClassOption}
-                                                    series={productClassOption.series}
-                                                    type="pie"
-                                                    height={350}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3 col-12">
-                                    <div className="row">
-                                        <div className="col-12">
-                                            <div className="content-box mt-22">
-                                                <div className="dic-sidebar-info">
-                                                    <div className="dic-single-info">
-                                                        <p>Today Sales</p>
-                                                        <h5>55</h5>
-                                                    </div>
-                                                    <div className="verticle-line" />
-                                                    <div className="dic-single-info">
-                                                        <p>Today Collection</p>
-                                                        <h5>455K</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-12">
-                                            <div className="content-box">
-                                                <div className="dic-sidebar-info">
-                                                    <div className="dic-single-info">
-                                                        <p>JUL-21 Sales</p>
-                                                        <h5>557</h5>
-                                                    </div>
-                                                    <div className="verticle-line" />
-                                                    <div className="dic-single-info">
-                                                        <p>JUL-21 Collection</p>
-                                                        <h5>455K</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-12">
-                                            <div className="content-box">
-                                                <h5 className="sidebar-title">Recent Activities</h5>
-                                                <div className="dic-recent-activities">
-                                                    <div className="activites-group">
-                                                        <div className="single-activites">
-                                                            <span className="material-icons">
-                                                                {' '}
-                                                                fact_check{' '}
-                                                            </span>
-                                                            <p>Approve Order</p>
+                                    <div className="col-lg-3 col-12">
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <div className="content-box mt-22">
+                                                    <div className="dic-sidebar-info">
+                                                        <div className="dic-single-info">
+                                                            <p>Today Sales</p>
+                                                            <h5>55</h5>
                                                         </div>
-                                                        <div className="single-activites">
-                                                            <span className="material-icons">
-                                                                {' '}
-                                                                payments{' '}
-                                                            </span>
-                                                            <p>Collection</p>
-                                                        </div>
-                                                        <div className="single-activites">
-                                                            <span className="material-icons">
-                                                                {' '}
-                                                                local_shipping{' '}
-                                                            </span>
-                                                            <p>Delivery Schedule</p>
-                                                        </div>
-                                                        <div className="single-activites">
-                                                            <span className="material-icons">
-                                                                {' '}
-                                                                store{' '}
-                                                            </span>
-                                                            <p>Customer</p>
+                                                        <div className="verticle-line" />
+                                                        <div className="dic-single-info">
+                                                            <p>Today Collection</p>
+                                                            <h5>455K</h5>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="col-12">
-                                            <div className="content-box">
-                                                <h5 className="sidebar-title">Quick Links</h5>
-                                                <div className="dic-recent-activities">
-                                                    <div className="activites-group">
-                                                        <div className="single-activites">
-                                                            <span className="material-icons">
-                                                                {' '}
-                                                                fact_check{' '}
-                                                            </span>
-                                                            <p>Approve Order</p>
+                                            <div className="col-12">
+                                                <div className="content-box">
+                                                    <div className="dic-sidebar-info">
+                                                        <div className="dic-single-info">
+                                                            <p>JUL-21 Sales</p>
+                                                            <h5>557</h5>
                                                         </div>
-                                                        <div className="single-activites">
-                                                            <span className="material-icons">
-                                                                {' '}
-                                                                payments{' '}
-                                                            </span>
-                                                            <p>Collection</p>
+                                                        <div className="verticle-line" />
+                                                        <div className="dic-single-info">
+                                                            <p>JUL-21 Collection</p>
+                                                            <h5>455K</h5>
                                                         </div>
-                                                        <div className="single-activites">
-                                                            <span className="material-icons">
-                                                                {' '}
-                                                                local_shipping{' '}
-                                                            </span>
-                                                            <p>Delivery Schedule</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-12">
+                                                <div className="content-box">
+                                                    <h5 className="sidebar-title">
+                                                        Recent Activities
+                                                    </h5>
+                                                    <div className="dic-recent-activities">
+                                                        <div className="activites-group">
+                                                            <div className="single-activites">
+                                                                <span className="material-icons">
+                                                                    {' '}
+                                                                    fact_check{' '}
+                                                                </span>
+                                                                <p>Approve Order</p>
+                                                            </div>
+                                                            <div className="single-activites">
+                                                                <span className="material-icons">
+                                                                    {' '}
+                                                                    payments{' '}
+                                                                </span>
+                                                                <p>Collection</p>
+                                                            </div>
+                                                            <div className="single-activites">
+                                                                <span className="material-icons">
+                                                                    {' '}
+                                                                    local_shipping{' '}
+                                                                </span>
+                                                                <p>Delivery Schedule</p>
+                                                            </div>
+                                                            <div className="single-activites">
+                                                                <span className="material-icons">
+                                                                    {' '}
+                                                                    store{' '}
+                                                                </span>
+                                                                <p>Customer</p>
+                                                            </div>
                                                         </div>
-                                                        <div className="single-activites">
-                                                            <span className="material-icons">
-                                                                {' '}
-                                                                store{' '}
-                                                            </span>
-                                                            <p>Customer</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-12">
+                                                <div className="content-box">
+                                                    <h5 className="sidebar-title">Quick Links</h5>
+                                                    <div className="dic-recent-activities">
+                                                        <div className="activites-group">
+                                                            <div className="single-activites">
+                                                                <span className="material-icons">
+                                                                    {' '}
+                                                                    fact_check{' '}
+                                                                </span>
+                                                                <p>Approve Order</p>
+                                                            </div>
+                                                            <div className="single-activites">
+                                                                <span className="material-icons">
+                                                                    {' '}
+                                                                    payments{' '}
+                                                                </span>
+                                                                <p>Collection</p>
+                                                            </div>
+                                                            <div className="single-activites">
+                                                                <span className="material-icons">
+                                                                    {' '}
+                                                                    local_shipping{' '}
+                                                                </span>
+                                                                <p>Delivery Schedule</p>
+                                                            </div>
+                                                            <div className="single-activites">
+                                                                <span className="material-icons">
+                                                                    {' '}
+                                                                    store{' '}
+                                                                </span>
+                                                                <p>Customer</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -333,6 +341,6 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-        </div>
+        </AppLayout>
     );
 }
