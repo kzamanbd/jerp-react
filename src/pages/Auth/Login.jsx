@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './login.css';
 import Logo from '../../assets/images/JMI-ERP-Logo.svg';
-import CompanyLogo from '../../assets/images/mononsoft-logo.svg';
+import CompanyLogo from '../../assets/images/logo.svg';
 
 export default function Login() {
     const handleLoginJerp = () => {
         console.log('Login Jerp');
     };
+    useEffect(() => {
+        document.title = 'Login';
+    }, []);
     return (
         <div className="wrapper">
             <div className="container h-100 main-content">

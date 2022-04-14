@@ -5,7 +5,7 @@ import PrivateRoute from '../utils/PrivateRoute';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import Login from '../pages/Auth/Login';
 
-export default function AppRoute() {
+export default function AppRouter() {
     return (
         <BrowserRouter>
             <Routes>
