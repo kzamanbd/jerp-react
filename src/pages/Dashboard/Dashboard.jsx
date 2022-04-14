@@ -80,44 +80,44 @@ export default function Dashboard() {
     };
 
     // Start Product Class
-var productClassOption = {
-    series: [45, 20, 10, 6, 4],
-    chart: {
-        width: 465,
-        type: "pie",
-    },
-    title: {
-        text: "Product Class",
-        style: {
-            fontSize: "14px",
-            fontWeight: "600",
-            fontFamily: undefined,
-            color: "#36454F",
+    var productClassOption = {
+        series: [45, 20, 10, 6, 4],
+        chart: {
+            width: 465,
+            type: "pie",
         },
-    },
-    labels: ["Top 20", "Priority", "General", "Injectable", "Cardiac"],
-    responsive: [
-        {
-            breakpoint: 480,
-            options: {
-                chart: {
-                    width: 200,
-                },
-                legend: {
-                    position: "bottom",
-                },
+        title: {
+            text: "Product Class",
+            style: {
+                fontSize: "14px",
+                fontWeight: "600",
+                fontFamily: undefined,
+                color: "#36454F",
             },
         },
-        {
-            breakpoint: 1536,
-            options: {
-                chart: {
-                    width: 440,
+        labels: ["Top 20", "Priority", "General", "Injectable", "Cardiac"],
+        responsive: [
+            {
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200,
+                    },
+                    legend: {
+                        position: "bottom",
+                    },
                 },
             },
-        },
-    ],
-};
+            {
+                breakpoint: 1536,
+                options: {
+                    chart: {
+                        width: 440,
+                    },
+                },
+            },
+        ],
+    };
     const today = new Date().toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     return (
         <div className="layout-container dic-dashboard-bg">
