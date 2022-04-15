@@ -1,11 +1,38 @@
-import React, { useEffect } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useEffect, useState } from 'react';
+import config from '../../config';
 import './login.css';
 import Logo from '../../assets/images/JMI-ERP-Logo.svg';
 import CompanyLogo from '../../assets/images/logo.svg';
 
 export default function Login() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const handleLoginJerp = () => {
-        console.log('Login Jerp');
+        // validate username and password
+        if (!username || !password) {
+            console.log('Please enter username and password');
+        } else {
+            // call login api
+            config
+                .post('api/auth/login', {
+                    username,
+                    password,
+                })
+                .then((response) => {
+                    // if success
+                    console.log(response);
+                    if (response.data.code === 200) {
+                        localStorage.setItem('token', response.data.token);
+                        window.location.href = '/feature/users/dashboard';
+                        return true;
+                    }
+                    return false;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
     };
     useEffect(() => {
         document.title = 'Login';
@@ -67,30 +94,32 @@ export default function Login() {
                                         <div className="card-body">
                                             <form>
                                                 <div className="form-group">
-                                                    <label htmlFor="uname" className="">
-                                                        {' '}
-                                                        Username{' '}
-                                                    </label>
+                                                    <label htmlFor="username">Username</label>
                                                     <input
                                                         type="text"
-                                                        id="uname"
+                                                        id="username"
                                                         name="uname"
                                                         className="form-control"
+                                                        placeholder="Enter username"
+                                                        value={username}
+                                                        onChange={(e) =>
+                                                            setUsername(e.target.value)
+                                                        }
                                                     />
                                                 </div>
                                                 <div className="form-group pass-input-group">
-                                                    <label htmlFor="pwd" className="">
-                                                        {' '}
-                                                        Password{' '}
-                                                    </label>
+                                                    <label htmlFor="password">Password</label>
                                                     <input
                                                         type="password"
-                                                        id="pwd"
+                                                        id="password"
                                                         className="form-control"
+                                                        placeholder="Enter password"
+                                                        value={password}
+                                                        onChange={(e) =>
+                                                            setPassword(e.target.value)
+                                                        }
                                                     />
                                                 </div>
-                                                {/* <button className="btn btn-primary text-light btn-block submit-btn" onClick={ handleLoginJerp }>Log In <i className="fas fa-circle-notch spin-animation d-none"></i></button>
-                                                <div className="forgotten text-center"><a>Forgotten Password?</a></div> */}
                                             </form>
                                             <button
                                                 type="button"

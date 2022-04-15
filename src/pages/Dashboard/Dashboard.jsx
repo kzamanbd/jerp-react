@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import './dashboard.css';
 import Chart from 'react-apexcharts';
@@ -160,7 +159,7 @@ export default function Dashboard() {
                                                 <div className="option-group">
                                                     <p>Period Type</p>
                                                     <div className="redio-group mr-2">
-                                                        <label>
+                                                        <label htmlFor="period-monthly">
                                                             <input
                                                                 type="radio"
                                                                 name="flexRadioDefault"
@@ -169,7 +168,7 @@ export default function Dashboard() {
                                                             <span>Monthly</span>
                                                         </label>
 
-                                                        <label>
+                                                        <label htmlFor="period-quarterly">
                                                             <input
                                                                 type="radio"
                                                                 name="flexRadioDefault"
@@ -178,7 +177,7 @@ export default function Dashboard() {
                                                             <span>Quarterly</span>
                                                         </label>
 
-                                                        <label>
+                                                        <label htmlFor="period-yearly">
                                                             <input
                                                                 type="radio"
                                                                 name="flexRadioDefault"
