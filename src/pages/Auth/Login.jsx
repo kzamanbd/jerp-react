@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import config from '../../config';
+import config from '../../config/axios-config';
 import './login.css';
 import Logo from '../../assets/images/JMI-ERP-Logo.svg';
 import CompanyLogo from '../../assets/images/logo.svg';
@@ -8,7 +8,7 @@ import CompanyLogo from '../../assets/images/logo.svg';
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const handleLoginJerp = () => {
+    const handleLogin = () => {
         // validate username and password
         if (!username || !password) {
             console.log('Please enter username and password');
@@ -23,8 +23,8 @@ export default function Login() {
                     // if success
                     console.log(response);
                     if (response.data.code === 200) {
-                        localStorage.setItem('token', response.data.token);
-                        window.location.href = '/feature/users/dashboard';
+                        localStorage.setItem('token', response.data.data.token.access_token);
+                        window.location.href = '/features/users/dashboard';
                         return true;
                     }
                     return false;
@@ -36,7 +36,7 @@ export default function Login() {
     };
     useEffect(() => {
         document.title = 'Login';
-    }, []);
+    });
     return (
         <div className="wrapper">
             <div className="container h-100 main-content">
@@ -124,7 +124,7 @@ export default function Login() {
                                             <button
                                                 type="button"
                                                 className="btn btn-primary text-light btn-block submit-btn"
-                                                onClick={handleLoginJerp}>
+                                                onClick={handleLogin}>
                                                 Log In
                                                 <i className="fas fa-circle-notch spin-animation d-none" />
                                             </button>

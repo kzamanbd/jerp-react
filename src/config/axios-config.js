@@ -13,7 +13,7 @@ http.interceptors.request.use(
     (config) => {
         // Do something before request is sent
         const request = config;
-        const loggedUser = JSON.parse(localStorage.getItem('jerp_user')) || {};
+        const loggedUser = JSON.parse(localStorage.getItem('token')) || null;
         const token = loggedUser ? loggedUser.accessToken : false;
         if (token) {
             request.headers.common.Authorization = `Bearer ${token}`;

@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function SideBarMenu() {
+export default function SideBarMenu({ isOpen }) {
     return (
-        <aside id="sidenavbar" className="sidenavbar">
+        <aside id="sidenavbar" className={`sidenavbar ${isOpen ? `expanded` : ''}`}>
             <div id="sidenav-menu-section" className="sidenav-menu-section">
                 <div className="menu-section-area">
                     <div className="menu-section-inner">
