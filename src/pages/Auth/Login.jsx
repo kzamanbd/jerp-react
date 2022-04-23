@@ -8,14 +8,18 @@ import login from '../../service/useLogin';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const handleLogin = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const handleLogin = (e) => {
+        e.preventDefault();
         // validate username and password
         if (!username || !password) {
             console.log('Please enter username and password');
         } else {
+            setIsLoading(true);
             // call login api
             login(username, password)
                 .then((response) => {
+                    setIsLoading(false);
                     // if success
                     console.log(response);
                     if (response.data.code === 200) {
@@ -90,7 +94,7 @@ function Login() {
                                 <div className="email-pass-input">
                                     <div className="card login-card">
                                         <div className="card-body">
-                                            <form onSubmit={handleLogin}>
+                                            <form onSubmit={handleLogin} action="#" method="POST">
                                                 <div className="form-group">
                                                     <label htmlFor="username">Username</label>
                                                     <input
@@ -118,13 +122,14 @@ function Login() {
                                                         }
                                                     />
                                                 </div>
+                                                <button
+                                                    type="submit"
+                                                    disabled={isLoading}
+                                                    className="btn btn-primary text-light btn-block submit-btn">
+                                                    Log In
+                                                    <i className="fas fa-circle-notch spin-animation d-none" />
+                                                </button>
                                             </form>
-                                            <button
-                                                type="submit"
-                                                className="btn btn-primary text-light btn-block submit-btn">
-                                                Log In
-                                                <i className="fas fa-circle-notch spin-animation d-none" />
-                                            </button>
                                             <div className="forgotten text-center">
                                                 <a href="/forgot-password">Forgotten Password?</a>
                                             </div>
