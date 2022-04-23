@@ -6,7 +6,7 @@ $iceWhite : #FBFCFE;
 $bluishWhite : #E2EDFA;
 $colorRed : #DF2A43;
 $sidebarIconTextDefaultColor : #264667;
-$sidenavTransition : 0.5s;
+$sideNavTransition : 0.5s;
 $menuSectionInnerTransition: 0.5s;
 
 $main_section_margin_top : 74px;
@@ -61,7 +61,8 @@ body {
                     top: 0;
                     left: 25px;
                 }
-                .font-20{
+
+                .font-20 {
                     font-size: 20px;
                 }
             }
@@ -116,6 +117,7 @@ body {
                     .group-icon {
                         transform: rotate(90deg);
                         transition: .1s;
+
                         &.header-icon[aria-expanded="true"] {
                             transform: rotate(180deg) !important;
                         }
@@ -134,6 +136,7 @@ body {
                         .group-list {
                             max-height: 475px;
                             overflow-y: auto;
+
                             .group-list-header {
                                 height: 56px;
                                 display: flex;
@@ -148,12 +151,15 @@ body {
                                 margin: 0;
                                 list-style: none;
                                 padding: 0;
+
                                 .company-single-item {
                                     padding: 12px 10px;
                                     border-bottom: 1px solid #ddd;
+
                                     &:hover {
                                         background: $bluishWhite;
                                     }
+
                                     .company-name {
                                         color: $primaryColor;
                                         margin: 0;
@@ -170,7 +176,8 @@ body {
                                 justify-content: center;
                                 align-items: center;
                                 height: 40px;
-                                .link{
+
+                                .link {
                                     text-transform: uppercase;
                                     color: black;
                                     font-size: 14px;
@@ -199,6 +206,7 @@ body {
                         .chat-inner-section {
                             max-height: 475px;
                             overflow-y: auto;
+
                             .chat-header {
                                 height: 56px;
                                 display: flex;
@@ -216,9 +224,10 @@ body {
                                 font-weight: 500;
                             }
 
-                            .chat-dropdown-item{
+                            .chat-dropdown-item {
                                 padding: 8px 14px;
                                 border-bottom: 1px solid $bluishWhite;
+
                                 .icon-section {
                                     width: 35px;
                                     height: 35px;
@@ -227,13 +236,16 @@ body {
                                     border-radius: 50%;
                                     padding: 5px;
                                 }
-                                .title-description{
+
+                                .title-description {
                                     padding-left: 10px;
+
                                     .title {
                                         font-size: 12px;
                                         font-weight: 500;
                                         color: $primaryColor;
                                     }
+
                                     .description {
                                         overflow: hidden;
                                         margin-top: 3px;
@@ -241,24 +253,28 @@ body {
                                         color: #8E9397;
                                     }
                                 }
-                                .time-section{
+
+                                .time-section {
                                     line-height: 1;
                                     margin: 0;
                                     line-height: 1;
                                     font-size: 12px;
                                     color: #1E1F20;
                                 }
+
                                 &:hover {
                                     background: #026CD11A;
                                     cursor: pointer;
                                 }
                             }
+
                             .chat-footer {
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
                                 height: 40px;
-                                .link{
+
+                                .link {
                                     text-transform: uppercase;
                                     color: black;
                                     font-size: 14px;
@@ -298,11 +314,13 @@ body {
                                     line-height: 1;
                                 }
                             }
-                            .notification-unordered-list{
-                                .notification-dropdown-item{
+
+                            .notification-unordered-list {
+                                .notification-dropdown-item {
                                     min-height: 80px;
                                     border-bottom: 1px solid $bluishWhite;
                                     padding: 10px 14px;
+
                                     .title-description-icon {
                                         .notification-icon {
                                             .rounded-image {
@@ -314,11 +332,13 @@ body {
 
                                         .title-description-section {
                                             padding-left: 10px;
+
                                             .title {
                                                 font-size: 12px;
                                                 font-weight: 500;
                                                 color: $primaryColor;
                                             }
+
                                             .description {
                                                 overflow: hidden;
                                                 margin-top: 3px;
@@ -327,10 +347,13 @@ body {
                                             }
                                         }
                                     }
-                                    .action-section{
+
+                                    .action-section {
                                         position: relative;
+
                                         .time-section {
                                             line-height: 1;
+
                                             span {
                                                 margin: 0;
                                                 line-height: 1;
@@ -338,7 +361,7 @@ body {
                                                 color: #1E1F20;
                                             }
                                         }
-    
+
                                         .attachment-section {
                                             position: absolute;
                                             bottom: -15px;
@@ -351,18 +374,21 @@ body {
                                             display: flex;
                                             align-items: center;
                                             justify-content: center;
+
                                             span.material-icons {
                                                 font-size: 18px;
                                             }
                                         }
                                     }
-                                    &:hover{
+
+                                    &:hover {
                                         background: $bluishWhite;
                                     }
-                                    
+
                                 }
-                                .notification-btn-group{
-                                    .notification-btn{
+
+                                .notification-btn-group {
+                                    .notification-btn {
                                         border: 1px solid $primaryColor;
                                         background: #ffffff;
                                         border-radius: 4px;
@@ -371,19 +397,22 @@ body {
                                         padding: 3px 10px;
                                         cursor: pointer;
                                         text-align: center;
-                                        &.btn-accept{
+
+                                        &.btn-accept {
                                             background: $primaryColor;
                                             color: #FFFFFF;
                                         }
                                     }
                                 }
                             }
+
                             .notification-footer {
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
                                 height: 40px;
-                                .link{
+
+                                .link {
                                     text-transform: uppercase;
                                     color: black;
                                     font-size: 14px;
@@ -431,7 +460,8 @@ body {
                             cursor: pointer;
                             color: $primaryColor;
                             margin-left: 8px;
-                            span{
+
+                            span {
                                 font-size: 20px;
                                 transition: .5s;
                             }
@@ -442,9 +472,10 @@ body {
                             font-size: 12px;
                         }
                     }
-                    .profile-desc-section[aria-expanded="true"]{
+
+                    .profile-desc-section[aria-expanded="true"] {
                         .profile-arrow {
-                            span{
+                            span {
                                 transform: rotate(180deg);
                             }
                         }
@@ -468,7 +499,8 @@ body {
                                     &.profile-dropdown-border {
                                         border-bottom: 1px solid $bluishWhite;
                                     }
-                                    &.name-section{
+
+                                    &.name-section {
                                         .dropdown-item-title {
                                             color: black;
                                         }
@@ -488,7 +520,8 @@ body {
                                         text-align: center;
                                         margin-right: 8px;
                                         color: $primaryColor;
-                                        .material-icons{
+
+                                        .material-icons {
                                             font-size: 20px;
                                         }
 
@@ -517,7 +550,7 @@ body {
         }
     }
 
-    .sidenavbar {
+    .side-navbar {
         width: 60px;
         background: $iceWhite;
         z-index: 99;
@@ -527,11 +560,11 @@ body {
         overflow-y: auto;
         overflow-x: hidden;
         padding: 0;
-        transition: $sidenavTransition;
+        transition: $sideNavTransition;
         box-shadow: 0 4px 3px 0 rgb(2 108 209 / 16%);
         scrollbar-width: none;
 
-        .sidenav-menu-section {
+        .side-nav-menu-section {
             display: block;
             height: 100%;
 
@@ -720,6 +753,7 @@ body {
                                                 .secondary-icon {
                                                     width: 24px;
                                                     height: 24px;
+
                                                     .shape {
                                                         width: 16px;
                                                         height: 8px;
@@ -766,12 +800,15 @@ body {
 
                                                 .secondary-menu-name-section[aria-expanded="true"] {
                                                     color: $primaryColor !important;
+
                                                     .secondary-menu-name {
                                                         color: $primaryColor !important;
+
                                                         .right-arrow-icon {
                                                             transform: rotate(90deg);
                                                         }
                                                     }
+
                                                     .secondary-menu-icon-inner {
                                                         .secondary-icon {
                                                             .shape {
@@ -799,6 +836,7 @@ body {
                                                                 align-items: center;
                                                                 justify-content: flex-start;
                                                                 color: #264667;
+
                                                                 .shape {
                                                                     width: 16px;
                                                                     height: 8px;
@@ -936,17 +974,20 @@ body {
                         font-size: 11px;
                         // justify-content: center;
                         transition: .5s;
-                        .app-info{
+
+                        .app-info {
                             display: block;
                             position: absolute;
                             height: 24px;
                             width: 24px;
                             color: #DEDEDE;
                         }
-                        .app-version{
+
+                        .app-version {
                             transition: .5s;
                             opacity: 0;
                             transform: scale(0);
+
                             .app-name {
                                 color: $primaryColor;
                             }
@@ -962,7 +1003,7 @@ body {
             width: 350px !important;
             transition: .5s !important;
 
-            .sidenav-menu-section {
+            .side-nav-menu-section {
                 .menu-section-area {
                     .menu-section-inner {
                         width: 350px !important;
@@ -997,10 +1038,12 @@ body {
 
                         .bottom-logo-section {
                             width: 350px !important;
-                            .app-info{
+
+                            .app-info {
                                 display: none;
                             }
-                            .app-version{
+
+                            .app-version {
                                 opacity: 1 !important;
                                 transform: scale(1) !important;
                             }
@@ -1009,13 +1052,14 @@ body {
                 }
             }
         }
+
         // hover style
-        
+
         &:hover {
             width: 350px !important;
             transition: .5s !important;
 
-            .sidenav-menu-section {
+            .side-nav-menu-section {
                 .menu-section-area {
                     .menu-section-inner {
                         width: 350px !important;
@@ -1050,10 +1094,12 @@ body {
 
                         .bottom-logo-section {
                             width: 350px !important;
-                            .app-info{
+
+                            .app-info {
                                 display: none;
                             }
-                            .app-version{
+
+                            .app-version {
                                 opacity: 1 !important;
                                 transform: scale(1) !important;
                             }
@@ -1062,9 +1108,9 @@ body {
                 }
             }
         }
-        
+
         &:not(:hover) {
-            .sidenav-menu-section {
+            .side-nav-menu-section {
                 .menu-section-area {
                     .menu-section-inner {
                         .primary-menu-section-inner {
@@ -1227,15 +1273,19 @@ body {
         }
     }
 }
-.router-link-exact-active.active{
+
+.router-link-exact-active.active {
     color: $primaryColor !important;
 }
-.router-link-exact-active.active .secondary-menu-name{
+
+.router-link-exact-active.active .secondary-menu-name {
     color: $primaryColor !important;
 }
+
 .text-22 {
     font-size: 22px !important;
 }
+
 .icon-size-24 {
     font-size: 24px !important;
 }

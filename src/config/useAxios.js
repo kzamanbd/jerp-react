@@ -1,7 +1,7 @@
 // plugins/axios-http.js
 import axios from 'axios';
 // set default value on axios
-const http = axios.create({
+const useAxios = axios.create({
     baseURL: 'http://203.188.245.58:8889/',
     headers: {
         Accept: 'application/json',
@@ -9,21 +9,20 @@ const http = axios.create({
     },
 });
 
-http.interceptors.request.use(
+useAxios.interceptors.request.use(
     (config) => {
         // Do something before request is sent
         const request = config;
-        const loggedUser = JSON.parse(localStorage.getItem('token')) || null;
-        const token = loggedUser ? loggedUser.accessToken : false;
+        const token = localStorage.getItem('token') || null;
         if (token) {
             request.headers.common.Authorization = `Bearer ${token}`;
         }
-        return config;
+        return request;
     },
     (error) => Promise.reject(error)
 );
 
-http.interceptors.response.use(
+useAxios.interceptors.response.use(
     (response) => {
         if (response.status === 200 || response.status === 201) {
             return Promise.resolve(response);
@@ -31,8 +30,8 @@ http.interceptors.response.use(
         return Promise.reject(response);
     },
     (error) => {
-        if (error.response.status) {
-            switch (error.response.status) {
+        if (error?.response?.status) {
+            switch (error?.response?.status) {
                 case 400:
                     console.error('Bad request');
                     break;
@@ -59,4 +58,4 @@ http.interceptors.response.use(
     }
 );
 
-export default http;
+export default useAxios;

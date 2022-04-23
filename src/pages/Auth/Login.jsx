@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import config from '../../config/axios-config';
 import './login.css';
 import Logo from '../../assets/images/JMI-ERP-Logo.svg';
 import CompanyLogo from '../../assets/images/logo.svg';
+import login from '../../service/useLogin';
 
-export default function Login() {
+function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const handleLogin = () => {
@@ -14,29 +14,27 @@ export default function Login() {
             console.log('Please enter username and password');
         } else {
             // call login api
-            config
-                .post('api/auth/login', {
-                    username,
-                    password,
-                })
+            login(username, password)
                 .then((response) => {
                     // if success
                     console.log(response);
                     if (response.data.code === 200) {
                         localStorage.setItem('token', response.data.data.token.access_token);
                         window.location.href = '/features/users/dashboard';
-                        return true;
+                    } else {
+                        console.log(response.data.message);
                     }
-                    return false;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         }
     };
+
     useEffect(() => {
         document.title = 'Login';
     });
+
     return (
         <div className="wrapper">
             <div className="container h-100 main-content">
@@ -92,7 +90,7 @@ export default function Login() {
                                 <div className="email-pass-input">
                                     <div className="card login-card">
                                         <div className="card-body">
-                                            <form>
+                                            <form onSubmit={handleLogin}>
                                                 <div className="form-group">
                                                     <label htmlFor="username">Username</label>
                                                     <input
@@ -122,14 +120,13 @@ export default function Login() {
                                                 </div>
                                             </form>
                                             <button
-                                                type="button"
-                                                className="btn btn-primary text-light btn-block submit-btn"
-                                                onClick={handleLogin}>
+                                                type="submit"
+                                                className="btn btn-primary text-light btn-block submit-btn">
                                                 Log In
                                                 <i className="fas fa-circle-notch spin-animation d-none" />
                                             </button>
                                             <div className="forgotten text-center">
-                                                <a href="/">Forgotten Password?</a>
+                                                <a href="/forgot-password">Forgotten Password?</a>
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +140,7 @@ export default function Login() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-3">
-                            Copyright © 2021{' '}
+                            Copyright © 2021
                             <a id="jerp" href="/">
                                 JERP
                             </a>
@@ -176,3 +173,5 @@ export default function Login() {
         </div>
     );
 }
+
+export default Login;

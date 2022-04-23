@@ -2,7 +2,7 @@ import React from 'react';
 import './dashboard.css';
 import Chart from 'react-apexcharts';
 
-export default function Dashboard() {
+function Dashboard() {
     // today date
     const targetVsSalesOption = {
         series: [
@@ -150,7 +150,6 @@ export default function Dashboard() {
                                             <h5>
                                                 Good Morning, <span>John Doe!</span>
                                             </h5>
-                                            <p>Today is {today}</p>
                                         </div>
                                         <div className="col-lg-6 col-12 dashboard-option">
                                             <div className="option-group">
@@ -222,7 +221,8 @@ export default function Dashboard() {
                                 <div className="col-lg-3 col-12">
                                     <div className="row">
                                         <div className="col-12">
-                                            <div className="content-box mt-22">
+                                            <p className="date-title">Today is {today}</p>
+                                            <div className="content-box">
                                                 <div className="dic-sidebar-info">
                                                     <div className="dic-single-info">
                                                         <p>Today Sales</p>
@@ -335,3 +335,5 @@ export default function Dashboard() {
         </div>
     );
 }
+
+export default Dashboard;

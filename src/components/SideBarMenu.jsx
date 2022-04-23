@@ -1,9 +1,12 @@
 import React from 'react';
+import '../assets/css/material-design-iconic-font/css/material-design-iconic-font.min.css';
+import '../assets/css/icofont/icofont.min.css';
+import '../assets/css/fonts/material-icons/font.css';
 
-export default function SideBarMenu({ isOpen }) {
+export default function SideBarMenu({ isOpen, menuList }) {
     return (
-        <aside id="sidenavbar" className={`sidenavbar ${isOpen ? `expanded` : ''}`}>
-            <div id="sidenav-menu-section" className="sidenav-menu-section">
+        <aside id="side-navbar" className={`side-navbar ${isOpen ? `expanded` : ''}`}>
+            <div id="side-nav-menu-section" className="side-nav-menu-section">
                 <div className="menu-section-area">
                     <div className="menu-section-inner">
                         <div className="search-section">
@@ -19,545 +22,140 @@ export default function SideBarMenu({ isOpen }) {
                             <ul
                                 id="accordion-primary-menu"
                                 className="primary-menu-section list-unstyled">
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <a
-                                            href="index.html"
-                                            className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">
-                                                        dashboard
+                                {menuList.map((primary) => (
+                                    <li className="primary-menu-section-inner" key={primary.id}>
+                                        <div className="primary-menu-area-inner">
+                                            <div
+                                                className="primary-menu-name-section d-flex"
+                                                data-toggle="collapse"
+                                                data-target={`#collapse-primary-menu-${primary.id}`}
+                                                aria-expanded="false">
+                                                <div className="primary-menu-icon-inner">
+                                                    <span className="primary-icon">
+                                                        <span
+                                                            className={`${primary.icon_class} icon-size-24`}
+                                                        />
                                                     </span>
-                                                </span>
+                                                </div>
+                                                {primary?.menu?.length > 0 ? (
+                                                    <p className="primary-menu-name d-flex align-items-center justify-content-between text-dark">
+                                                        <span>{primary.menu_name}</span>
+                                                        <span className="right-arrow-icon">
+                                                            <span className="material-icons">
+                                                                chevron_right
+                                                            </span>
+                                                        </span>
+                                                    </p>
+                                                ) : (
+                                                    <a
+                                                        href={primary?.feature?.url}
+                                                        className="primary-menu-name d-flex align-items-center justify-content-between">
+                                                        <span>{primary.menu_name}</span>
+                                                    </a>
+                                                )}
                                             </div>
-                                            <p className="primary-menu-name">
-                                                <span>HOME</span>
-                                            </p>
-                                        </a>
-                                    </div>
-                                </li>
 
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div
-                                            className="primary-menu-name-section d-flex"
-                                            data-toggle="collapse"
-                                            data-target="#collapse-primary-menu-1"
-                                            aria-expanded="false">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">build</span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>CONFIGURATION</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-
-                                        <div
-                                            id="collapse-primary-menu-1"
-                                            data-parent="#accordion-primary-menu"
-                                            className="secondary-menu-section collapse">
-                                            <div className="secondary-menu-section-inner">
+                                            {primary?.menu?.length > 0 ? (
                                                 <div
-                                                    id="accordion-secondary-menu-1"
-                                                    className="secondary-menu-area-inner">
-                                                    <div
-                                                        className="secondary-menu-name-section d-flex align-items-center justify-content-between"
-                                                        data-toggle="collapse"
-                                                        data-target="#collapse-secondary-menu-1"
-                                                        aria-expanded="false">
-                                                        <div className="secondary-menu-icon-inner">
-                                                            <span className="secondary-icon">
-                                                                <span className="material-icons">
-                                                                    integration_instructions
-                                                                </span>
-                                                            </span>
-                                                        </div>
-                                                        <p className="secondary-menu-name d-flex align-items-center justify-content-between">
-                                                            <span>SALES CODES</span>
-                                                            <span className="right-arrow-icon">
-                                                                <span className="material-icons">
-                                                                    chevron_right
-                                                                </span>
-                                                            </span>
-                                                        </p>
-                                                    </div>
-
-                                                    <div
-                                                        id="collapse-secondary-menu-1"
-                                                        data-parent="#collapse-primary-menu-1"
-                                                        className="tertiary-menu-section collapse">
-                                                        <div className="tertiary-menu-section-inner">
+                                                    id={`collapse-primary-menu-${primary.id}`}
+                                                    data-parent="#accordion-primary-menu"
+                                                    className="secondary-menu-section collapse">
+                                                    <div className="secondary-menu-section-inner">
+                                                        {primary?.menu?.map((secondary) => (
                                                             <div
-                                                                id="accordion-tertiary-menu1"
-                                                                className="tertiary-menu-area-inner">
-                                                                <div
-                                                                    className="tertiary-menu-name-section d-flex align-items-center"
-                                                                    data-toggle="collapse"
-                                                                    data-target="#collapse-tertiary-menu-1"
-                                                                    aria-expanded="false">
-                                                                    <div className="tertiary-menu-icon-inner">
-                                                                        <span className="tertiary-icon">
-                                                                            <span className="material-icons">
-                                                                                info
+                                                                key={secondary.id}
+                                                                id="accordion-secondary-menu-1"
+                                                                className="secondary-menu-area-inner">
+                                                                {secondary?.menu?.length > 0 ? (
+                                                                    <div
+                                                                        className="secondary-menu-name-section d-flex align-items-center justify-content-between"
+                                                                        data-toggle="collapse"
+                                                                        data-target={`#collapse-secondary-menu-${secondary.id}`}
+                                                                        aria-expanded="false">
+                                                                        <div className="secondary-menu-icon-inner">
+                                                                            <span className="secondary-icon">
+                                                                                <span className="shape" />
                                                                             </span>
-                                                                        </span>
+                                                                        </div>
+                                                                        <p className="secondary-menu-name d-flex align-items-center justify-content-between">
+                                                                            <span>
+                                                                                {
+                                                                                    secondary.menu_name
+                                                                                }
+                                                                            </span>
+                                                                            <span className="right-arrow-icon">
+                                                                                <span className="material-icons">
+                                                                                    chevron_right
+                                                                                </span>
+                                                                            </span>
+                                                                        </p>
                                                                     </div>
-                                                                    <p className="tertiary-menu-name d-flex align-items-center justify-content-between">
-                                                                        <span>TERTIARY MENU</span>
-                                                                        <span className="right-arrow-icon">
-                                                                            <span className="material-icons">
-                                                                                chevron_right
+                                                                ) : (
+                                                                    <a
+                                                                        href={
+                                                                            secondary?.feature?.url
+                                                                        }
+                                                                        className="secondary-menu-name-section d-flex align-items-center justify-content-between">
+                                                                        <div className="secondary-menu-icon-inner">
+                                                                            <span className="secondary-icon">
+                                                                                <span className="shape" />
                                                                             </span>
-                                                                        </span>
-                                                                    </p>
-                                                                </div>
+                                                                        </div>
+                                                                        <p className="secondary-menu-name d-flex align-items-center justify-content-between">
+                                                                            <span>
+                                                                                {
+                                                                                    secondary.menu_name
+                                                                                }
+                                                                            </span>
+                                                                        </p>
+                                                                    </a>
+                                                                )}
 
-                                                                <div
-                                                                    id="collapse-tertiary-menu-1"
-                                                                    className="tertiary-poly-menu-section collapse">
-                                                                    <div className="tertiary-poly-menu-section-inner">
-                                                                        <div className="tertiary-poly-menu-area-inner">
-                                                                            <div className="tertiary-poly-menu-name-section d-flex align-items-center">
-                                                                                <div className="tertiary-poly-menu-icon-inner">
-                                                                                    <span className="tertiary-poly-icon">
-                                                                                        <span className="material-icons">
-                                                                                            info
-                                                                                        </span>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <p className="tertiary-poly-menu-name">
-                                                                                    TERTIARY POLY
-                                                                                    MENU 1
-                                                                                </p>
-                                                                            </div>
+                                                                {secondary?.menu?.length > 0 ? (
+                                                                    <div
+                                                                        id={`collapse-secondary-menu-${secondary.id}`}
+                                                                        data-parent={`#collapse-primary-menu-${primary.id}`}
+                                                                        className="tertiary-menu-section collapse">
+                                                                        <div className="tertiary-menu-section-inner">
+                                                                            {secondary?.menu?.map(
+                                                                                (tertiary) => (
+                                                                                    <div
+                                                                                        key={
+                                                                                            tertiary.id
+                                                                                        }
+                                                                                        className="tertiary-menu-area-inner">
+                                                                                        <div className="tertiary-menu-name-section d-flex align-items-center">
+                                                                                            <div className="tertiary-menu-icon-inner">
+                                                                                                <span className="tertiary-icon">
+                                                                                                    <span className="shape" />
+                                                                                                </span>
+                                                                                            </div>
+                                                                                            <p className="tertiary-menu-name d-flex align-items-center justify-content-between">
+                                                                                                <span>
+                                                                                                    {
+                                                                                                        tertiary.menu_name
+                                                                                                    }
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                )
+                                                                            )}
                                                                         </div>
                                                                     </div>
-
-                                                                    <div className="tertiary-poly-menu-section-inner">
-                                                                        <div className="tertiary-poly-menu-area-inner">
-                                                                            <div className="tertiary-poly-menu-name-section d-flex align-items-center">
-                                                                                <div className="tertiary-poly-menu-icon-inner">
-                                                                                    <span className="tertiary-poly-icon">
-                                                                                        <span className="material-icons">
-                                                                                            info
-                                                                                        </span>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <p className="tertiary-poly-menu-name">
-                                                                                    TERTIARY POLY
-                                                                                    MENU 2
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                ) : (
+                                                                    ''
+                                                                )}
                                                             </div>
-                                                        </div>
+                                                        ))}
                                                     </div>
                                                 </div>
-
-                                                <div
-                                                    id="accordion-secondary-menu-2"
-                                                    className="secondary-menu-area-inner">
-                                                    <div
-                                                        className="secondary-menu-name-section d-flex align-items-center justify-content-between"
-                                                        data-toggle="collapse"
-                                                        data-target="#collapse-secondary-menu-2"
-                                                        aria-expanded="false">
-                                                        <div className="secondary-menu-icon-inner">
-                                                            <span className="secondary-icon">
-                                                                <span className="material-icons">
-                                                                    integration_instructions
-                                                                </span>
-                                                            </span>
-                                                        </div>
-                                                        <p className="secondary-menu-name d-flex align-items-center justify-content-between">
-                                                            <span>SALES AREAS</span>
-                                                            <span className="right-arrow-icon">
-                                                                <span className="material-icons">
-                                                                    chevron_right
-                                                                </span>
-                                                            </span>
-                                                        </p>
-                                                    </div>
-
-                                                    <div
-                                                        id="collapse-secondary-menu-2"
-                                                        data-parent="#collapse-primary-menu-1"
-                                                        className="tertiary-menu-section collapse">
-                                                        <div className="tertiary-menu-section-inner">
-                                                            <div
-                                                                id="accordion-tertiary-menu2"
-                                                                className="tertiary-menu-area-inner">
-                                                                <div
-                                                                    className="tertiary-menu-name-section d-flex align-items-center"
-                                                                    data-toggle="collapse"
-                                                                    data-target="#collapse-tertiary-menu-2"
-                                                                    aria-expanded="false">
-                                                                    <div className="tertiary-menu-icon-inner">
-                                                                        <span className="tertiary-icon">
-                                                                            <span className="material-icons">
-                                                                                info
-                                                                            </span>
-                                                                        </span>
-                                                                    </div>
-                                                                    <p className="tertiary-menu-name d-flex align-items-center justify-content-between">
-                                                                        <span>TERTIARY MENU</span>
-                                                                        <span className="right-arrow-icon">
-                                                                            <span className="material-icons">
-                                                                                chevron_right
-                                                                            </span>
-                                                                        </span>
-                                                                    </p>
-                                                                </div>
-
-                                                                <div
-                                                                    id="collapse-tertiary-menu-2"
-                                                                    className="tertiary-poly-menu-section collapse">
-                                                                    <div className="tertiary-poly-menu-section-inner">
-                                                                        <div className="tertiary-poly-menu-area-inner">
-                                                                            <div className="tertiary-poly-menu-name-section d-flex align-items-center">
-                                                                                <div className="tertiary-poly-menu-icon-inner">
-                                                                                    <span className="tertiary-poly-icon">
-                                                                                        <span className="material-icons">
-                                                                                            info
-                                                                                        </span>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <p className="tertiary-poly-menu-name">
-                                                                                    TERTIARY POLY
-                                                                                    MENU 1
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div className="tertiary-poly-menu-section-inner">
-                                                                        <div className="tertiary-poly-menu-area-inner">
-                                                                            <div className="tertiary-poly-menu-name-section d-flex align-items-center">
-                                                                                <div className="tertiary-poly-menu-icon-inner">
-                                                                                    <span className="tertiary-poly-icon">
-                                                                                        <span className="material-icons">
-                                                                                            info
-                                                                                        </span>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <p className="tertiary-poly-menu-name">
-                                                                                    TERTIARY POLY
-                                                                                    MENU 2
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            ) : (
+                                                ''
+                                            )}
                                         </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">note_alt</span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Delivery PLAN</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">
-                                                        local_shipping
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Delivery Schedule</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">print</span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>INVOICE PRINT</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">
-                                                        drive_file_move
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Delivery Dispatch</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">
-                                                        shopping_basket
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Sales Order</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">
-                                                        assignment_turned_in
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Order Approval</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">
-                                                        description
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Invoice Delivery</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">undo</span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Sales Return</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">
-                                                        vertical_split
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Stock Position</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">list_alt</span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Requisition</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">
-                                                        medication
-                                                    </span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Products</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">people</span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Sales force</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">store</span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Customer</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="primary-menu-section-inner">
-                                    <div className="primary-menu-area-inner">
-                                        <div className="primary-menu-name-section d-flex">
-                                            <div className="primary-menu-icon-inner">
-                                                <span className="primary-icon">
-                                                    <span className="material-icons">payments</span>
-                                                </span>
-                                            </div>
-                                            <p className="primary-menu-name d-flex align-items-center justify-content-between">
-                                                <span>Collection</span>
-                                                <span className="right-arrow-icon">
-                                                    <span className="material-icons">
-                                                        chevron_right
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
 

@@ -1,7 +1,6 @@
 .layout-container.dic-dashboard-bg {
-    background-color: #F9FAFF;
+    background-color: #f9faff;
     height: calc(100vh - (var(--used-height) - 86px));
-    ;
 }
 
 .dic-dashboard-area {
@@ -100,7 +99,7 @@
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 10px 15px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     -webkit-box-sizing: border-box;
@@ -111,7 +110,7 @@
     margin-bottom: 15px;
     padding: 10px 15px;
     /* min-height: calc(100vh - (var(--used-height) + 30px)); */
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 8px;
     border: 1px solid var(--border-color);
     -webkit-box-sizing: border-box;
@@ -181,7 +180,12 @@
     background-color: var(--bluish-white);
 }
 
-.dic-dashboard-area .content-box .dic-recent-activities .activites-group .single-activites:hover span {
+.dic-dashboard-area
+    .content-box
+    .dic-recent-activities
+    .activites-group
+    .single-activites:hover
+    span {
     color: var(--white);
     background-color: var(--blue);
 }
@@ -195,7 +199,6 @@
     font-size: var(--font14);
     color: var(--blue);
 }
-
 
 #product-class-chart .apexcharts-canvas {
     width: 100% !important;
@@ -211,4 +214,10 @@
 
 #product-class-chart .apexcharts-pie {
     padding: 200px !important;
+}
+.date-title {
+    font-size: var(--font14);
+    color: var(--blue);
+    text-transform: uppercase;
+    margin-bottom: 5px;
 }

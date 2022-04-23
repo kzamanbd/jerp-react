@@ -4,6 +4,7 @@ import PrivateRoute from '../utils/PrivateRoute';
 import PublicRoute from '../utils/PublicRoute';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import Login from '../pages/Auth/Login';
+import PageNotFound from '../pages/PageNotFound';
 
 export default function AppRouter() {
     return (
@@ -30,6 +31,15 @@ export default function AppRouter() {
                     element={
                         <PrivateRoute>
                             <Dashboard />
+                        </PrivateRoute>
+                    }
+                />
+                {/* page not found */}
+                <Route
+                    path="*"
+                    element={
+                        <PrivateRoute>
+                            <PageNotFound />
                         </PrivateRoute>
                     }
                 />

@@ -110,7 +110,7 @@
 }
 
 .multiselect__tag-icon:after {
-    content: "\D7";
+    content: '\D7';
     color: #266d4d;
     font-size: 14px;
 }
@@ -119,9 +119,7 @@
     display: none !important;
 }
 
-
 /* Multi Select Dropdown */
-
 
 /* JMI SCROLL */
 
@@ -143,16 +141,13 @@
     background: #004e98;
 }
 
-
 /* JMI SCROLL */
-
 
 /* .btn.btn-primary.btn-global.btn-cancle {
       background-color: #FFFFFF !important;
       color: #ED2F48 !important;
       border: 1px solid #ED2F48 !important;
   } */
-
 
 /* MODAL - PROGRESS */
 
@@ -194,9 +189,7 @@
     color: #c11616;
 }
 
-
 /* CONFIRMATION MODAL - STARTS */
-
 
 /* 
   .flex-center {
@@ -207,7 +200,6 @@
   .justyfy_content_space_between {
       justify-content: space-between;
   } */
-
 
 /* MATERIAL ICON STYLE */
 
@@ -322,7 +314,7 @@ span.summarize-icon {
 
 .slider:before {
     position: absolute;
-    content: "";
+    content: '';
     height: 10px;
     width: 10px;
     left: 4px;
@@ -332,16 +324,15 @@ span.summarize-icon {
     transition: 0.4s;
 }
 
-input:checked+.slider {
+input:checked + .slider {
     background-color: #026cd1;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
     -webkit-transform: translateX(20px);
     -ms-transform: translateX(20px);
     transform: translateX(20px);
 }
-
 
 /* Rounded sliders */
 
@@ -352,7 +343,6 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
-
 
 /* .on-hover-show {
     opacity: 0;
@@ -380,9 +370,7 @@ input:checked+.slider:before {
     overflow-y: auto !important;
   } */
 
-
 /* ==================== End Undefined Global CSS ==================== */
-
 
 /* ==================== Start Global CSS Area v1.00 ==================== */
 
@@ -422,7 +410,7 @@ input:checked+.slider:before {
 }
 
 @media screen and (max-width: 1440px) {
-     :root {
+    :root {
         --font22: 21px;
         --font20: 19px;
         --font18: 17px;
@@ -438,7 +426,7 @@ input:checked+.slider:before {
 }
 
 @media screen and (max-width: 1536px) {
-     :root {
+    :root {
         --font22: 21px;
         --font20: 19px;
         --font18: 17px;
@@ -454,7 +442,7 @@ input:checked+.slider:before {
 }
 
 @media screen and (max-width: 768px) {
-     :root {
+    :root {
         --font22: 20px;
         --font20: 18px;
         --font18: 16px;
@@ -464,7 +452,6 @@ input:checked+.slider:before {
         --font10: 8px;
     }
 }
-
 
 /*-------->> Start Layout Area --------*/
 
@@ -569,9 +556,7 @@ input:checked+.slider:before {
     }
 }
 
-
 /*-------- End Layout Area <<--------*/
-
 
 /*-------->> Start Default HTML Customize Area --------*/
 
@@ -592,11 +577,10 @@ a:hover {
 }
 
 .text-linked {
-    color: var(--blue)!important;
+    color: var(--blue) !important;
     cursor: pointer;
     text-decoration: underline;
 }
-
 
 /* Start Input Type Number Spin */
 
@@ -606,53 +590,47 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-input[type="number"] {
+input[type='number'] {
     -moz-appearance: textfield;
 }
 
-
 /* End Input Type Number Spin */
-
 
 /* Start Schroll Style */
 
- ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 1px;
 }
 
- ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: none;
 }
 
- ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: var(--blue);
 }
 
- ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: var(--blue);
 }
-
 
 /* Start Horizontal Schroll */
 
- ::-webkit-scrollbar-track:horizontal {
+::-webkit-scrollbar-track:horizontal {
     background: var(--bluish-white);
 }
 
- ::-webkit-scrollbar-thumb:horizontal {
+::-webkit-scrollbar-thumb:horizontal {
     background: var(--blue);
 }
 
- ::-webkit-scrollbar-thumb:horizontal:hover {
+::-webkit-scrollbar-thumb:horizontal:hover {
     background: var(--blue);
 }
-
 
 /* End Schroll Style */
 
-
 /*-------- End Default HTML Customize Area <<--------*/
-
 
 /*-------->> Start JERP Color Area --------*/
 
@@ -708,9 +686,7 @@ input[type="number"] {
     font-weight: 500;
 }
 
-
 /*-------- End JERP Color Area <<--------*/
-
 
 /*-------->> Start Button Style Area --------*/
 
@@ -767,7 +743,7 @@ button:focus {
     align-items: center;
 }
 
-.btn-group>.btn {
+.btn-group > .btn {
     position: relative;
     flex: 0 1 auto;
 }
@@ -800,9 +776,7 @@ button:focus {
     background-color: var(--redish-white);
 }
 
-
 /*-------- End Button Style Area <<--------*/
-
 
 /*-------->> Start Form Style --------*/
 
@@ -856,7 +830,7 @@ button:focus {
     box-shadow: none;
 }
 
-.form-group input[type="file"] {
+.form-group input[type='file'] {
     padding: 3px;
 }
 
@@ -906,9 +880,7 @@ button:focus {
     margin-top: 0.15rem;
 }
 
-
 /*-------- End Form Style <<--------*/
-
 
 /*-------->> Start Breadcrumb Area --------*/
 
@@ -924,9 +896,7 @@ button:focus {
     margin: 0px;
 }
 
-
 /*-------- End Breadcrumb Area <<--------*/
-
 
 /*-------->> Start Filter Dropdown Area --------*/
 
@@ -945,7 +915,7 @@ button:focus {
     margin-left: 10px;
 }
 
-.jerp-filter-section.dropdown .filter-search-btn[aria-expanded="true"] {
+.jerp-filter-section.dropdown .filter-search-btn[aria-expanded='true'] {
     color: var(--white);
     background-color: var(--blue);
 }
@@ -992,7 +962,10 @@ button:focus {
     margin-bottom: 0px;
 }
 
-.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-item.form-group .form-control-sm {
+.jerp-filter-section.dropdown
+    .dropdown-menu.filter-menu
+    .dropdown-item.form-group
+    .form-control-sm {
     width: 100%;
     display: flex;
     align-self: start;
@@ -1004,7 +977,10 @@ button:focus {
     padding-left: 15px;
 }
 
-.jerp-filter-section.dropdown .dropdown-menu.filter-menu .dropdown-item.form-group .form-control-sm:focus {
+.jerp-filter-section.dropdown
+    .dropdown-menu.filter-menu
+    .dropdown-item.form-group
+    .form-control-sm:focus {
     outline: none !important;
     border-color: var(--blue) !important;
     box-shadow: none;
@@ -1023,9 +999,7 @@ button:focus {
     min-width: 100px;
 }
 
-
 /*-------- End Filter Dropdown Area <<--------*/
-
 
 /*-------->> Start Multipurpose Dropdown --------*/
 
@@ -1070,9 +1044,7 @@ button:focus {
     background-color: var(--bluish-white);
 }
 
-
 /*-------- End Multipurpose Dropdown <<--------*/
-
 
 /*-------->> Start Custom Modal Area --------*/
 
@@ -1111,9 +1083,7 @@ button:focus {
     height: 100px !important;
 }
 
-
 /*-------- End Custom Modal Area <<--------*/
-
 
 /*-------->> Start JERP Quantity Input Area --------*/
 
@@ -1151,7 +1121,7 @@ button:focus {
     border-right: 1px solid var(--blue);
 }
 
-.jerp-quantity-input input[type="button"] {
+.jerp-quantity-input input[type='button'] {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1188,8 +1158,10 @@ button:focus {
     background-color: var(--blue);
 }
 
-
 /*-------- End JERP Quantity Input Area <<--------*/
 
-
 /* ==================== End Global CSS Area v1.00 ==================== */
+
+.page-not-found {
+    height: calc(100vh - 103px);
+}
