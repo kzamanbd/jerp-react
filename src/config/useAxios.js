@@ -2,7 +2,7 @@
 import axios from 'axios';
 // set default value on axios
 const useAxios = axios.create({
-    baseURL: 'http://203.188.245.58:8889/',
+    baseURL: 'http://jerpapi.mononsoft.org:8889/',
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
