@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from './Footer';
+import { Link } from 'react-router-dom';
 import SideBarMenu from './SideBarMenu';
 import { webMenuWithUser } from '../service/useSidebar';
 
@@ -67,9 +67,9 @@ export default class AppLayout extends React.Component {
                                 </span>
                             </div>
                             <div className="logo-section">
-                                <a href="/features/users/dashboard" className="d-block">
+                                <Link to="/features/users/dashboard" className="d-block">
                                     <img className="group-logo" src={userInfo.sbu_logo} alt="" />
-                                </a>
+                                </Link>
                             </div>
                             <div className="group-name-section">
                                 <p className="group-name">{userInfo.sbu_name}</p>
@@ -234,7 +234,17 @@ export default class AppLayout extends React.Component {
                 <main id="main-section" className="main-section">
                     {children}
                 </main>
-                <Footer />
+                <footer id="footer" className="footer-section bg-danger d-flex align-items-center">
+                    <div className="footer-inner text-center w-100 d-flex align-items-center">
+                        <div className="d-flex text-white">
+                            <p className="text-uppercase pr-2">This is JERP development site, </p>
+                            <p>
+                                Follow the instructions to embed the icon font in your site and
+                                learn how to style your icons using CSS.
+                            </p>
+                        </div>
+                    </div>
+                </footer>
             </div>
         );
     }

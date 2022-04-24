@@ -1,7 +1,5 @@
 import React from 'react';
-import '../assets/css/material-design-iconic-font/css/material-design-iconic-font.min.css';
-import '../assets/css/icofont/icofont.min.css';
-import '../assets/css/fonts/material-icons/font.css';
+import { Link } from 'react-router-dom';
 
 export default function SideBarMenu({ isOpen, menuList }) {
     return (
@@ -47,11 +45,11 @@ export default function SideBarMenu({ isOpen, menuList }) {
                                                         </span>
                                                     </p>
                                                 ) : (
-                                                    <a
-                                                        href={primary?.feature?.url}
+                                                    <Link
+                                                        to={primary?.feature?.url}
                                                         className="primary-menu-name d-flex align-items-center justify-content-between">
                                                         <span>{primary.menu_name}</span>
-                                                    </a>
+                                                    </Link>
                                                 )}
                                             </div>
 
@@ -91,10 +89,8 @@ export default function SideBarMenu({ isOpen, menuList }) {
                                                                         </p>
                                                                     </div>
                                                                 ) : (
-                                                                    <a
-                                                                        href={
-                                                                            secondary?.feature?.url
-                                                                        }
+                                                                    <Link
+                                                                        to={secondary?.feature?.url}
                                                                         className="secondary-menu-name-section d-flex align-items-center justify-content-between">
                                                                         <div className="secondary-menu-icon-inner">
                                                                             <span className="secondary-icon">
@@ -108,7 +104,7 @@ export default function SideBarMenu({ isOpen, menuList }) {
                                                                                 }
                                                                             </span>
                                                                         </p>
-                                                                    </a>
+                                                                    </Link>
                                                                 )}
 
                                                                 {secondary?.menu?.length > 0 ? (

@@ -1,5 +1,5 @@
 import AppRouter from './navigation/AppRouter';
 
-export default function App() {
+export default function JerpApp() {
     return <AppRouter />;
 }

@@ -1,4 +1,9 @@
-// sass --watch sass/layout.scss:css/layout.css --style compressed
+@import './fonts/material-design-iconic-font/css/material-design-iconic-font.min.css';
+@import './fonts/icofont/icofont.min.css';
+@import './fonts/material-icons/font.css';
+@import './global.css';
+@import './modal.css';
+
 
 // Color
 $primaryColor : #026CD1;
