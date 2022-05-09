@@ -1,0 +1,939 @@
+/*Start Secondary Sidebar Header Area*/
+.layout-sidebar.createOrder-list {
+    display: flex;
+    flex-direction: column;
+    min-width: var(--sidebar-width);
+    width: 100%;
+    border-right: 1px solid var(--border-color);
+}
+.layout-sidebar.createOrder-list .header {
+    background-color: var(--white);
+    padding: 15px 10px 10px 10px;
+}
+.layout-sidebar.createOrder-list .header .row2 {
+    display: flex;
+    justify-content: space-between;
+}
+.layout-sidebar.createOrder-list .header .row1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.layout-sidebar.createOrder-list .header .row1 .form-group {
+    width: 100%;
+    margin: 0px;
+}
+.layout-sidebar.createOrder-list .header .row1 .form-group .form-control-sm {
+    width: 100%;
+}
+.layout-sidebar.createOrder-list .header .row2 .form-group {
+    position: relative;
+    margin-bottom: 0px !important;
+    width: 100%;
+}
+.layout-sidebar.createOrder-list .header .row2 .form-group span {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    color: #aac0d9;
+    font-size: var(--font22);
+}
+.layout-sidebar.createOrder-list .header .row2 .form-group .form-control {
+    padding-left: 36px;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+}
+.layout-sidebar.createOrder-list .header .row2 .form-group .form-control::placeholder {
+    font-size: var(--font14);
+    color: #aac0d9;
+}
+.layout-sidebar.createOrder-list .header .row2 .form-group .form-control:focus {
+    border-color: var(--blue);
+    box-shadow: none;
+}
+.layout-sidebar.createOrder-list .header .row3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.layout-sidebar.createOrder-list .header .row3 h5 {
+    color: var(--text-label);
+    font-size: var(--font14);
+}
+.layout-sidebar.createOrder-list .header .row3 span {
+    color: var(--blue);
+}
+/*End Secondary Sidebar Header Area*/
+
+/*Start Secondary Sidebar Content Area*/
+.layout-sidebar.createOrder-list .content {
+    flex-grow: 1;
+    height: 250px;
+    overflow-y: auto;
+}
+.layout-sidebar.createOrder-list .content .card_body {
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+}
+.layout-sidebar.createOrder-list .content .card_body:hover,
+.layout-sidebar.createOrder-list .content .card_body:active,
+.layout-sidebar.createOrder-list .content .card_body.active {
+    background-color: var(--bluish-white);
+}
+.layout-sidebar.createOrder-list .content .card_body .row1,
+.layout-sidebar.createOrder-list .content .card_body .row2,
+.layout-sidebar.createOrder-list .content .card_body .row3 {
+    margin: 1px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.layout-sidebar.createOrder-list .content .card_body .row1 h5 {
+    font-size: var(--font14);
+    color: var(--blue);
+}
+.layout-sidebar.createOrder-list .content .card_body .row1 span.type.cash {
+    font-size: 10px;
+    color: var(--blue);
+    padding: 1px 6px;
+    border-radius: 3px;
+    background-color: var(--ice-white);
+}
+.layout-sidebar.createOrder-list .content .card_body .row1 span.type.credit {
+    font-size: 10px;
+    color: var(--red);
+    padding: 1px 6px;
+    border-radius: 3px;
+    background-color: var(--ice-white);
+}
+.layout-sidebar.createOrder-list .content .card_body .row2 p {
+    font-size: var(--font14);
+    color: var(--text-black);
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.layout-sidebar.createOrder-list .content .card_body .row3 p {
+    font-size: var(--font14);
+    color: #879097;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.layout-sidebar.createOrder-list .content .card_body .row3 span {
+    font-size: var(--font14);
+    color: var(--gray);
+}
+@media screen and (max-width: 768px) {
+    .layout-sidebar.createOrder-list {
+        width: 100%;
+    }
+    .layout-sidebar.createOrder-list .content {
+        height: calc(230px - (68px + 25px));
+        overflow-y: scroll;
+    }
+}
+/*End Secondary Sidebar Content Area*/
+
+/* End New Global CSS */
+.orderDetails-area {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px #026cd11a;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+.orderDetails-area .orderDetails-header {
+    padding: 10px 0px;
+    border-bottom: 1px solid var(--border-color);
+}
+.orderDetails-area .orderDetails-header .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.orderDetails-area .orderDetails-header .header-top h5 {
+    font-size: var(--font14);
+    color: var(--text-label);
+    display: flex;
+    align-items: center;
+}
+.orderDetails-area .orderDetails-header .header-top h5 span {
+    color: var(--blue);
+    margin-left: 5px;
+}
+.orderDetails-area .orderDetails-header .text-ellipsis {
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.orderDetails-area .orderDetails-header p,
+.orderDetails-area .orderDetails-header .p-text {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--font14);
+    color: var(--text-black);
+}
+.orderDetails-area .orderDetails-header p span,
+.orderDetails-area .orderDetails-header .p-text span {
+    font-size: var(--font14);
+    color: var(--blue);
+    margin-left: 5px;
+}
+.orderDetails-area .orderDetails-header p span.material-icons,
+.orderDetails-area .orderDetails-header .p-text span.material-icons {
+    cursor: pointer;
+    color: var(--blue);
+    font-size: 24px;
+    margin-left: 5px;
+}
+.orderDetails-area .orderDetails-header .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0rem;
+}
+.orderDetails-area .orderDetails-header .form-group label {
+    font-size: var(--font14);
+    color: var(--text-black);
+    margin-bottom: 0rem;
+}
+.orderDetails-area .orderDetails-header .form-control-sm {
+    text-align: left;
+    padding: 0rem 0.5rem;
+    width: 100%;
+    max-width: 60%;
+    border-radius: 2px;
+    font-size: var(--font12);
+    border: 1px solid var(--border-color);
+    height: 25px !important;
+    margin-left: 5px;
+}
+.orderDetails-area
+    .orderDetails-header
+    .form-control-sm[type='date']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    margin-left: 2px;
+}
+.orderDetails-area .orderDetails-header .form-control-sm:focus {
+    outline: none !important;
+    border-color: var(--blue) !important;
+    box-shadow: none;
+}
+/*---------Start Tender Approval Table ---------*/
+.createOrder-table {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+.createOrder-table tr {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.createOrder-table td,
+.createOrder-table th {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0rem 1rem;
+}
+/* Start Table Head Area */
+.createOrder-table thead {
+    position: relative;
+    width: 100%;
+}
+.createOrder-table thead tr {
+    min-height: var(--table-height);
+    font-size: var(--font12);
+    text-transform: uppercase;
+    color: var(--blue);
+    border-bottom: 1px solid var(--border-color);
+}
+.createOrder-table thead tr th {
+    min-height: var(--table-height);
+    display: flex;
+    align-items: center;
+}
+/* Start Table Body Area */
+.createOrder-table tbody {
+    flex-grow: 1;
+    height: 10px;
+    position: relative;
+    overflow-y: scroll;
+    font-size: var(--font14);
+    color: var(--text-black);
+}
+.createOrder-table tbody .product .name {
+    font-size: var(--font14);
+    color: var(--blue);
+}
+.createOrder-table tbody .product .code {
+    font-size: var(--font12);
+    color: var(--text-black);
+}
+.createOrder-table tbody .product .code span {
+    font-size: var(--font12);
+    color: var(--text-black);
+    margin-left: 5px;
+}
+.createOrder-table tbody tr {
+    position: relative;
+    width: 100%;
+    min-height: var(--table-height);
+    border-bottom: 1px solid var(--border-color);
+}
+.createOrder-table tbody tr td {
+    min-height: var(--table-height);
+}
+.createOrder-table tbody tr td .view-mode {
+    display: block;
+}
+.createOrder-table tbody tr td .edit-mode {
+    display: none;
+}
+.createOrder-table tbody tr.edit-row td .view-mode {
+    display: none;
+}
+.createOrder-table tbody tr.edit-row td .edit-mode {
+    display: block;
+}
+/* Start Table Foot Area */
+.createOrder-table tfoot {
+    width: 100%;
+    font-size: var(--font14);
+}
+.createOrder-table tfoot tr {
+    min-height: 25px;
+    color: var(--text-black);
+}
+.createOrder-table tfoot tr th {
+    min-height: 25px;
+}
+.createOrder-table tfoot tr:first-child {
+    min-height: 25px;
+    border-top: 1px solid var(--border-color);
+}
+.createOrder-table tfoot tr.grand-total-row {
+    min-height: 25px;
+    color: var(--blue);
+    border-top: 1px solid var(--border-color);
+}
+.createOrder-table tfoot tr.grand-total-row .material-icons {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 5px 15px 5px -5px;
+    border-radius: 50%;
+    font-weight: 500;
+    color: var(--blue);
+    font-size: var(--font20);
+    background-color: var(--bluish-white);
+}
+.createOrder-table tfoot tr.grand-total-row .material-icons[aria-expanded='true'] {
+    color: var(--white);
+    background-color: var(--blue);
+}
+.createOrder-table tfoot tr.grand-total-row .material-icons[aria-expanded='true']::after {
+    font-family: 'Material Icons';
+    content: '\e5d6';
+    transition: transform 0.2s ease-in-out;
+}
+.createOrder-table tfoot tr.grand-total-row .material-icons[aria-expanded='false']::after {
+    font-family: 'Material Icons';
+    content: '\e5d7';
+    transition: transform 0.2s ease-in-out;
+}
+.createOrder-table tfoot tr th .small-text {
+    font-weight: 500;
+    font-size: var(--font12);
+}
+.createOrder-table tfoot tr th .grand-total {
+    font-weight: 600;
+    font-size: var(--font14);
+}
+.createOrder-table tfoot .form-check {
+    cursor: pointer;
+    font-size: var(--font14);
+    display: flex;
+    align-items: center;
+    color: var(--blue);
+    font-weight: 500;
+}
+/* Start Table Alignment Area*/
+.createOrder-table thead th:nth-child(1),
+.createOrder-table tbody td:nth-child(1) {
+    flex-basis: 30%;
+    justify-content: start;
+}
+.createOrder-table thead th:nth-child(2),
+.createOrder-table tbody td:nth-child(2) {
+    flex-basis: 10%;
+    justify-content: flex-end;
+}
+.createOrder-table thead th:nth-child(3),
+.createOrder-table tbody td:nth-child(3) {
+    flex-basis: 20%;
+    justify-content: center;
+}
+.createOrder-table thead th:nth-child(4),
+.createOrder-table tbody td:nth-child(4) {
+    flex-basis: 10%;
+    justify-content: center;
+}
+.createOrder-table thead th:nth-child(5),
+.createOrder-table tbody td:nth-child(5) {
+    flex-basis: 10%;
+    justify-content: center;
+}
+.createOrder-table thead th:nth-last-child(-n + 2),
+.createOrder-table tbody td:nth-last-child(-n + 2),
+.createOrder-table tfoot th:nth-last-child(-n + 2) {
+    flex-basis: 10%;
+    justify-content: flex-end;
+}
+.createOrder-table tfoot th:nth-child(1) {
+    flex-basis: 70%;
+}
+.createOrder-table tfoot th:nth-child(2) {
+    flex-basis: 10%;
+    justify-content: flex-end;
+}
+.createOrder-table .form-control-sm {
+    text-align: center;
+    border-radius: 2px;
+    font-size: var(--font14);
+    border: 1px solid var(--border-color);
+    width: 110px;
+    height: 30px !important;
+}
+.createOrder-table .form-control-sm::placeholder {
+    font-size: var(--font14);
+    color: #aac0d9;
+}
+.createOrder-table .form-control-sm:focus {
+    outline: none !important;
+    border-color: var(--blue) !important;
+    box-shadow: none;
+}
+/* End Table Input Area */
+
+/*>> Start Table Hover Button Component <<*/
+.createOrder-table tbody tr:hover {
+    background-color: var(--bluish-white);
+    cursor: pointer;
+}
+.createOrder-table tbody tr .hover-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background: rgba(255, 255, 255, 0);
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    padding: 0px 15px;
+}
+.createOrder-table tbody tr .hover-btns::before {
+    width: 100px;
+    height: 100%;
+    margin-left: -100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    content: '';
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        right top,
+        from(rgba(255, 255, 255, 0)),
+        to(#e2edfa)
+    );
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #e2edfa 100%);
+}
+/*----- Start Active State -----*/
+.createOrder-table tbody tr.active {
+    background-color: var(--bluish-white);
+    cursor: pointer;
+}
+.createOrder-table tbody tr.active .hover-btns::before {
+    opacity: 1;
+}
+.createOrder-table tbody tr.active .hover-btns {
+    height: 100%;
+    background-color: var(--bluish-white);
+}
+.createOrder-table tbody tr.active .hover-btns span {
+    opacity: 1;
+}
+/*----- Start Hover State -----*/
+.createOrder-table tbody tr:hover .hover-btns {
+    height: 100%;
+    background-color: var(--bluish-white);
+}
+.createOrder-table tbody tr:hover .hover-btns::before {
+    opacity: 1;
+}
+.createOrder-table tbody tr:hover .hover-btns span {
+    opacity: 1;
+}
+/*----- Start Button Style -----*/
+.createOrder-table tbody tr .hover-btns .action-btn {
+    opacity: 0;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    /* Button Style */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0px 5px;
+    border-radius: 100px;
+    font-weight: 200;
+    color: var(--blue);
+    font-size: var(--font16);
+    background-color: var(--white);
+}
+.createOrder-table tbody tr .hover-btns .action-btn.save {
+    font-weight: 600;
+    color: var(--white);
+    font-size: var(--font16);
+    background-color: var(--blue);
+}
+.createOrder-table tbody tr .hover-btns .action-btn.remove {
+    color: var(--red);
+    font-size: var(--font16);
+    background-color: var(--redish-white);
+}
+/*>> End Table Hover Button Component <<*/
+.createOrder-table .additional-btn {
+    cursor: pointer;
+    font-size: var(--font14);
+    display: flex;
+    align-items: center;
+    padding: 5px 5px;
+    color: var(--blue);
+    font-weight: 500;
+    opacity: 1;
+}
+.createOrder-table .reject-btn {
+    cursor: pointer;
+    color: var(--red);
+}
+
+.createOrder-table .additional-btn:first-child {
+    padding: 5px 0px;
+    margin-right: 5px;
+}
+.createOrder-table .additional-btn span {
+    margin-right: 5px;
+    font-size: 20px;
+}
+.createOrder-table .additional-btn .counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-black);
+    background-color: var(--bluish-white);
+    font-size: var(--font10);
+    padding: 2px 8px;
+    margin-left: 5px;
+    border-radius: 100px;
+}
+.createOrder-table .additional-btn:hover {
+    color: var(--blue-hover);
+}
+
+/*--------- Start Add Product Modal ---------*/
+#add-product-modal .modal-dialog {
+    max-width: 80% !important;
+    width: 1000px;
+    height: 100%;
+    padding: 0;
+    margin: auto;
+}
+#add-product-modal .modal-body {
+    height: 450px;
+    padding: 0px;
+}
+/*Start Left Sidebar Product List Area*/
+#add-product-modal .leftsidebar-productlist {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+}
+#add-product-modal .leftsidebar-productlist .header {
+    background-color: var(--white);
+    padding: 15px 10px;
+}
+#add-product-modal .leftsidebar-productlist .header .row1 {
+    display: flex;
+    justify-content: space-between;
+}
+#add-product-modal .leftsidebar-productlist .header .row1 .form-group {
+    position: relative;
+    margin-bottom: 0px !important;
+    width: 100%;
+}
+#add-product-modal .leftsidebar-productlist .header .row1 .form-group span {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    color: #aac0d9;
+    font-size: var(--font22);
+}
+#add-product-modal .leftsidebar-productlist .header .row1 .form-group .form-control {
+    padding-left: 36px;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+}
+#add-product-modal .leftsidebar-productlist .header .row1 .form-group .form-control::placeholder {
+    font-size: var(--font14);
+    color: #aac0d9;
+}
+#add-product-modal .leftsidebar-productlist .header .row1 .form-group .form-control:focus {
+    border-color: var(--blue);
+    box-shadow: none;
+}
+/*Start Secondary Sidebar Content Area*/
+#add-product-modal .leftsidebar-productlist .content {
+    height: 300px;
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+#add-product-modal .leftsidebar-productlist .content .card_body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+}
+#add-product-modal .leftsidebar-productlist .content .card_body:hover {
+    background-color: var(--bluish-white);
+}
+#add-product-modal .leftsidebar-productlist .content .card_body input[type='checkbox'] {
+    position: absolute;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#add-product-modal
+    .leftsidebar-productlist
+    .content
+    .card_body
+    input[type='checkbox']:checked
+    + label {
+    height: 100%;
+    width: 100%;
+}
+#add-product-modal .leftsidebar-productlist .content .card_body .check-item {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+    -moz-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+    -o-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+    -ms-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+    transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+}
+#add-product-modal .leftsidebar-productlist .content .card_body .row1 {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-left: 35px;
+    padding-right: 10px;
+}
+#add-product-modal .leftsidebar-productlist .content .card_body .row2 {
+    margin: 1px 0px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding-bottom: 5px;
+    padding-left: 35px;
+    padding-right: 10px;
+}
+#add-product-modal .leftsidebar-productlist .content .card_body .row1 h5 {
+    font-size: var(--font14);
+    color: var(--blue);
+    text-overflow: ellipsis;
+    width: inherit;
+    white-space: nowrap;
+}
+#add-product-modal .leftsidebar-productlist .content .card_body .row1 span {
+    text-align: center;
+    font-size: var(--font14);
+    color: var(--text-black);
+}
+#add-product-modal .leftsidebar-productlist .content .card_body .row2 p {
+    font-size: var(--font12);
+    color: var(--text-black);
+}
+/* Start Modal Table Area */
+#add-product-modal .addproduct-modal-table {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#add-product-modal .addproduct-modal-table tr {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+#add-product-modal .addproduct-modal-table td,
+#add-product-modal .addproduct-modal-table th {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0rem 1rem;
+}
+/* Start Table Head Area */
+#add-product-modal .addproduct-modal-table thead {
+    position: relative;
+    width: 100%;
+}
+#add-product-modal .addproduct-modal-table thead tr {
+    min-height: var(--table-height);
+    font-size: var(--font12);
+    text-transform: uppercase;
+    color: var(--blue);
+    border-bottom: 1px solid var(--border-color);
+}
+#add-product-modal .addproduct-modal-table thead tr th {
+    min-height: var(--table-height);
+    display: flex;
+    align-items: center;
+}
+/* Start Table Body Area */
+#add-product-modal .addproduct-modal-table tbody {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: scroll;
+    font-size: var(--font14);
+    color: var(--text-black);
+}
+#add-product-modal .addproduct-modal-table tbody .product .name {
+    font-size: var(--font14);
+    color: var(--blue);
+}
+#add-product-modal .addproduct-modal-table tbody .product .type {
+    font-size: var(--font12);
+    color: var(--text-black);
+}
+#add-product-modal .addproduct-modal-table tbody tr {
+    position: relative;
+    width: 100%;
+    min-height: var(--table-height);
+    border-bottom: 1px solid var(--border-color);
+}
+#add-product-modal .addproduct-modal-table tbody tr td {
+    min-height: var(--table-height);
+}
+/* Start Table Alignment Area*/
+#add-product-modal .addproduct-modal-table thead th:nth-child(1),
+#add-product-modal .addproduct-modal-table tbody td:nth-child(1) {
+    flex-basis: 40%;
+    justify-content: start;
+}
+#add-product-modal .addproduct-modal-table thead th:nth-child(2),
+#add-product-modal .addproduct-modal-table tbody td:nth-child(2) {
+    flex-basis: 20%;
+    justify-content: center;
+}
+#add-product-modal .addproduct-modal-table thead th:nth-child(3),
+#add-product-modal .addproduct-modal-table tbody td:nth-child(3) {
+    flex-basis: 20%;
+    justify-content: flex-end;
+}
+#add-product-modal .addproduct-modal-table thead th:nth-child(4),
+#add-product-modal .addproduct-modal-table tbody td:nth-child(4) {
+    flex-basis: 20%;
+    justify-content: flex-end;
+}
+/*--------- End Add Product Modal ---------*/
+
+/*--------- Start Order Note Modal ---------*/
+
+/*--------- End Order Note Modal ---------*/
+
+/*--------- Start Attachment Modal Area ---------*/
+#attachment-modal .modal-body {
+    height: 480px;
+    overflow-y: auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#attachment-modal .modal-body .uploader-container {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--ice-white);
+    margin-bottom: 15px;
+}
+#attachment-modal .modal-body .uploader-container .form-group {
+    width: 60%;
+    margin-bottom: 0px;
+    margin-right: 15px;
+}
+#attachment-modal .modal-body .uploader-container .form-group input[type='file'] {
+    padding: 4px;
+    height: 40px;
+    background-color: var(--white);
+}
+#attachment-modal .document-file {
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+}
+#attachment-modal .document-file .thumbnail {
+    position: relative;
+}
+#attachment-modal .document-file .thumbnail .cover {
+    height: 135px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#attachment-modal .document-file .thumbnail .cover span {
+    font-size: 56px;
+    color: #dadada;
+}
+#attachment-modal .document-file .thumbnail .view {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+#attachment-modal .document-file:hover .view {
+    opacity: 1;
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.2);
+}
+#attachment-modal .document-file .file-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    background-color: var(--border-color);
+    border-top: 1px solid var(--border-color);
+}
+#attachment-modal .document-file .file-name p {
+    font-size: var(--font14);
+    color: var(--blue);
+    margin-bottom: -5px;
+}
+#attachment-modal .document-file .file-name small {
+    font-size: var(--font10);
+    color: var(--text-label);
+}
+/* Button Style Can be remove when global css is updated */
+.circular-btn.download {
+    color: var(--blue);
+    font-size: var(--font18);
+    background-color: var(--white);
+}
+.circular-btn.remove {
+    color: var(--red);
+    font-size: var(--font16);
+    background-color: var(--redish-white);
+}
+/*--------- End Attachment Modal Area ---------*/
+
+/* --------- Start Sidebar Empty State Area --------- */
+.eState-sidebar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.eState-sidebar .img-warp {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+.eState-sidebar h5 {
+    font-size: var(--font16);
+    font-weight: 600;
+    color: #36454f;
+    margin-bottom: 10px;
+}
+.eState-sidebar p {
+    font-size: var(--font14);
+    color: #6d7a85;
+}
+/* --------- End Sidebar Empty State Area --------- */
+
+/* --------- Start Empty State Area --------- */
+.eState-body {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.eState-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.eState-container .img-warp {
+    height: 200px;
+    width: 200px;
+    margin-bottom: 20px;
+}
+.eState-container h5 {
+    font-size: var(--font20);
+    font-weight: 600;
+    color: #36454f;
+    margin-bottom: 10px;
+}
+.eState-container p {
+    font-size: var(--font16);
+    color: #6d7a85;
+    margin-bottom: 10px;
+}
+/* --------- End Empty State Area --------- */
