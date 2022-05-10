@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactSelect from 'react-select';
+import swal from 'sweetalert';
 
 import './OrderCreate.css';
 import esTerritory from './es_territory.svg';
 import esCustomer from './es_customer.svg';
 import esAddProduct from './es_add_product.svg';
 import {
+    createNewOrder,
     areaListByUser,
     getDICWiseUsers,
     getTerritoryList,
+    orderOfferAmount,
     findProductOffer,
     searchProductDataList,
     customerInfoForDepot,
@@ -20,19 +23,22 @@ class OrderCreate extends React.Component {
         search: '',
         isLoading: true,
         salesAreas: [],
-        deliveryDate: new Date().toISOString().split('T')[0],
         customerAddress: '',
-        customerIsLoading: false,
         isOrderUpdate: false,
+        specialDiscount: 0,
         dicWiseUsers: [],
         territoryList: [],
         selectedTerritory: null,
+        customerIsLoading: false,
         customerList: [],
         selectedCustomer: null,
         productList: [],
         selectedSR: null,
         selectedRowForEdit: {},
         selectedProductWithOffer: [],
+        selectedOrderTerritory: null,
+        orderNote: '',
+        deliveryDate: new Date().toISOString().split('T')[0],
     };
 
     componentDidMount() {
@@ -95,10 +101,16 @@ class OrderCreate extends React.Component {
     };
 
     handleCustomerChange = (customer) => {
-        console.log(customer);
-        const { selectedTerritory } = this.state;
+        const { selectedTerritory, productList } = this.state;
+
         this.setState({
             customerIsLoading: true,
+            selectedProductWithOffer: [],
+            productList: productList.map((item) => ({
+                ...item,
+                checked: false,
+                quantity: 1,
+            })),
         });
         customerInfoForDepot(customer.customer_id, selectedTerritory.value).then((response) => {
             this.setState({
@@ -118,7 +130,9 @@ class OrderCreate extends React.Component {
     handelAddProduct = (product) => {
         // find index of product in productList
         const { productList } = this.state;
-        const currentProductIndex = productList.findIndex((item) => item.id === product.id);
+        const currentProductIndex = productList.findIndex(
+            (item) => item.prod_id === product.prod_id
+        );
         // update productList
         productList[currentProductIndex] = {
             ...productList[currentProductIndex],
@@ -132,7 +146,9 @@ class OrderCreate extends React.Component {
 
     handelAddProductQtyMinus = (product) => {
         const { productList } = this.state;
-        const currentProductIndex = productList.findIndex((item) => item.id === product.id);
+        const currentProductIndex = productList.findIndex(
+            (item) => item.prod_id === product.prod_id
+        );
         // update productList
         productList[currentProductIndex] = {
             ...productList[currentProductIndex],
@@ -149,7 +165,9 @@ class OrderCreate extends React.Component {
 
     handelAddProductOnChangeQty = (event, product) => {
         const { productList } = this.state;
-        const currentProductIndex = productList.findIndex((item) => item.id === product.id);
+        const currentProductIndex = productList.findIndex(
+            (item) => item.prod_id === product.prod_id
+        );
         // update productList
         productList[currentProductIndex] = {
             ...productList[currentProductIndex],
@@ -163,7 +181,9 @@ class OrderCreate extends React.Component {
 
     handelAddProductQtyPlus = (product) => {
         const { productList } = this.state;
-        const currentProductIndex = productList.findIndex((item) => item.id === product.id);
+        const currentProductIndex = productList.findIndex(
+            (item) => item.prod_id === product.prod_id
+        );
         // update productList
         productList[currentProductIndex] = {
             ...productList[currentProductIndex],
@@ -175,8 +195,9 @@ class OrderCreate extends React.Component {
         });
     };
 
-    handelFindProductOffer = () => {
-        const { productList, selectedCustomer } = this.state;
+    handelFindProductOffer = async () => {
+        const { productList, selectedCustomer, deliveryDate } = this.state;
+
         const selectedProductList = productList
             .filter((product) => product.checked)
             .map((item) => ({
@@ -190,18 +211,34 @@ class OrderCreate extends React.Component {
             prod_details: JSON.stringify(selectedProductList),
         };
 
-        findProductOffer(orderDetail).then((response) => {
+        let selectedProductWithOffer = [];
+
+        await findProductOffer(orderDetail).then((response) => {
+            console.log(response);
+            if (response.data.response_code === 200) {
+                selectedProductWithOffer = response.data.data;
+                this.setState({
+                    selectedProductWithOffer: response.data.data,
+                });
+            }
+        });
+
+        const regularProductLineTotal = await selectedProductWithOffer
+            .filter((product) => product.is_regular_product === 'Y')
+            .reduce((acc, product) => acc + product.base_tp * product.quantity, 0);
+
+        orderOfferAmount(regularProductLineTotal, deliveryDate).then((response) => {
             console.log(response);
             if (response.data.response_code === 200) {
                 this.setState({
-                    selectedProductWithOffer: response.data.data,
+                    specialDiscount: response.data.discount_data.discounted_tk,
                 });
             }
         });
     };
 
     handelProductQtyMinus = (product) => {
-        const { selectedProductWithOffer } = this.state;
+        const { selectedProductWithOffer, productList } = this.state;
         const currentProductIndex = selectedProductWithOffer.findIndex(
             (item) => item.prod_id === product.prod_id
         );
@@ -213,15 +250,25 @@ class OrderCreate extends React.Component {
                     ? selectedProductWithOffer[currentProductIndex].quantity - 1
                     : 1,
         };
+
+        const currentAddProductIndex = productList.findIndex(
+            (item) => item.prod_id === product.prod_id
+        );
+        // update productList
+        productList[currentAddProductIndex] = {
+            ...productList[currentAddProductIndex],
+            quantity: selectedProductWithOffer[currentProductIndex].quantity,
+        };
         // update state
         this.setState({
+            productList,
             isOrderUpdate: true,
             selectedProductWithOffer,
         });
     };
 
     handelProductOnChangeQty = (event, product) => {
-        const { selectedProductWithOffer } = this.state;
+        const { selectedProductWithOffer, productList } = this.state;
         const currentProductIndex = selectedProductWithOffer.findIndex(
             (item) => item.prod_id === product.prod_id
         );
@@ -229,6 +276,14 @@ class OrderCreate extends React.Component {
         selectedProductWithOffer[currentProductIndex] = {
             ...selectedProductWithOffer[currentProductIndex],
             quantity: parseInt(event.target.value, 10),
+        };
+        const currentAddProductIndex = productList.findIndex(
+            (item) => item.prod_id === product.prod_id
+        );
+        // update productList
+        productList[currentAddProductIndex] = {
+            ...productList[currentAddProductIndex],
+            quantity: selectedProductWithOffer[currentProductIndex].quantity,
         };
         // update state
         this.setState({
@@ -238,7 +293,7 @@ class OrderCreate extends React.Component {
     };
 
     handelProductQtyPlus = (product) => {
-        const { selectedProductWithOffer } = this.state;
+        const { selectedProductWithOffer, productList } = this.state;
         const currentProductIndex = selectedProductWithOffer.findIndex(
             (item) => item.prod_id === product.prod_id
         );
@@ -247,23 +302,142 @@ class OrderCreate extends React.Component {
             ...selectedProductWithOffer[currentProductIndex],
             quantity: selectedProductWithOffer[currentProductIndex].quantity + 1,
         };
+
+        const currentAddProductIndex = productList.findIndex(
+            (item) => item.prod_id === product.prod_id
+        );
+        // update productList
+        productList[currentAddProductIndex] = {
+            ...productList[currentAddProductIndex],
+            quantity: selectedProductWithOffer[currentProductIndex].quantity,
+        };
         // update state
         this.setState({
+            productList,
             isOrderUpdate: true,
             selectedProductWithOffer,
         });
     };
 
-    handelSelectedProductEdit = (product) => {
-        this.setState({
-            selectedRowForEdit: product,
-        });
+    handelSelectedProductEdit = (action, product) => {
+        const { selectedProductWithOffer } = this.state;
+        if (action === 'edit') {
+            this.setState({
+                selectedRowForEdit: product,
+            });
+        } else if (action === 'done') {
+            this.setState({
+                selectedRowForEdit: {},
+            });
+        } else if (action === 'delete') {
+            if (selectedProductWithOffer.length > 1) {
+                const currentProductIndex = selectedProductWithOffer.findIndex(
+                    (item) => item.prod_id === product.prod_id
+                );
+
+                // remove product from productList
+                selectedProductWithOffer.splice(currentProductIndex, 1);
+                this.setState({
+                    isOrderUpdate: true,
+                    selectedProductWithOffer,
+                });
+            }
+        }
     };
 
     handelSelectSr = (sr) => {
         this.setState({
             selectedSR: sr,
         });
+    };
+
+    handelUpdateOrder = async () => {
+        const { selectedProductWithOffer, selectedCustomer, deliveryDate } = this.state;
+        const selectedProductList = selectedProductWithOffer.map((item) => ({
+            prod_id: item.prod_id,
+            quantity: item.quantity,
+        }));
+
+        const orderDetail = {
+            sbu_id: 2,
+            customer_id: selectedCustomer.customer_id,
+            prod_details: JSON.stringify(selectedProductList),
+        };
+
+        await findProductOffer(orderDetail).then((response) => {
+            console.log(response);
+            if (response.data.response_code === 200) {
+                this.setState({
+                    isOrderUpdate: false,
+                    selectedRowForEdit: {},
+                    selectedProductWithOffer: response.data.data,
+                });
+            }
+        });
+
+        const regularProductLineTotal = await selectedProductWithOffer
+            .filter((product) => product.is_regular_product === 'Y')
+            .reduce((acc, product) => acc + product.base_tp * product.quantity, 0);
+
+        orderOfferAmount(regularProductLineTotal, deliveryDate).then((response) => {
+            if (response.data.response_code === 200) {
+                this.setState({
+                    specialDiscount: response.data.discount_data.discounted_tk,
+                });
+            }
+        });
+    };
+
+    handelProceedOrder = () => {
+        console.group('Order Details');
+
+        const {
+            orderNote,
+            deliveryDate,
+            customerAddress,
+            selectedCustomer,
+            selectedOrderTerritory,
+            selectedProductWithOffer,
+        } = this.state;
+
+        if (selectedOrderTerritory == null) {
+            swal('Please select a territory.');
+            return;
+        }
+        swal({
+            title: 'Are you sure?',
+            text: 'You want to proceed this order?',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then((value) => {
+            if (value) {
+                const orderDetail = {
+                    sbu_id: 2,
+                    customer_id: selectedCustomer.customer_id,
+                    delivery_address: customerAddress,
+                    order_detail: JSON.stringify(selectedProductWithOffer),
+                    order_note: orderNote,
+                    date: deliveryDate,
+                    sales_area_id: selectedOrderTerritory,
+                };
+                console.log(orderDetail);
+
+                createNewOrder(orderDetail).then((response) => {
+                    console.log(response);
+                    if (response.data.response_code === 201) {
+                        swal('Order created successfully.');
+                        this.setState({
+                            selectedProductWithOffer: [],
+                        });
+                    } else {
+                        swal(response.data.message);
+                    }
+                });
+            }
+        });
+
+        console.groupEnd();
     };
 
     render() {
@@ -278,6 +452,7 @@ class OrderCreate extends React.Component {
             dicWiseUsers,
             productList,
             territoryList,
+            specialDiscount,
             customerList,
             selectedCustomer,
             customerIsLoading,
@@ -289,6 +464,29 @@ class OrderCreate extends React.Component {
             customer.display_name.toLowerCase().includes(search.toLowerCase())
         );
         const selectedProductList = productList.filter((product) => product.checked);
+
+        const subTotal = selectedProductWithOffer.reduce(
+            (acc, item) => acc + item.quantity * item.base_tp,
+            0
+        );
+        const vatTotal = selectedProductWithOffer.reduce(
+            (acc, item) => acc + item.quantity * item.base_vat,
+            0
+        );
+
+        const grossTotal = subTotal + vatTotal;
+
+        const discountTotal = selectedProductWithOffer
+            .filter((product) => product.offer_accept === 'Y')
+            .reduce(
+                (acc, product) =>
+                    acc +
+                    product.base_tp * product.quantity -
+                    product.price_now_per_qty * product.quantity,
+                0
+            );
+
+        const grandTotal = subTotal + vatTotal - discountTotal - specialDiscount;
 
         return (
             <div>
@@ -582,7 +780,14 @@ class OrderCreate extends React.Component {
                                         <div className="col-lg-3 col-md-4 col-12 mt-1">
                                             <div className="form-group">
                                                 <label htmlFor="address">Territory:</label>
-                                                <select className="form-control-sm">
+                                                <select
+                                                    className="form-control-sm"
+                                                    onChange={(event) => {
+                                                        this.setState({
+                                                            selectedOrderTerritory:
+                                                                event.target.value,
+                                                        });
+                                                    }}>
                                                     <option>Select Territory</option>
                                                     {salesAreas.map((area) => (
                                                         <option value={area.id} key={area.id}>
@@ -618,11 +823,11 @@ class OrderCreate extends React.Component {
                                                         <ul role="menu">
                                                             {dicWiseUsers.map((user) => (
                                                                 <li
-                                                                    className="dropdown-item"
+                                                                    className="dropdown-item p-0"
                                                                     key={user.id}>
                                                                     <span
                                                                         role="button"
-                                                                        className="d-block text-dark"
+                                                                        className="d-block text-dark p-2"
                                                                         tabIndex="0"
                                                                         onClick={() =>
                                                                             this.handelSelectSr(
@@ -672,155 +877,247 @@ class OrderCreate extends React.Component {
                                                 </thead>
                                                 <tbody>
                                                     {selectedProductWithOffer.map((product) => (
-                                                        <tr
-                                                            className={
-                                                                selectedRowForEdit.prod_id ===
-                                                                product.prod_id
-                                                                    ? 'edit-row active'
-                                                                    : ''
-                                                            }
-                                                            key={product.prod_id}>
-                                                            <td>
-                                                                <div className="product">
-                                                                    <p className="name">
-                                                                        {product.prod_name}
-                                                                    </p>
-                                                                    <p className="code">
-                                                                        Unit Price:
-                                                                        <span>
-                                                                            {Number(
-                                                                                product.base_tp
-                                                                            ).toFixed(2)}
-                                                                        </span>
-                                                                    </p>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                {Number(
-                                                                    parseFloat(product.base_tp) +
-                                                                        parseFloat(product.base_vat)
-                                                                ).toFixed(2)}
-                                                            </td>
-                                                            <td>
-                                                                <div className="edit-mode">
-                                                                    <div className="jerp-quantity-input">
-                                                                        <input
-                                                                            onClick={() =>
-                                                                                this.handelProductQtyMinus(
-                                                                                    product
-                                                                                )
-                                                                            }
-                                                                            className="minus"
-                                                                            type="button"
-                                                                            defaultValue="-"
-                                                                        />
-                                                                        <input
-                                                                            className="quantity"
-                                                                            type="number"
-                                                                            value={product.quantity}
-                                                                            onChange={(event) => {
-                                                                                this.handelProductOnChangeQty(
-                                                                                    event,
-                                                                                    product
-                                                                                );
-                                                                            }}
-                                                                            min="1"
-                                                                        />
-                                                                        <input
-                                                                            onClick={() =>
-                                                                                this.handelProductQtyPlus(
-                                                                                    product
-                                                                                )
-                                                                            }
-                                                                            className="plus"
-                                                                            type="button"
-                                                                            defaultValue="+"
-                                                                        />
+                                                        <>
+                                                            <tr
+                                                                className={
+                                                                    selectedRowForEdit?.prod_id ===
+                                                                    product.prod_id
+                                                                        ? 'edit-row active'
+                                                                        : ''
+                                                                }
+                                                                key={product.prod_id}>
+                                                                <td>
+                                                                    <div className="product">
+                                                                        <p className="name">
+                                                                            {product.prod_name}
+                                                                        </p>
+                                                                        <p className="code">
+                                                                            Unit Price:
+                                                                            <span>
+                                                                                {Number(
+                                                                                    product.base_tp
+                                                                                ).toFixed(2)}
+                                                                            </span>
+                                                                        </p>
                                                                     </div>
-                                                                </div>
-                                                                <p className="view-mode">
-                                                                    {product.quantity}
-                                                                </p>
-                                                            </td>
-
-                                                            <td>
-                                                                <p>
-                                                                    {
-                                                                        product.offer
-                                                                            ?.discount_percentage
-                                                                    }
-                                                                    %
-                                                                </p>
-                                                            </td>
-                                                            <td>
-                                                                <p>
-                                                                    {product.offer.bonus_qty
-                                                                        ? parseInt(
-                                                                              parseFloat(
-                                                                                  product.quantity
-                                                                              ) /
-                                                                                  parseFloat(
-                                                                                      product.offer
-                                                                                          .bonus_on
-                                                                                  ),
-                                                                              10
-                                                                          )
-                                                                        : 0}
-                                                                </p>
-                                                            </td>
-                                                            <td>
-                                                                <p>
+                                                                </td>
+                                                                <td>
                                                                     {Number(
                                                                         parseFloat(
                                                                             product.base_tp
-                                                                        ) *
+                                                                        ) +
                                                                             parseFloat(
-                                                                                product.quantity
+                                                                                product.base_vat
                                                                             )
                                                                     ).toFixed(2)}
-                                                                </p>
-                                                            </td>
-                                                            <td>
-                                                                <div className="hover-btns">
-                                                                    {selectedRowForEdit.prod_id ===
-                                                                    product.prod_id ? (
-                                                                        <span
-                                                                            title="Save"
-                                                                            data-toggle="tooltip"
-                                                                            data-placement="left">
-                                                                            <span className="action-btn material-icons save">
-                                                                                done
+                                                                </td>
+                                                                <td>
+                                                                    <div className="edit-mode">
+                                                                        <div className="jerp-quantity-input">
+                                                                            <input
+                                                                                onClick={() =>
+                                                                                    this.handelProductQtyMinus(
+                                                                                        product
+                                                                                    )
+                                                                                }
+                                                                                className="minus"
+                                                                                type="button"
+                                                                                defaultValue="-"
+                                                                            />
+                                                                            <input
+                                                                                className="quantity"
+                                                                                type="number"
+                                                                                value={
+                                                                                    product.quantity
+                                                                                }
+                                                                                onChange={(
+                                                                                    event
+                                                                                ) => {
+                                                                                    this.handelProductOnChangeQty(
+                                                                                        event,
+                                                                                        product
+                                                                                    );
+                                                                                }}
+                                                                                min="1"
+                                                                            />
+                                                                            <input
+                                                                                onClick={() =>
+                                                                                    this.handelProductQtyPlus(
+                                                                                        product
+                                                                                    )
+                                                                                }
+                                                                                className="plus"
+                                                                                type="button"
+                                                                                defaultValue="+"
+                                                                            />
+                                                                        </div>
+                                                                    </div>
+                                                                    <p className="view-mode">
+                                                                        {product.quantity}
+                                                                    </p>
+                                                                </td>
+
+                                                                <td>
+                                                                    <p>
+                                                                        {
+                                                                            product.offer
+                                                                                ?.discount_percentage
+                                                                        }
+                                                                        %
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>
+                                                                        {product.offer.bonus_qty
+                                                                            ? parseInt(
+                                                                                  parseFloat(
+                                                                                      product.quantity
+                                                                                  ) /
+                                                                                      parseFloat(
+                                                                                          product
+                                                                                              .offer
+                                                                                              .bonus_on
+                                                                                      ),
+                                                                                  10
+                                                                              )
+                                                                            : 0}
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>
+                                                                        {Number(
+                                                                            parseFloat(
+                                                                                product.base_tp
+                                                                            ) *
+                                                                                parseFloat(
+                                                                                    product.quantity
+                                                                                )
+                                                                        ).toFixed(2)}
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <div className="hover-btns">
+                                                                        {selectedRowForEdit?.prod_id ===
+                                                                        product.prod_id ? (
+                                                                            <span
+                                                                                title="Save"
+                                                                                data-toggle="tooltip"
+                                                                                data-placement="left">
+                                                                                <span
+                                                                                    className="action-btn material-icons save"
+                                                                                    onClick={() =>
+                                                                                        this.handelSelectedProductEdit(
+                                                                                            'done',
+                                                                                            product
+                                                                                        )
+                                                                                    }
+                                                                                    role="button"
+                                                                                    tabIndex="0">
+                                                                                    done
+                                                                                </span>
                                                                             </span>
-                                                                        </span>
-                                                                    ) : (
+                                                                        ) : (
+                                                                            <span
+                                                                                title="Edit"
+                                                                                data-toggle="tooltip"
+                                                                                data-placement="left"
+                                                                                onClick={() =>
+                                                                                    this.handelSelectedProductEdit(
+                                                                                        'edit',
+                                                                                        product
+                                                                                    )
+                                                                                }
+                                                                                role="button"
+                                                                                tabIndex="0">
+                                                                                <span className="action-btn material-icons">
+                                                                                    edit
+                                                                                </span>
+                                                                            </span>
+                                                                        )}
+
                                                                         <span
-                                                                            title="Edit"
+                                                                            title="Remove"
                                                                             data-toggle="tooltip"
                                                                             data-placement="left"
                                                                             onClick={() =>
                                                                                 this.handelSelectedProductEdit(
+                                                                                    'delete',
                                                                                     product
                                                                                 )
                                                                             }
                                                                             role="button"
                                                                             tabIndex="0">
-                                                                            <span className="action-btn material-icons">
-                                                                                edit
+                                                                            <span className="action-btn material-icons remove">
+                                                                                delete
                                                                             </span>
                                                                         </span>
-                                                                    )}
-
-                                                                    <span
-                                                                        title="Remove"
-                                                                        data-toggle="tooltip"
-                                                                        data-placement="left">
-                                                                        <span className="action-btn material-icons remove">
-                                                                            delete
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            {product.offer_type === 'free' ? (
+                                                                <tr
+                                                                    className="bg-offer"
+                                                                    key={Math.random()}>
+                                                                    <td className="edit-mode">
+                                                                        <div className="product">
+                                                                            <p className="name">
+                                                                                {' '}
+                                                                                {
+                                                                                    product.offer
+                                                                                        .free_prod_name
+                                                                                }
+                                                                            </p>
+                                                                            <span>
+                                                                                Free Product
+                                                                            </span>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td />
+                                                                    <td />
+                                                                    <td />
+                                                                    <td>
+                                                                        <span>
+                                                                            {product.offer
+                                                                                ?.bonus_qty
+                                                                                ? parseInt(
+                                                                                      parseFloat(
+                                                                                          product.quantity
+                                                                                      ) /
+                                                                                          parseFloat(
+                                                                                              product
+                                                                                                  .offer
+                                                                                                  .free_req_qty
+                                                                                          ),
+                                                                                      10
+                                                                                  ) *
+                                                                                  product.offer
+                                                                                      .free_prod_qty
+                                                                                : ''}
                                                                         </span>
-                                                                    </span>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                        <span>
+                                                                            {product.offer
+                                                                                ?.free_prod_qty
+                                                                                ? parseInt(
+                                                                                      parseFloat(
+                                                                                          product.quantity
+                                                                                      ) /
+                                                                                          parseFloat(
+                                                                                              product
+                                                                                                  .offer
+                                                                                                  .free_req_qty
+                                                                                          ),
+                                                                                      10
+                                                                                  )
+                                                                                : ''}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td />
+                                                                    <td />
+                                                                </tr>
+                                                            ) : (
+                                                                ''
+                                                            )}
+                                                        </>
                                                     ))}
                                                 </tbody>
                                                 <tfoot className="collapse" id="footer-expand">
@@ -850,7 +1147,9 @@ class OrderCreate extends React.Component {
                                                             <p className="small-text">Subtotal</p>
                                                         </th>
                                                         <th>
-                                                            <p className="small-text">13,032.20</p>
+                                                            <p className="small-text">
+                                                                {Number(subTotal).toFixed(2)}
+                                                            </p>
                                                         </th>
                                                         <th />
                                                     </tr>
@@ -860,7 +1159,9 @@ class OrderCreate extends React.Component {
                                                             <p className="small-text">(+) Vat</p>
                                                         </th>
                                                         <th>
-                                                            <p className="small-text">32.20</p>
+                                                            <p className="small-text">
+                                                                {Number(vatTotal).toFixed(2)}
+                                                            </p>
                                                         </th>
                                                         <th />
                                                     </tr>
@@ -872,7 +1173,9 @@ class OrderCreate extends React.Component {
                                                             </p>
                                                         </th>
                                                         <th>
-                                                            <p className="small-text">13,032.20</p>
+                                                            <p className="small-text">
+                                                                {Number(grossTotal).toFixed(2)}
+                                                            </p>
                                                         </th>
                                                         <th />
                                                     </tr>
@@ -884,7 +1187,9 @@ class OrderCreate extends React.Component {
                                                             </p>
                                                         </th>
                                                         <th>
-                                                            <p className="small-text">13,032.20</p>
+                                                            <p className="small-text">
+                                                                {Number(discountTotal).toFixed(2)}
+                                                            </p>
                                                         </th>
                                                         <th />
                                                     </tr>
@@ -916,7 +1221,9 @@ class OrderCreate extends React.Component {
                                                             </p>
                                                         </th>
                                                         <th>
-                                                            <p className="small-text">32.20</p>
+                                                            <p className="small-text">
+                                                                {Number(specialDiscount).toFixed(2)}
+                                                            </p>
                                                         </th>
                                                         <th />
                                                     </tr>
@@ -947,7 +1254,11 @@ class OrderCreate extends React.Component {
                                                             </p>
                                                         </th>
                                                         <th>
-                                                            <p className="grand-total">14,505.55</p>
+                                                            <p className="grand-total">
+                                                                {new Intl.NumberFormat().format(
+                                                                    grandTotal.toFixed(2)
+                                                                )}
+                                                            </p>
                                                         </th>
                                                         <th />
                                                     </tr>
@@ -958,13 +1269,15 @@ class OrderCreate extends React.Component {
                                                 {isOrderUpdate ? (
                                                     <button
                                                         type="button"
+                                                        onClick={this.handelUpdateOrder}
                                                         className="btn btn-primary">
                                                         Update Order
                                                     </button>
                                                 ) : (
                                                     <button
                                                         type="button"
-                                                        className="btn btn-primary">
+                                                        className="btn btn-primary"
+                                                        onClick={this.handelProceedOrder}>
                                                         Proceed Order
                                                     </button>
                                                 )}
@@ -1001,8 +1314,7 @@ class OrderCreate extends React.Component {
                                                 src={esCustomer}
                                                 alt="State"
                                             />
-                                            <h5>Customer Loading...</h5>
-                                            <p>Select territory from the left sidebar.</p>
+                                            <h5>Loading customer information, Please wait...</h5>
                                         </div>
                                     ) : (
                                         <div className="eState-container">
@@ -1089,6 +1401,7 @@ class OrderCreate extends React.Component {
                                                             onChange={() =>
                                                                 this.handelAddProduct(product)
                                                             }
+                                                            checked={product.checked}
                                                         />
                                                         <label
                                                             htmlFor={`product-${product.id}`}
@@ -1102,7 +1415,10 @@ class OrderCreate extends React.Component {
                                                             <div className="row2">
                                                                 <p>
                                                                     {product.display_code} -{' '}
-                                                                    {product.com_pack_desc}
+                                                                    {product.com_pack_desc}{' '}
+                                                                    {product.offer
+                                                                        ? `| ${product.offer}`
+                                                                        : ''}
                                                                 </p>
                                                             </div>
                                                         </label>
@@ -1234,6 +1550,11 @@ class OrderCreate extends React.Component {
                                     <textarea
                                         className="form-control"
                                         id="note"
+                                        onChange={(event) => {
+                                            this.setState({
+                                                orderNote: event.target.value,
+                                            });
+                                        }}
                                         placeholder="Write order note..."
                                     />
                                 </div>
