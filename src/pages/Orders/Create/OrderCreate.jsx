@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactSelect from 'react-select';
-import swal from 'sweetalert';
+
+import { jerpConfirm, jerpMessage } from '../../../utils';
 
 import './OrderCreate.css';
 import esTerritory from './es_territory.svg';
@@ -401,40 +402,33 @@ class OrderCreate extends React.Component {
         } = this.state;
 
         if (selectedOrderTerritory == null) {
-            swal('Please select a territory.');
+            jerpMessage('Please select a territory.');
             return;
         }
-        swal({
-            title: 'Are you sure?',
-            text: 'You want to proceed this order?',
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true,
-        }).then((value) => {
-            if (value) {
-                const orderDetail = {
-                    sbu_id: 2,
-                    customer_id: selectedCustomer.customer_id,
-                    delivery_address: customerAddress,
-                    order_detail: JSON.stringify(selectedProductWithOffer),
-                    order_note: orderNote,
-                    date: deliveryDate,
-                    sales_area_id: selectedOrderTerritory,
-                };
-                console.log(orderDetail);
 
-                createNewOrder(orderDetail).then((response) => {
-                    console.log(response);
-                    if (response.data.response_code === 201) {
-                        swal('Order created successfully.');
-                        this.setState({
-                            selectedProductWithOffer: [],
-                        });
-                    } else {
-                        swal(response.data.message);
-                    }
-                });
-            }
+        jerpConfirm('You want to proceed this order.', () => {
+            const orderDetail = {
+                sbu_id: 2,
+                customer_id: selectedCustomer.customer_id,
+                delivery_address: customerAddress,
+                order_detail: JSON.stringify(selectedProductWithOffer),
+                order_note: orderNote,
+                date: deliveryDate,
+                sales_area_id: selectedOrderTerritory,
+            };
+            console.log(orderDetail);
+
+            createNewOrder(orderDetail).then((response) => {
+                console.log(response);
+                if (response.data.response_code === 201) {
+                    jerpMessage('Order created successfully.');
+                    this.setState({
+                        selectedProductWithOffer: [],
+                    });
+                } else {
+                    jerpMessage(response.data.message);
+                }
+            });
         });
 
         console.groupEnd();

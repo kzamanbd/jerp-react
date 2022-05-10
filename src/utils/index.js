@@ -1,9 +1,9 @@
 import swal from 'sweetalert';
 
-export const jerpConfirm = async (callback) =>
+export const jerpConfirm = async (message, callback) =>
     swal({
         title: 'Are you sure?',
-        text: 'You want to proceed this order?',
+        text: message,
         icon: 'warning',
         buttons: true,
         dangerMode: true,
@@ -13,6 +13,4 @@ export const jerpConfirm = async (callback) =>
         }
     });
 
-export const jerpAlert = (title, text, icon = 'warning') => {
-    swal({ title, text, icon });
-};
+export const jerpMessage = (message) => swal(message);
