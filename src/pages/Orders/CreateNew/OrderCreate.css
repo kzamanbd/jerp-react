@@ -937,3 +937,7 @@
     margin-bottom: 10px;
 }
 /* --------- End Empty State Area --------- */
+
+.bg-offer {
+    background-color: #f1e4bc7d;
+}

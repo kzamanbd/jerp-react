@@ -13,13 +13,13 @@ import {
     searchProductDataList,
     customerInfoForDepot,
     getAllCustomersForOrderByDepotTerritory,
-} from 'hooks/useOrderCreate';
+} from 'hooks/useOrder';
 
-import 'styles/orders/OrderCreate.css';
 import JerpBreadcrumb from 'components/JerpBreadcrumb';
-import esTerritory from './es_territory.svg';
-import esCustomer from './es_customer.svg';
-import esAddProduct from './es_add_product.svg';
+import esTerritory from 'assets/images/es_icons/es_territory.svg';
+import esCustomer from 'assets/images/es_icons/es_customer.svg';
+import esAddProduct from 'assets/images/es_icons/es_add_product.svg';
+import './OrderCreate.css';
 
 class OrderCreate extends React.Component {
     state = {

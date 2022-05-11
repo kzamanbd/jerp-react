@@ -1164,3 +1164,69 @@ button:focus {
 .page-not-found {
     height: calc(100vh - 103px);
 }
+
+/*-------- Start Jerp Loader Area --------*/
+.jerp-loader {
+    user-select: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.jerp-loader .loader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    width: 25px;
+    height: 25px;
+    gap: 5px;
+    margin-right: 15px;
+}
+.jerp-loader .loader .cell {
+    border-radius: 4px;
+}
+.jerp-loader .loader .cell:nth-of-type(1) {
+    background: var(--blue);
+    animation: shrink 3s linear infinite;
+}
+.jerp-loader .loader .cell:nth-of-type(2) {
+    background: var(--blue);
+    animation: shrink 3s linear infinite;
+    animation-delay: 0.25s;
+}
+.jerp-loader .loader .cell:nth-of-type(3) {
+    background: var(--blue);
+    animation: shrink 3s linear infinite;
+    animation-delay: 0.75s;
+}
+.jerp-loader .loader .cell:nth-of-type(4) {
+    background: var(--blue);
+    animation: shrink 3s linear infinite;
+    animation-delay: 0.5s;
+}
+@keyframes shrink {
+    50% {
+        background: transparent;
+    }
+}
+.jerp-loader .loading {
+    color: var(--text-black);
+    font-size: var(--font14);
+    font-weight: 600;
+}
+@keyframes blink {
+    50% {
+        color: transparent;
+    }
+}
+.jerp-loader .loading .loading-dot {
+    animation: 2s blink infinite;
+}
+.jerp-loader .loading .loading-dot:nth-child(2) {
+    animation-delay: 250ms;
+}
+.jerp-loader .loading .loading-dot:nth-child(3) {
+    animation-delay: 500ms;
+}
+/*-------- End Jerp Loader Area --------*/
