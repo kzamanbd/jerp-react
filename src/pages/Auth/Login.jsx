@@ -37,7 +37,7 @@ function Login() {
 
     useEffect(() => {
         document.title = 'Login';
-    });
+    }, []);
 
     return (
         <div className="wrapper">
