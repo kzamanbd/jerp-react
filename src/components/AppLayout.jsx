@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { webMenuWithUser } from 'hooks/useSidebar';
 import SideBarMenu from './SideBarMenu';
 
-export default class AppLayout extends React.Component {
+class AppLayout extends React.Component {
     state = {
         isOpen: false,
         userInfo: {},
@@ -247,3 +247,5 @@ export default class AppLayout extends React.Component {
         );
     }
 }
+
+export default AppLayout;
