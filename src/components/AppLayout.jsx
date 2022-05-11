@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { webMenuWithUser } from 'hooks/useSidebar';
-import SideBarMenu from './SideBarMenu';
+import SideBarMenu from 'components/SideBarMenu';
 
 class AppLayout extends React.Component {
     state = {

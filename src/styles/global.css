@@ -491,7 +491,6 @@ input:checked + .slider:before {
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: var(--navbar-height);
-    z-index: 999;
 }
 
 .layout-footer {

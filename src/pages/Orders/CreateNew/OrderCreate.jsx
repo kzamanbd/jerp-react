@@ -16,6 +16,7 @@ import {
 } from 'hooks/useOrderCreate';
 
 import 'styles/orders/OrderCreate.css';
+import JerpBreadcrumb from 'components/JerpBreadcrumb';
 import esTerritory from './es_territory.svg';
 import esCustomer from './es_customer.svg';
 import esAddProduct from './es_add_product.svg';
@@ -44,6 +45,11 @@ class OrderCreate extends React.Component {
     };
 
     componentDidMount() {
+        console.log('OrderCreate.jsx componentDidMount');
+        this.initializeOrder();
+    }
+
+    initializeOrder = () => {
         getTerritoryList().then((response) => {
             if (response.data.response_code === 200) {
                 this.setState({
@@ -76,11 +82,7 @@ class OrderCreate extends React.Component {
                 });
             }
         });
-    }
-
-    // componentDidUpdate() {
-    //     console.log(this.state);
-    // }
+    };
 
     handleInputChange = (inputValue, actionMeta) => {
         console.group('Input Changed');
@@ -485,26 +487,11 @@ class OrderCreate extends React.Component {
 
         const grandTotal = subTotal + vatTotal - discountTotal - specialDiscount;
 
+        const breadcrumb = ['Local Sales', 'Order', 'Create'];
+
         return (
             <div>
-                <div className="layout-breadcrumb">
-                    <div className="breadcrumb_area">
-                        <h5>Create Order</h5>
-                        <nav aria-label="breadcrumb">
-                            <ol className="breadcrumb">
-                                <li className="breadcrumb-item">
-                                    <a href="/">Local Sales</a>
-                                </li>
-                                <li className="breadcrumb-item">
-                                    <a href="/">Order</a>
-                                </li>
-                                <li className="breadcrumb-item active" aria-current="page">
-                                    Create Order
-                                </li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
+                <JerpBreadcrumb title="Create Order" breadcrumb={breadcrumb} />
 
                 <div className="layout-body">
                     <div className="layout-sidebar createOrder-list">

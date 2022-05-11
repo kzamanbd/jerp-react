@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './login.css';
 import Logo from 'assets/images/JMI-ERP-Logo.svg';
@@ -9,6 +10,9 @@ function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate();
+
     const handleLogin = (e) => {
         e.preventDefault();
         // validate username and password
@@ -24,7 +28,7 @@ function Login() {
                     console.log(response);
                     if (response.data.code === 200) {
                         localStorage.setItem('token', response.data.data.token.access_token);
-                        window.location.href = '/features/users/dashboard';
+                        navigate('/features/users/dashboard');
                     } else {
                         console.log(response.data.message);
                     }

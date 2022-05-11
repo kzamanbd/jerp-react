@@ -4,14 +4,14 @@ import { createRoot } from 'react-dom/client';
 
 // import bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/layout.scss';
+import 'styles/layout.scss';
 
-import App from './App';
-import store from './app/store';
-import reportWebVitals from './reportWebVitals';
+import App from 'App';
+import store from 'app/store';
+import reportWebVitals from 'reportWebVitals';
 
 const container = document.getElementById('app');
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const root = createRoot(container);
 root.render(
     <React.StrictMode>
         <Provider store={store}>
