@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactSelect from 'react-select';
 
-import { jerpConfirm, jerpMessage } from 'utils';
+import { jerpConfirm, jerpSuccess, jerpWarning } from 'utils';
 
 import {
     createNewOrder,
@@ -353,40 +353,42 @@ class OrderCreate extends React.Component {
         });
     };
 
-    handelUpdateOrder = async () => {
-        const { selectedProductWithOffer, selectedCustomer, deliveryDate } = this.state;
-        const selectedProductList = selectedProductWithOffer.map((item) => ({
-            prod_id: item.prod_id,
-            quantity: item.quantity,
-        }));
+    handelUpdateOrder = () => {
+        jerpConfirm('You want update this order.', async () => {
+            const { selectedProductWithOffer, selectedCustomer, deliveryDate } = this.state;
+            const selectedProductList = selectedProductWithOffer.map((item) => ({
+                prod_id: item.prod_id,
+                quantity: item.quantity,
+            }));
 
-        const orderDetail = {
-            sbu_id: 2,
-            customer_id: selectedCustomer.customer_id,
-            prod_details: JSON.stringify(selectedProductList),
-        };
+            const orderDetail = {
+                sbu_id: 2,
+                customer_id: selectedCustomer.customer_id,
+                prod_details: JSON.stringify(selectedProductList),
+            };
 
-        await findProductOffer(orderDetail).then((response) => {
-            console.log(response);
-            if (response.data.response_code === 200) {
-                this.setState({
-                    isOrderUpdate: false,
-                    selectedRowForEdit: {},
-                    selectedProductWithOffer: response.data.data,
-                });
-            }
-        });
+            await findProductOffer(orderDetail).then((response) => {
+                console.log(response);
+                if (response.data.response_code === 200) {
+                    this.setState({
+                        isOrderUpdate: false,
+                        selectedRowForEdit: {},
+                        selectedProductWithOffer: response.data.data,
+                    });
+                }
+            });
 
-        const regularProductLineTotal = await selectedProductWithOffer
-            .filter((product) => product.is_regular_product === 'Y')
-            .reduce((acc, product) => acc + product.base_tp * product.quantity, 0);
+            const regularProductLineTotal = await selectedProductWithOffer
+                .filter((product) => product.is_regular_product === 'Y')
+                .reduce((acc, product) => acc + product.base_tp * product.quantity, 0);
 
-        orderOfferAmount(regularProductLineTotal, deliveryDate).then((response) => {
-            if (response.data.response_code === 200) {
-                this.setState({
-                    specialDiscount: response.data.discount_data.discounted_tk,
-                });
-            }
+            orderOfferAmount(regularProductLineTotal, deliveryDate).then((response) => {
+                if (response.data.response_code === 200) {
+                    this.setState({
+                        specialDiscount: response.data.discount_data.discounted_tk,
+                    });
+                }
+            });
         });
     };
 
@@ -403,7 +405,7 @@ class OrderCreate extends React.Component {
         } = this.state;
 
         if (selectedOrderTerritory == null) {
-            jerpMessage('Please select a territory.');
+            jerpWarning('Please select a territory.');
             return;
         }
 
@@ -422,12 +424,12 @@ class OrderCreate extends React.Component {
             createNewOrder(orderDetail).then((response) => {
                 console.log(response);
                 if (response.data.response_code === 201) {
-                    jerpMessage('Order created successfully.');
+                    jerpSuccess('Order created successfully.');
                     this.setState({
                         selectedProductWithOffer: [],
                     });
                 } else {
-                    jerpMessage(response.data.message);
+                    jerpWarning(response.data.message);
                 }
             });
         });
