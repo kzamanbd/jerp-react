@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactSelect from 'react-select';
 
-import { jerpConfirm, jerpMessage } from '../../../utils';
+import { jerpConfirm, jerpMessage } from 'utils';
 
-import './OrderCreate.css';
-import esTerritory from './es_territory.svg';
-import esCustomer from './es_customer.svg';
-import esAddProduct from './es_add_product.svg';
 import {
     createNewOrder,
     areaListByUser,
@@ -17,7 +13,12 @@ import {
     searchProductDataList,
     customerInfoForDepot,
     getAllCustomersForOrderByDepotTerritory,
-} from './useOrderCreate';
+} from 'hooks/useOrderCreate';
+
+import 'styles/orders/OrderCreate.css';
+import esTerritory from './es_territory.svg';
+import esCustomer from './es_customer.svg';
+import esAddProduct from './es_add_product.svg';
 
 class OrderCreate extends React.Component {
     state = {

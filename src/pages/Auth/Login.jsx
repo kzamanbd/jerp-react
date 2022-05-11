@@ -1,9 +1,9 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
+
 import './login.css';
-import Logo from '../../assets/images/JMI-ERP-Logo.svg';
-import CompanyLogo from '../../assets/images/logo.svg';
-import login from '../../service/useLogin';
+import Logo from 'assets/images/JMI-ERP-Logo.svg';
+import CompanyLogo from 'assets/images/logo.svg';
+import login from 'hooks/useLogin';
 
 function Login() {
     const [username, setUsername] = useState('');

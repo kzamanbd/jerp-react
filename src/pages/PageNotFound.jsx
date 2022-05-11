@@ -1,5 +1,5 @@
 import React from 'react';
-import NotFound from '../assets/images/es_icons/es_404.svg';
+import NotFound from 'assets/images/es_icons/es_404.svg';
 
 function PageNotFound() {
     return (

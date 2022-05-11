@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { webMenuWithUser } from 'hooks/useSidebar';
 import SideBarMenu from './SideBarMenu';
-import { webMenuWithUser } from '../service/useSidebar';
 
 export default class AppLayout extends React.Component {
     state = {
@@ -12,21 +12,19 @@ export default class AppLayout extends React.Component {
     };
 
     componentDidMount() {
-        webMenuWithUser()
-            .then((response) => {
-                console.log(response);
-                if (response.data.code === 200) {
-                    this.setState({
-                        isLoading: false,
-                        menuList: response.data.data,
-                        userInfo: {
-                            ...response.data.user,
-                            ...response.data.user_area,
-                        },
-                    });
-                }
-            })
-            .catch((error) => console.log(error));
+        webMenuWithUser().then((response) => {
+            console.log(response);
+            if (response.data.code === 200) {
+                this.setState({
+                    isLoading: false,
+                    menuList: response.data.data,
+                    userInfo: {
+                        ...response.data.user,
+                        ...response.data.user_area,
+                    },
+                });
+            }
+        });
     }
 
     onClickHandler = () => {
