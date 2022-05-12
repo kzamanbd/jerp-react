@@ -25,3 +25,7 @@ export const orderOfferAmount = (amount, date) =>
         amount,
     });
 export const createNewOrder = (orderDetail) => axios.post('/api/mobile/create-order', orderDetail);
+export const pendingApprovalOrderCustomerList = () =>
+    axios.get('/api/web/v2/all-pending-approval-orders-customer-list/v');
+export const pendingOrderDetails = (orderId) =>
+    axios.get(`/api/web/pending-order-details/${orderId}`);

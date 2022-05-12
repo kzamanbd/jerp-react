@@ -14,11 +14,8 @@ function AppLayout({ children }) {
     useEffect(() => {
         webMenuWithUser().then((response) => {
             setIsLoading(false);
-            setMenuList(response.data.data);
-            setUserInfo({
-                ...response.data.user,
-                ...response.data.user_area,
-            });
+            setMenuList(response.data.menu_list);
+            setUserInfo(response.data.user_info);
         });
     }, []);
 
