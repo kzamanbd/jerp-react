@@ -49,7 +49,41 @@ function OrderApproval() {
         }
     };
 
+    const handelProductQtyMinus = (product) => {
+        const currentProductIndex = orderDetails.order_details.findIndex(
+            (item) => item.product_id === product.product_id
+        );
+        // update productList
+        orderDetails.order_details[currentProductIndex] = {
+            ...orderDetails.order_details[currentProductIndex],
+            qty:
+                parseInt(orderDetails.order_details[currentProductIndex].qty, 10) > 1
+                    ? parseInt(orderDetails.order_details[currentProductIndex].qty, 10) - 1
+                    : 1,
+        };
+
+        setOrderDetails({ ...orderDetails });
+    };
+
+    const handelProductOnChangeQty = (event, product) => {
+        console.log(event, product);
+    };
+
+    const handelProductQtyPlus = (product) => {
+        const currentProductIndex = orderDetails.order_details.findIndex(
+            (item) => item.product_id === product.product_id
+        );
+        // update productList
+        orderDetails.order_details[currentProductIndex] = {
+            ...orderDetails.order_details[currentProductIndex],
+            qty: parseInt(orderDetails.order_details[currentProductIndex].qty, 10) + 1,
+        };
+
+        setOrderDetails({ ...orderDetails });
+    };
+
     const breadcrumb = ['Local Sales', 'Order', 'Approval'];
+
     return (
         <div>
             <JerpBreadcrumb title="Order Approval" breadcrumb={breadcrumb} />
@@ -185,7 +219,9 @@ function OrderApproval() {
                     </div>
                     <div className="content">
                         {pendingOrderCustomerList.map((order) => (
-                            <div className="card_body" key={order.id}>
+                            <div
+                                className={`card_body ${orderDetails?.id === order.id && 'active'}`}
+                                key={order.id}>
                                 <div
                                     onClick={() => handleOrderDetails(order.id)}
                                     role="button"
@@ -361,17 +397,30 @@ function OrderApproval() {
                                                 key={product.id}>
                                                 <td>
                                                     <div className="product">
-                                                        <p className="name">Altrip. Almotriptan.</p>
+                                                        <p className="name">
+                                                            {product.product_info.prod_name}
+                                                        </p>
                                                         <p className="code">
-                                                            Unit Price:<span>329.84</span>
+                                                            Unit Price:
+                                                            <span>
+                                                                {Number(product.unit_tp).toFixed(2)}
+                                                            </span>
                                                         </p>
                                                     </div>
                                                 </td>
-                                                <td>01</td>
+                                                <td>
+                                                    {Number(
+                                                        parseFloat(product.unit_tp) +
+                                                            parseFloat(product.unit_vat)
+                                                    ).toFixed(2)}
+                                                </td>
                                                 <td>
                                                     <div className="edit-mode">
                                                         <div className="jerp-quantity-input">
                                                             <input
+                                                                onClick={() =>
+                                                                    handelProductQtyMinus(product)
+                                                                }
                                                                 className="minus"
                                                                 type="button"
                                                                 defaultValue="-"
@@ -379,27 +428,43 @@ function OrderApproval() {
                                                             <input
                                                                 className="quantity"
                                                                 type="number"
-                                                                defaultValue="0"
-                                                                min="0"
+                                                                value={product.qty}
+                                                                onChange={(event) => {
+                                                                    handelProductOnChangeQty(
+                                                                        event,
+                                                                        product
+                                                                    );
+                                                                }}
+                                                                min="1"
                                                             />
                                                             <input
+                                                                onClick={() =>
+                                                                    handelProductQtyPlus(product)
+                                                                }
                                                                 className="plus"
                                                                 type="button"
                                                                 defaultValue="+"
                                                             />
                                                         </div>
                                                     </div>
-                                                    <p className="view-mode">00098</p>
+                                                    <p className="view-mode">{product.qty}</p>
                                                 </td>
 
                                                 <td>
-                                                    <p>15%</p>
+                                                    <p>
+                                                        {product.offer.offer?.discount_percentage}%
+                                                    </p>
                                                 </td>
                                                 <td>
                                                     <p>0</p>
                                                 </td>
                                                 <td>
-                                                    <p>300</p>
+                                                    <p>
+                                                        {Number(
+                                                            parseFloat(product.unit_tp) *
+                                                                parseFloat(product.qty)
+                                                        ).toFixed(2)}
+                                                    </p>
                                                 </td>
                                                 <td>
                                                     <div className="hover-btns">
