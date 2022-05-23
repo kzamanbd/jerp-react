@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import PrivateRoute from 'utils/PrivateRoute';
-import PublicRoute from 'utils/PublicRoute';
+
+import AuthRoute from 'utils/AuthRoute';
+import GuestRoute from 'utils/GuestRoute';
 import Dashboard from 'pages/Dashboard/Dashboard';
 import Login from 'pages/Auth/Login';
 import PageNotFound from 'pages/PageNotFound';
@@ -15,43 +16,43 @@ function JerpApp() {
                 <Route
                     path="/login"
                     element={
-                        <PublicRoute>
+                        <GuestRoute>
                             <Login />
-                        </PublicRoute>
+                        </GuestRoute>
                     }
                 />
                 <Route
                     path="/features/users/dashboard"
                     element={
-                        <PrivateRoute>
+                        <AuthRoute>
                             <Dashboard />
-                        </PrivateRoute>
+                        </AuthRoute>
                     }
                 />
                 <Route
                     path="/features/local_sales/sales_order"
                     element={
-                        <PrivateRoute>
+                        <AuthRoute>
                             <OrderCreate />
-                        </PrivateRoute>
+                        </AuthRoute>
                     }
                 />
 
                 <Route
                     path="/features/local_sales/order_approval"
                     element={
-                        <PrivateRoute>
+                        <AuthRoute>
                             <OrderApproval />
-                        </PrivateRoute>
+                        </AuthRoute>
                     }
                 />
                 {/* page not found */}
                 <Route
                     path="*"
                     element={
-                        <PrivateRoute>
+                        <AuthRoute>
                             <PageNotFound />
-                        </PrivateRoute>
+                        </AuthRoute>
                     }
                 />
             </Routes>
