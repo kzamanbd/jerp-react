@@ -1,4 +1,5 @@
 {
     // save on format
     "editor.formatOnSave": true,
+    "cSpell.words": ["apexcharts", "sweetalert"]
 }
