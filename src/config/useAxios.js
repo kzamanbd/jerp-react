@@ -2,7 +2,7 @@
 import axios from 'axios';
 // set default value on axios
 const useAxios = axios.create({
-    baseURL: 'http://api.jerpbd.com:8889',
+    baseURL: 'https://jerp-backend.test',
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
