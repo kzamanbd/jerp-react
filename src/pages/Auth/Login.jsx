@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Logo from '@/assets/images/JMI-ERP-Logo.svg';
@@ -29,10 +29,6 @@ function Login() {
             }
         }
     };
-
-    useEffect(() => {
-        document.title = 'Login';
-    }, []);
 
     return (
         <div className="wrapper">

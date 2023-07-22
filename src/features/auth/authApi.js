@@ -47,6 +47,8 @@ export const authApi = apiSlice.injectEndpoints({
                 try {
                     await queryFulfilled;
                     dispatch(updateCurrentUser({ menu: [], user: {} }));
+                    // clear redux store cache
+                    dispatch(apiSlice.util.resetApiState());
                 } catch (error) {
                     console.error(error);
                 }
