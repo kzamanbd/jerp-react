@@ -3,6 +3,7 @@ import { updateCurrentUser } from './authSlice';
 
 export const authApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
+        tagTypes: ['User'],
         register: builder.mutation({
             query: (data) => ({
                 url: '/auth/register',
@@ -45,7 +46,6 @@ export const authApi = apiSlice.injectEndpoints({
             async onQueryStarted(arg, { dispatch, queryFulfilled }) {
                 try {
                     await queryFulfilled;
-                    localStorage.clear();
                     dispatch(updateCurrentUser({ menu: [], user: {} }));
                 } catch (error) {
                     console.error(error);

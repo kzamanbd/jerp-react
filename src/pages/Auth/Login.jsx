@@ -38,7 +38,7 @@ function Login() {
         <div className="wrapper">
             <div className="container h-100 main-content">
                 <div className="row h-100">
-                    <div className="col-md-6 d-flex h-100 align-items-center">
+                    <div className="col-md-6 d-flex h-100 align-items-center col-12">
                         <div className="left-column">
                             <img src={Logo} alt="erp-icon" />
                             <div className="possibilities">
@@ -83,7 +83,7 @@ function Login() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-5 offset-md-1">
+                    <div className="col-md-5 offset-md-1 col-12">
                         <div className="right-column">
                             <div className="container">
                                 <div className="email-pass-input">
