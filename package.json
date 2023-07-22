@@ -12,7 +12,7 @@
         "@reduxjs/toolkit": "^1.9.3",
         "apexcharts": "^3.35.0",
         "axios": "^0.26.1",
-        "bootstrap": "4.5",
+        "bootstrap": "4.6",
         "moment": "^2.29.3",
         "patch-package": "^6.5.1",
         "react": "^18.2.0",
