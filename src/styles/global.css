@@ -191,12 +191,12 @@
 
 /* CONFIRMATION MODAL - STARTS */
 
-/* 
+/*
   .flex-center {
       display: flex;
       align-items: center;
   }
-  
+
   .justyfy_content_space_between {
       justify-content: space-between;
   } */
@@ -348,24 +348,24 @@ input:checked + .slider:before {
     opacity: 0;
     transition: .5s;
   }
-  
+
   .on-parent-hover-show:hover .on-hover-show {
     opacity: 1;
   }
-  
+
   .on-hover-show:hover {
     opacity: 1;
   }
-  
+
   .focus\:outline-none:focus {
     outline: none !important;
   }
-  
+
   .select\:appearance-auto {
     -moz-appearance: auto !important;
     -webkit-appearance: auto !important;
   }
-  
+
   .overflow-y-auto {
     overflow-y: auto !important;
   } */
@@ -401,9 +401,9 @@ input:checked + .slider:before {
     --table-height: 40px;
     --table-height-2: 45px;
     --table-height-25: 25px;
-    --navbar-height: 74px;
-    --breadcrumb-height: 86px;
-    --used-height: calc(var(--navbar-height) + var(--breadcrumb-height) + 25px);
+    --navbar-height: 48px;
+    --breadcrumb-height: 40px;
+    --used-height: calc(var(--navbar-height) + var(--breadcrumb-height) + 28px);
     --layout-menubar-width: 74px;
     --sidebar-width: 300px;
     --sidebar-width-extend: calc(var(--sidebar-width) + 100px);
@@ -418,7 +418,7 @@ input:checked + .slider:before {
         --font14: 12px;
         --font12: 11px;
         --font10: 9px;
-        --navbar-height: 64px;
+        --navbar-height: 48px;
         --breadcrumb-height: 66px;
         --layout-menubar-width: 64px;
         --sidebar-width: 260px;
@@ -434,7 +434,7 @@ input:checked + .slider:before {
         --font14: 12px;
         --font12: 11px;
         --font10: 9px;
-        --navbar-height: 64px;
+        --navbar-height: 48px;
         --breadcrumb-height: 66px;
         --layout-menubar-width: 64px;
         --sidebar-width: 260px;
@@ -453,6 +453,41 @@ input:checked + .slider:before {
     }
 }
 
+@media screen and (max-width: 1482px), screen and (max-height: 746px) {
+    :root {
+        --font22: 20px;
+        --font20: 18px;
+        --font18: 16px;
+        --font16: 14px;
+        --font14: 12px;
+        --font12: 10px;
+        --font10: 8px;
+
+        --navbar-height: 45px;
+        --breadcrumb-height: 60px;
+        --layout-menubar-width: 64px;
+        --sidebar-width: 260px;
+        --used-height: calc(var(--navbar-height) + var(--breadcrumb-height));
+    }
+}
+
+@media screen and (max-width: 1280px), screen and (max-height: 632px) {
+    :root {
+        --font22: 20px;
+        --font20: 18px;
+        --font18: 16px;
+        --font16: 14px;
+        --font14: 12px;
+        --font12: 10px;
+        --font10: 8px;
+
+        --navbar-height: 45px;
+        --breadcrumb-height: 60px;
+        --layout-menubar-width: 64px;
+        --sidebar-width: 200px;
+        --used-height: calc(var(--navbar-height) + var(--breadcrumb-height) + 65px);
+    }
+}
 /*-------->> Start Layout Area --------*/
 
 .grid-container {
@@ -491,6 +526,7 @@ input:checked + .slider:before {
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: var(--navbar-height);
+    z-index: 999;
 }
 
 .layout-footer {
@@ -597,33 +633,33 @@ input[type='number'] {
 
 /* Start Schroll Style */
 
-::-webkit-scrollbar {
-    width: 1px;
+.master-layout *::-webkit-scrollbar {
+    width: 2px !important;
 }
 
-::-webkit-scrollbar-track {
+.master-layout *::-webkit-scrollbar-track {
     background: none;
 }
 
-::-webkit-scrollbar-thumb {
+.master-layout *::-webkit-scrollbar-thumb {
     background: var(--blue);
 }
 
-::-webkit-scrollbar-thumb:hover {
+.master-layout *::-webkit-scrollbar-thumb:hover {
     background: var(--blue);
 }
 
 /* Start Horizontal Schroll */
 
-::-webkit-scrollbar-track:horizontal {
+.master-layout *::-webkit-scrollbar-track:horizontal {
     background: var(--bluish-white);
 }
 
-::-webkit-scrollbar-thumb:horizontal {
+.master-layout *::-webkit-scrollbar-thumb:horizontal {
     background: var(--blue);
 }
 
-::-webkit-scrollbar-thumb:horizontal:hover {
+.master-layout *::-webkit-scrollbar-thumb:horizontal:hover {
     background: var(--blue);
 }
 
@@ -633,7 +669,8 @@ input[type='number'] {
 
 /*-------->> Start JERP Color Area --------*/
 
-.color-primary {
+.color-primary,
+.text-primary {
     color: var(--blue) !important;
 }
 
@@ -641,6 +678,7 @@ input[type='number'] {
 .APPROVED,
 .available,
 .verified,
+.VERIFIED,
 .delivered {
     color: var(--green) !important;
     font-weight: 500;
@@ -654,14 +692,18 @@ input[type='number'] {
     font-weight: 500;
 }
 
+.submit,
 .submitted,
+.SUBMIT,
 .SUBMITTED,
 .completed {
     color: var(--blue) !important;
     font-weight: 500;
 }
 
+.draft,
 .drafted,
+.DRAFT,
 .DRAFTED {
     color: var(--gray) !important;
     font-weight: 500;
@@ -798,6 +840,11 @@ button:focus {
     color: var(--text-black);
     padding: 0.469rem 0.75rem;
     height: 38px;
+}
+.form-group .form-control.form-control-sm {
+    height: 30px;
+    padding: 0.25rem 0.5rem;
+    line-height: 1.5;
 }
 
 .form-group input {
@@ -1157,24 +1204,31 @@ button:focus {
     background-color: var(--blue);
 }
 
+.daterangepicker .calendars {
+    flex-wrap: initial !important;
+}
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+    background-color: var(--blue) !important;
+}
+.reportrange-text {
+    border: 1px solid #e2edfa !important;
+}
 /*-------- End JERP Quantity Input Area <<--------*/
 
 /* ==================== End Global CSS Area v1.00 ==================== */
 
-.page-not-found {
-    height: calc(100vh - 103px);
-}
-
 /*-------- Start Jerp Loader Area --------*/
-.jerp-loader {
+.jerp-square-loader {
     user-select: none;
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
 }
-.jerp-loader .loader {
+.jerp-square-loader .square-loader {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 1fr;
@@ -1183,24 +1237,24 @@ button:focus {
     gap: 5px;
     margin-right: 15px;
 }
-.jerp-loader .loader .cell {
+.jerp-square-loader .square-loader .cell {
     border-radius: 4px;
 }
-.jerp-loader .loader .cell:nth-of-type(1) {
+.jerp-square-loader .square-loader .cell:nth-of-type(1) {
     background: var(--blue);
     animation: shrink 3s linear infinite;
 }
-.jerp-loader .loader .cell:nth-of-type(2) {
+.jerp-square-loader .square-loader .cell:nth-of-type(2) {
     background: var(--blue);
     animation: shrink 3s linear infinite;
     animation-delay: 0.25s;
 }
-.jerp-loader .loader .cell:nth-of-type(3) {
+.jerp-square-loader .square-loader .cell:nth-of-type(3) {
     background: var(--blue);
     animation: shrink 3s linear infinite;
     animation-delay: 0.75s;
 }
-.jerp-loader .loader .cell:nth-of-type(4) {
+.jerp-square-loader .square-loader .cell:nth-of-type(4) {
     background: var(--blue);
     animation: shrink 3s linear infinite;
     animation-delay: 0.5s;
@@ -1210,7 +1264,7 @@ button:focus {
         background: transparent;
     }
 }
-.jerp-loader .loading {
+.jerp-square-loader .loading {
     color: var(--text-black);
     font-size: var(--font14);
     font-weight: 600;
@@ -1220,13 +1274,70 @@ button:focus {
         color: transparent;
     }
 }
-.jerp-loader .loading .loading-dot {
+.jerp-square-loader .loading .loading-dot {
     animation: 2s blink infinite;
 }
-.jerp-loader .loading .loading-dot:nth-child(2) {
+.jerp-square-loader .loading .loading-dot:nth-child(2) {
     animation-delay: 250ms;
 }
-.jerp-loader .loading .loading-dot:nth-child(3) {
+.jerp-square-loader .loading .loading-dot:nth-child(3) {
     animation-delay: 500ms;
 }
 /*-------- End Jerp Loader Area --------*/
+/* bootstrap-vue b-calender */
+.col[data-date] .btn {
+    min-width: 32px !important;
+}
+.b-calendar-inner button {
+    min-width: unset;
+}
+.b-form-btn-label-control.form-control > .btn {
+    min-width: unset;
+}
+.b-form-btn-label-control.form-control > .form-control {
+    padding: unset;
+}
+
+.btn-dashboard {
+    background: #e2edfa;
+    color: var(--blue);
+    text-align: center;
+    padding: 8px 0;
+    margin: 4px 0;
+    border-radius: 4px;
+    font-size: var(--font14);
+    font-weight: 600;
+}
+
+.v-select .vs__dropdown-option--selected {
+    display: none;
+}
+.v-select .vs__search {
+    border: none;
+}
+
+.opacity-touch {
+    opacity: 1 !important;
+}
+
+.opacity-touch:hover {
+    opacity: 1 !important;
+}
+.breadcrumb_area {
+    /* padding: 5px 0; */
+    border-bottom: 1px solid var(--border-color);
+    background: #b8daff14;
+}
+.breadcrumb-item:last-child .breadcrumb-link {
+    color: #6c757d !important;
+    cursor: pointer;
+}
+
+.home-icon {
+    font-size: 20px;
+    color: var(--blue);
+    padding-right: 4px;
+}
+.breadcrumb_area .name {
+    padding: 0.2rem 1rem;
+}

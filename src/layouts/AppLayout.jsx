@@ -1,11 +1,12 @@
 import SideBarMenu from '@/components/SideBarMenu';
 import UserProfile from '@/components/UserProfile';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function AppLayout({ children }) {
+    const { pathname } = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const { currentUser: { menu = [], user: userInfo = {} } = {} } = useSelector(
         (state) => state.auth
@@ -14,6 +15,13 @@ function AppLayout({ children }) {
     const onClickHandler = () => {
         setIsOpen(!isOpen);
     };
+
+    useEffect(() => {
+        if (isOpen) {
+            setIsOpen(false);
+        }
+        console.log('location', pathname);
+    }, [pathname]);
 
     return (
         <div id="master-layout" className="master-layout">
@@ -84,8 +92,11 @@ function AppLayout({ children }) {
                     </div>
                 </div>
             </header>
-            <div className={`sidenavbar ${isOpen ? `expanded` : ''}`}>
-                <SideBarMenu isOpen={isOpen} menuList={menu} warn />
+            <div
+                className={`sidenavbar ${isOpen ? `expanded` : ''}`}
+                onMouseEnter={() => setIsOpen(true)}
+                onMouseLeave={() => setIsOpen(false)}>
+                <SideBarMenu isOpen={isOpen} menuList={menu} />
             </div>
             <main className="main-section">{children}</main>
             <footer id="footer" className="footer-section bg-primary"></footer>

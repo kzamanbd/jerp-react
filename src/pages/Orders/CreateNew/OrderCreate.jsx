@@ -487,7 +487,7 @@ class OrderCreate extends React.Component {
 
         const grandTotal = subTotal + vatTotal - discountTotal - specialDiscount;
 
-        const breadcrumb = ['Local Sales', 'Order', 'Create'];
+        const breadcrumb = ['Local Sales', 'Order', 'Create Order'];
 
         return (
             <div>
