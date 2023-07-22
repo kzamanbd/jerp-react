@@ -1,23 +1,16 @@
 import SideBarMenu from '@/components/SideBarMenu';
-import { webMenuWithUser } from '@/hooks/useSidebar';
-import { useEffect, useState } from 'react';
+
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 function AppLayout({ children }) {
     const navigate = useNavigate();
 
     const [isOpen, setIsOpen] = useState(false);
-    const [menuList, setMenuList] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [userInfo, setUserInfo] = useState({});
-
-    useEffect(() => {
-        webMenuWithUser().then((response) => {
-            setIsLoading(false);
-            setMenuList(response.data.menu_list);
-            setUserInfo(response.data.user_info);
-        });
-    }, []);
+    const { currentUser: { menu = [], user: userInfo = {} } = {} } = useSelector(
+        (state) => state.auth
+    );
 
     const onClickHandler = () => {
         setIsOpen(!isOpen);
@@ -26,7 +19,6 @@ function AppLayout({ children }) {
     const onClickLogout = () => {
         localStorage.removeItem('token');
         navigate('/login');
-        console.log('logout');
     };
 
     return (
@@ -93,125 +85,111 @@ function AppLayout({ children }) {
                         </div>
                     </div>
 
-                    {isLoading ? (
-                        <p>Loading...</p>
-                    ) : (
-                        <div className="header-right-section d-flex align-items-center">
-                            <div className="profile-section">
-                                <div className="profile-img-section">
-                                    <img
-                                        className="user-icon"
-                                        src={`https://ui-avatars.com/api/?name=${userInfo.name}&background=026CD1&color=fff`}
-                                        alt="user"
-                                    />
-                                </div>
-                                <div
-                                    id="profileDropdown"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                    className="profile-desc-section">
-                                    <div className="d-flex justify-content-between">
-                                        <p className="profile-name">{userInfo.name}</p>
-                                        <span className="profile-arrow">
-                                            <span className="material-icons text-sm-20">
-                                                expand_more
-                                            </span>
+                    <div className="header-right-section d-flex align-items-center">
+                        <div className="profile-section">
+                            <div className="profile-img-section">
+                                <img
+                                    className="user-icon"
+                                    src={`https://ui-avatars.com/api/?name=${userInfo.name}&background=026CD1&color=fff`}
+                                    alt="user"
+                                />
+                            </div>
+                            <div
+                                id="profileDropdown"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                className="profile-desc-section">
+                                <div className="d-flex justify-content-between">
+                                    <p className="profile-name">{userInfo.name}</p>
+                                    <span className="profile-arrow">
+                                        <span className="material-icons text-sm-20">
+                                            expand_more
                                         </span>
-                                    </div>
-                                    <p className="profile-designation">
-                                        {userInfo.role_name} ({userInfo.wh_code})
-                                    </p>
+                                    </span>
                                 </div>
+                                <p className="profile-designation">
+                                    {userInfo.role_name} ({userInfo.wh_code})
+                                </p>
+                            </div>
 
-                                <div
-                                    id="profile-dropdown"
-                                    className="profile-dropdown dropdown-menu"
-                                    aria-labelledby="profileDropdown">
-                                    <div className="profile-dropdown-inner">
-                                        <ul className="profile-item">
-                                            <li className="profile-dropdown-item name-section profile-dropdown-border d-flex align-items-center">
-                                                <div className="dropdown-item-icon">
-                                                    <img
-                                                        className="profile-img rounded-circle"
-                                                        src="https://ui-avatars.com/api/?name=LH&background=026CD1&color=fff"
-                                                        alt="F R Summit"
-                                                    />
-                                                </div>
-                                                <div className="dropdown-item-title">
-                                                    <p>{userInfo.name}</p>
-                                                    <small className="text-dark">
-                                                        {userInfo.role_name}
-                                                    </small>
-                                                </div>
-                                            </li>
-                                            <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
-                                                <div className="dropdown-item-icon">
-                                                    <span className="material-icons">
-                                                        swap_horiz
-                                                    </span>
-                                                </div>
-                                                <div className="dropdown-item-title">
-                                                    Switch Role
-                                                </div>
-                                            </li>
-                                            <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
-                                                <div className="dropdown-item-icon">
-                                                    <span className="material-icons">settings</span>
-                                                </div>
-                                                <div className="dropdown-item-title">Settings</div>
-                                            </li>
-                                            <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
-                                                <div className="dropdown-item-icon">
-                                                    <span className="material-icons">help</span>
-                                                </div>
-                                                <div className="dropdown-item-title">Help</div>
-                                            </li>
+                            <div
+                                id="profile-dropdown"
+                                className="profile-dropdown dropdown-menu"
+                                aria-labelledby="profileDropdown">
+                                <div className="profile-dropdown-inner">
+                                    <ul className="profile-item">
+                                        <li className="profile-dropdown-item name-section profile-dropdown-border d-flex align-items-center">
+                                            <div className="dropdown-item-icon">
+                                                <img
+                                                    className="profile-img rounded-circle"
+                                                    src="https://ui-avatars.com/api/?name=LH&background=026CD1&color=fff"
+                                                    alt="F R Summit"
+                                                />
+                                            </div>
+                                            <div className="dropdown-item-title">
+                                                <p>{userInfo.name}</p>
+                                                <small className="text-dark">
+                                                    {userInfo.role_name}
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
+                                            <div className="dropdown-item-icon">
+                                                <span className="material-icons">swap_horiz</span>
+                                            </div>
+                                            <div className="dropdown-item-title">Switch Role</div>
+                                        </li>
+                                        <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
+                                            <div className="dropdown-item-icon">
+                                                <span className="material-icons">settings</span>
+                                            </div>
+                                            <div className="dropdown-item-title">Settings</div>
+                                        </li>
+                                        <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
+                                            <div className="dropdown-item-icon">
+                                                <span className="material-icons">help</span>
+                                            </div>
+                                            <div className="dropdown-item-title">Help</div>
+                                        </li>
 
-                                            <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
+                                        <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
+                                            <div className="dropdown-item-icon">
+                                                <span className="material-icons">password</span>
+                                            </div>
+                                            <div className="dropdown-item-title">
+                                                Reset Password
+                                            </div>
+                                        </li>
+                                        <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
+                                            <div className="dropdown-item-icon">
+                                                <span className="material-icons">lock</span>
+                                            </div>
+                                            <div className="dropdown-item-title">Lock Screen</div>
+                                        </li>
+                                        <li className="profile-dropdown-item">
+                                            <div
+                                                className="d-flex align-items-center"
+                                                onClick={onClickLogout}
+                                                role="button"
+                                                tabIndex="0">
                                                 <div className="dropdown-item-icon">
-                                                    <span className="material-icons">password</span>
+                                                    <span className="material-icons">logout</span>
                                                 </div>
-                                                <div className="dropdown-item-title">
-                                                    Reset Password
-                                                </div>
-                                            </li>
-                                            <li className="profile-dropdown-item profile-dropdown-border d-flex align-items-center">
-                                                <div className="dropdown-item-icon">
-                                                    <span className="material-icons">lock</span>
-                                                </div>
-                                                <div className="dropdown-item-title">
-                                                    Lock Screen
-                                                </div>
-                                            </li>
-                                            <li className="profile-dropdown-item">
-                                                <div
-                                                    className="d-flex align-items-center"
-                                                    onClick={onClickLogout}
-                                                    role="button"
-                                                    tabIndex="0">
-                                                    <div className="dropdown-item-icon">
-                                                        <span className="material-icons">
-                                                            logout
-                                                        </span>
-                                                    </div>
-                                                    <div className="dropdown-item-title">
-                                                        Logout
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                                <div className="dropdown-item-title">Logout</div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    )}
+                    </div>
                 </div>
             </header>
-            <SideBarMenu isOpen={isOpen} menuList={menuList} />
-            <main id="main-section" className="main-section">
-                {children}
-            </main>
+            <div className={`sidenavbar ${isOpen ? `expanded` : ''}`}>
+                <SideBarMenu isOpen={isOpen} menuList={menu} />
+            </div>
+            <main className="main-section">{children}</main>
             <footer id="footer" className="footer-section bg-danger d-flex align-items-center">
                 <div className="footer-inner text-center w-100 d-flex align-items-center">
                     <div className="d-flex text-white">

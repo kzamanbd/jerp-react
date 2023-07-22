@@ -4,19 +4,9 @@
 @import './global.css';
 
 
-// Color
-$primaryColor : #026CD1;
-$iceWhite : #FBFCFE;
-$bluishWhite : #E2EDFA;
-$colorRed : #DF2A43;
-$sidebarIconTextDefaultColor : #264667;
-$sideNavTransition : 0.5s;
-$menuSectionInnerTransition: 0.5s;
 
-$main_section_margin_top : 74px;
-$main_section_margin_left : 60px;
-$main_section_margin_bottom: 32px;
-// Main Section End
+// variables
+$sidebarWidth: 350px;
 
 html,
 body {
@@ -25,527 +15,284 @@ body {
     font-family: "Roboto", sans-serif !important;
 }
 
-#master-layout {
-    .header-section {
-        background: $iceWhite;
-        box-shadow: 0 0 5px #026CD129;
-        width: 100%;
-        // overflow: hidden;
-        position: fixed;
-        z-index: 5;
-        top: 0;
-        height: 74px;
+.header-section {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+    background: var(--ice-white);
+    border-bottom: 1px solid var(--border-color);
+    height: 48px;
+    padding: 0px 10px;
 
-        .header-inner {
-            width: 100%;
-            display: block;
-            overflow: hidden;
-            padding: 10px;
+    .header-icon {
+        position: relative;
+        color: var(--blue);
+        height: 35px;
+        text-align: center;
+        display: flex;
+        width: 35px;
+        border-radius: 50%;
+        background-color: var(--bluish-white);
+        align-items: center;
+        justify-content: center;
+        line-height: 35px;
 
-            .header-icon {
-                position: relative;
-                color: $primaryColor;
-                height: 35px;
-                text-align: center;
-                display: flex;
-                width: 35px;
-                border-radius: 50%;
-                background-color: $bluishWhite;
-                align-items: center;
-                justify-content: center;
-                line-height: 35px;
+        .header-circle-icon {
+            height: 12px;
+            width: 12px;
+            position: absolute;
+            background-color: #ff6600;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            top: 0;
+            left: 25px;
+        }
 
-                .header-circle-icon {
-                    height: 12px;
-                    width: 12px;
-                    position: absolute;
-                    background-color: #FF6600;
-                    border: 2px solid #FFFFFF;
-                    border-radius: 50%;
-                    top: 0;
-                    left: 25px;
-                }
+        .font-20 {
+            font-size: 20px;
+        }
+    }
 
-                .font-20 {
-                    font-size: 20px;
-                }
+    .header-icon[aria-expanded='true'] {
+        background-color: var(--blue);
+        color: #ffffff;
+    }
+
+    .hamburger-menu-section {
+        margin: 0 auto;
+        width: 50px;
+
+        .hamburger {
+            width: 35px;
+            background: var(--bluish-white);
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            font-size: 27px;
+            color: var(--blue);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .logo-section {
+        max-width: 230px;
+        padding: 0 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .group-logo {
+            height: 30px;
+        }
+    }
+
+    .group-name-section {
+        display: inline-block;
+        vertical-align: middle;
+
+        .group-name {
+            font-size: 22px;
+            color: var(--blue);
+            font-weight: 500;
+            margin: 0;
+            display: inline-block;
+            letter-spacing: -1px;
+            line-height: normal;
+        }
+    }
+
+    .group-selection-dropdown-section {
+        display: inline-block;
+        vertical-align: middle;
+
+        .group-icon {
+            transform: rotate(90deg);
+            transition: 0.1s;
+
+            &.header-icon[aria-expanded='true'] {
+                transform: rotate(180deg) !important;
             }
+        }
 
-            .header-icon[aria-expanded="true"] {
-                background-color: $primaryColor;
-                color: #ffffff;
-            }
+        .group-list-section {
+            width: 350px;
+            padding: 0;
+            border: none;
+            box-shadow: 0 0px 5px 0px rgb(2 108 209 / 16%);
+            top: 25px !important;
+            left: -78px !important;
+            background: #ffffff;
+            border-radius: 0;
 
-            .header-left-section {
-                .hamburger-menu-section {
-                    margin: 0 auto;
-                    width: 35px;
-                    text-align: center;
-                    background: $bluishWhite;
-                    height: 35px;
-                    border-radius: 50%;
+            .group-list {
+                max-height: 475px;
+                overflow-y: auto;
 
-                    .hamburger {
-                        font-size: 27px;
-                        color: $primaryColor;
-                        cursor: pointer;
-                        vertical-align: middle;
-                    }
+                .group-list-header {
+                    height: 56px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-bottom: 2px solid var(--bluish-white);
+                    color: var(--blue);
+                    font-size: 16px;
                 }
 
-                .logo-section {
-                    .group-logo {
-                        width: auto;
-                        height: auto;
-                    }
-                }
+                .company-list {
+                    margin: 0;
+                    list-style: none;
+                    padding: 0;
 
-                .group-name-section {
-                    display: inline-block;
-                    vertical-align: middle;
+                    .company-single-item {
+                        padding: 12px 10px;
+                        border-bottom: 1px solid #ddd;
 
-                    .group-name {
-                        font-size: 24px;
-                        color: $primaryColor;
-                        font-weight: 500;
-                        margin: 0;
-                        display: inline-block;
-                        letter-spacing: -1px;
-                    }
-                }
-
-                .group-selection-dropdown-section {
-                    display: inline-block;
-                    vertical-align: middle;
-
-                    .group-icon {
-                        transform: rotate(90deg);
-                        transition: .1s;
-
-                        &.header-icon[aria-expanded="true"] {
-                            transform: rotate(180deg) !important;
+                        &:hover {
+                            background: var(--bluish-white);
                         }
-                    }
 
-                    .group-list-section {
-                        width: 350px;
-                        padding: 0;
-                        border: none;
-                        box-shadow: 0 0px 5px 0px rgb(2 108 209 / 16%);
-                        top: 25px !important;
-                        left: -78px !important;
-                        background: #ffffff;
-                        border-radius: 0;
-
-                        .group-list {
-                            max-height: 475px;
-                            overflow-y: auto;
-
-                            .group-list-header {
-                                height: 56px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                border-bottom: 2px solid $bluishWhite;
-                                color: $primaryColor;
-                                font-size: 16px;
-                            }
-
-                            .company-list {
-                                margin: 0;
-                                list-style: none;
-                                padding: 0;
-
-                                .company-single-item {
-                                    padding: 12px 10px;
-                                    border-bottom: 1px solid #ddd;
-
-                                    &:hover {
-                                        background: $bluishWhite;
-                                    }
-
-                                    .company-name {
-                                        color: $primaryColor;
-                                        margin: 0;
-                                        font-size: 16px;
-                                        font-weight: 400;
-                                        width: 100%;
-                                        cursor: pointer;
-                                    }
-                                }
-                            }
-
-                            .group-footer {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                height: 40px;
-
-                                .link {
-                                    text-transform: uppercase;
-                                    color: black;
-                                    font-size: 14px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            .header-right-section {
-                padding: 5px 0 4px;
-
-                .chat-section {
-                    .chat-dropdown {
-                        color: #222;
-                        background: #fff;
-                        width: 350px;
-                        box-shadow: 0 0px 5px 0px rgb(2 108 209 / 16%);
-                        top: 25px !important;
-                        left: -160px !important;
-                        border-radius: 0;
-                        padding: 0;
-                        border: none;
-
-                        .chat-inner-section {
-                            max-height: 475px;
-                            overflow-y: auto;
-
-                            .chat-header {
-                                height: 56px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                border-bottom: 1px solid $bluishWhite;
-                                color: $primaryColor;
-                                font-size: 16px;
-                            }
-
-                            .all-chat-section {
-                                height: 40px;
-                                padding: 0 14px;
-                                border-bottom: 1px solid #026cd11a;
-                                font-weight: 500;
-                            }
-
-                            .chat-dropdown-item {
-                                padding: 8px 14px;
-                                border-bottom: 1px solid $bluishWhite;
-
-                                .icon-section {
-                                    width: 35px;
-                                    height: 35px;
-                                    background: $primaryColor;
-                                    color: #ffffff;
-                                    border-radius: 50%;
-                                    padding: 5px;
-                                }
-
-                                .title-description {
-                                    padding-left: 10px;
-
-                                    .title {
-                                        font-size: 12px;
-                                        font-weight: 500;
-                                        color: $primaryColor;
-                                    }
-
-                                    .description {
-                                        overflow: hidden;
-                                        margin-top: 3px;
-                                        font-size: 10px;
-                                        color: #8E9397;
-                                    }
-                                }
-
-                                .time-section {
-                                    line-height: 1;
-                                    margin: 0;
-                                    line-height: 1;
-                                    font-size: 12px;
-                                    color: #1E1F20;
-                                }
-
-                                &:hover {
-                                    background: #026CD11A;
-                                    cursor: pointer;
-                                }
-                            }
-
-                            .chat-footer {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                height: 40px;
-
-                                .link {
-                                    text-transform: uppercase;
-                                    color: black;
-                                    font-size: 14px;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .notification-section {
-                    margin: 0 45px;
-                    cursor: pointer;
-
-                    .notification-dropdown {
-                        width: 350px;
-                        padding: 0;
-                        box-shadow: 0 0px 5px 0px rgb(2 108 209 / 16%);
-                        top: 25px !important;
-                        color: #222;
-                        left: -145px !important;
-                        border-radius: 0;
-                        border: none;
-
-                        .notification-inner-section {
-                            max-height: 475px;
-                            overflow-y: auto;
-
-                            .notification-header {
-                                height: 56px;
-                                border-bottom: 1px solid $bluishWhite;
-
-                                .notification-txt {
-                                    font-size: 16px;
-                                    padding: 4px 40px;
-                                    color: $primaryColor;
-                                    text-align: center;
-                                    line-height: 1;
-                                }
-                            }
-
-                            .notification-unordered-list {
-                                .notification-dropdown-item {
-                                    min-height: 80px;
-                                    border-bottom: 1px solid $bluishWhite;
-                                    padding: 10px 14px;
-
-                                    .title-description-icon {
-                                        .notification-icon {
-                                            .rounded-image {
-                                                border-radius: 50%;
-                                                width: 40px;
-                                                height: 40px;
-                                            }
-                                        }
-
-                                        .title-description-section {
-                                            padding-left: 10px;
-
-                                            .title {
-                                                font-size: 12px;
-                                                font-weight: 500;
-                                                color: $primaryColor;
-                                            }
-
-                                            .description {
-                                                overflow: hidden;
-                                                margin-top: 3px;
-                                                font-size: 10px;
-                                                color: #8E9397;
-                                            }
-                                        }
-                                    }
-
-                                    .action-section {
-                                        position: relative;
-
-                                        .time-section {
-                                            line-height: 1;
-
-                                            span {
-                                                margin: 0;
-                                                line-height: 1;
-                                                font-size: 12px;
-                                                color: #1E1F20;
-                                            }
-                                        }
-
-                                        .attachment-section {
-                                            position: absolute;
-                                            bottom: -15px;
-                                            right: 0;
-                                            color: $primaryColor;
-                                            width: 26px;
-                                            height: 26px;
-                                            background: #F2F7FC;
-                                            border-radius: 50%;
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;
-
-                                            span.material-icons {
-                                                font-size: 18px;
-                                            }
-                                        }
-                                    }
-
-                                    &:hover {
-                                        background: $bluishWhite;
-                                    }
-
-                                }
-
-                                .notification-btn-group {
-                                    .notification-btn {
-                                        border: 1px solid $primaryColor;
-                                        background: #ffffff;
-                                        border-radius: 4px;
-                                        color: $primaryColor;
-                                        font-size: 14px;
-                                        padding: 3px 10px;
-                                        cursor: pointer;
-                                        text-align: center;
-
-                                        &.btn-accept {
-                                            background: $primaryColor;
-                                            color: #FFFFFF;
-                                        }
-                                    }
-                                }
-                            }
-
-                            .notification-footer {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                height: 40px;
-
-                                .link {
-                                    text-transform: uppercase;
-                                    color: black;
-                                    font-size: 14px;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .profile-section {
-                    cursor: pointer;
-
-                    .profile-img-section {
-                        display: inline-block;
-                        margin-right: 10px;
-                        border: 2px solid $bluishWhite;
-                        border-radius: 50%;
-
-                        img.user-icon {
-                            width: 36px;
-                            height: 36px;
-                            border-radius: 50%;
-                            vertical-align: bottom;
-                        }
-                    }
-
-                    .profile-desc-section {
-                        display: inline-block;
-                        text-align: left;
-                        vertical-align: bottom;
-
-                        .profile-name {
+                        .company-name {
+                            color: var(--blue);
                             margin: 0;
-                            font-size: 14px;
-                            color: $primaryColor;
-                            font-weight: 500;
-                            margin-bottom: 2px;
-                            display: inline-block;
-                        }
-
-                        .profile-arrow {
-                            width: auto;
-                            display: inline-block;
-                            vertical-align: middle;
+                            font-size: 16px;
+                            font-weight: 400;
+                            width: 100%;
                             cursor: pointer;
-                            color: $primaryColor;
-                            margin-left: 8px;
+                        }
+                    }
+                }
 
-                            span {
+                .group-footer {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 40px;
+
+                    .link {
+                        text-transform: uppercase;
+                        color: black;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    .profile-section {
+        cursor: pointer;
+        position: relative;
+
+        .profile-img-section {
+            display: inline-block;
+            margin-right: 10px;
+            border: 2px solid var(--bluish-white);
+            border-radius: 50%;
+
+            .user-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                vertical-align: bottom;
+                object-fit: cover;
+            }
+        }
+
+        .profile-desc-section {
+            display: inline-block;
+            text-align: left;
+            vertical-align: bottom;
+
+            .profile-name {
+                margin: 0;
+                font-size: 14px;
+                color: var(--blue);
+                font-weight: 500;
+                margin-bottom: 2px;
+                display: inline-block;
+            }
+
+            .profile-arrow {
+                width: auto;
+                display: inline-block;
+                vertical-align: middle;
+                cursor: pointer;
+                color: var(--blue);
+                margin-left: 8px;
+
+                span {
+                    font-size: 20px;
+                    transition: 0.5s;
+                }
+            }
+
+            .profile-designation {
+                margin: 0;
+                font-size: 12px;
+            }
+        }
+
+        .profile-desc-section[aria-expanded='true'] {
+            .profile-arrow {
+                span {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        .profile-dropdown {
+            width: 280px;
+            top: 5px !important;
+            border-radius: 4px;
+            background: #ffffff;
+
+            .profile-dropdown-inner {
+                .profile-item {
+                    margin: 0;
+                    padding: 0;
+
+                    .profile-dropdown-item {
+                        &.profile-dropdown-border {
+                            border-bottom: 1px solid var(--bluish-white);
+                        }
+
+                        &.name-section {
+                            .dropdown-item-title {
+                                color: black;
+                            }
+                        }
+
+                        padding: 10px;
+
+                        .dropdown-item-icon {
+                            width: 30px;
+                            height: 30px;
+                            background: var(--bluish-white);
+                            border-radius: 50%;
+                            margin-right: 5px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            text-align: center;
+                            margin-right: 8px;
+                            color: var(--blue);
+
+                            .material-icons {
                                 font-size: 20px;
-                                transition: .5s;
+                            }
+
+                            .profile-img {
+                                width: 35px;
+                                height: 35px;
+                                object-fit: cover;
                             }
                         }
 
-                        .profile-designation {
-                            margin: 0;
-                            font-size: 12px;
-                        }
-                    }
-
-                    .profile-desc-section[aria-expanded="true"] {
-                        .profile-arrow {
-                            span {
-                                transform: rotate(180deg);
-                            }
-                        }
-                    }
-
-                    .profile-dropdown {
-                        width: 300px;
-                        padding: 0;
-                        margin: 0;
-                        box-shadow: 0 0px 5px 0px rgb(2 108 209 / 16%);
-                        top: 25px !important;
-                        border-radius: 0;
-                        background: #ffffff;
-
-                        .profile-dropdown-inner {
-                            .profile-item {
-                                margin: 0;
-                                padding: 0;
-
-                                .profile-dropdown-item {
-                                    &.profile-dropdown-border {
-                                        border-bottom: 1px solid $bluishWhite;
-                                    }
-
-                                    &.name-section {
-                                        .dropdown-item-title {
-                                            color: black;
-                                        }
-                                    }
-
-                                    padding: 10px;
-
-                                    .dropdown-item-icon {
-                                        width: 30px;
-                                        height: 30px;
-                                        background: $bluishWhite;
-                                        border-radius: 50%;
-                                        margin-right: 5px;
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                        text-align: center;
-                                        margin-right: 8px;
-                                        color: $primaryColor;
-
-                                        .material-icons {
-                                            font-size: 20px;
-                                        }
-
-                                        .profile-img {
-                                            width: 35px;
-                                            height: 35px;
-                                        }
-                                    }
-
-                                    &:hover {
-                                        // .dropdown-item-icon {
-                                        //     background: $primaryColor;
-                                        //     color: #fff;
-                                        // }
-
-                                        .dropdown-item-title {
-                                            color: $primaryColor;
-                                        }
-                                    }
-                                }
+                        &:hover {
+                            .dropdown-item-title {
+                                color: var(--blue);
                             }
                         }
                     }
@@ -553,210 +300,297 @@ body {
             }
         }
     }
+}
 
-    .side-navbar {
+.sidenavbar {
+    width: 60px;
+    background: var(--ice-white);
+    z-index: 99;
+    top: 48px;
+    bottom: 28px;
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    transition: 0.5s;
+    box-shadow: 0 0 3px 0 rgb(2 108 209 / 16%);
+    scrollbar-width: none;
+
+    .menu-section-inner {
+        position: absolute;
+        left: 0 !important;
         width: 60px;
-        background: $iceWhite;
-        z-index: 99;
-        top: 74px;
-        bottom: 32px;
-        position: fixed;
-        overflow-y: auto;
-        overflow-x: hidden;
-        padding: 0;
-        transition: $sideNavTransition;
-        box-shadow: 0 4px 3px 0 rgb(2 108 209 / 16%);
-        scrollbar-width: none;
+        transition: 0.5s;
+        transition: 0.5s;
 
-        .side-nav-menu-section {
-            display: block;
-            height: 100%;
+        .search-section {
+            margin-bottom: 10px;
+            position: fixed;
+            z-index: 99;
+            background: #fff;
+            width: 60px;
+            transition: 0.5s;
+            padding: 20px 10px 10px 10px;
 
-            .menu-section-area {
-                display: block;
-                height: 100%;
+            .form-group {
+                margin: 0;
+                position: relative;
+                display: inline-block;
+                vertical-align: middle;
+                width: 100%;
 
-                .menu-section-inner {
-                    position: absolute;
-                    left: 0 !important;
-                    width: 60px;
-                    transition: .5s;
-                    transition: $menuSectionInnerTransition;
+                &.has-search {
+                    .form-control {
+                        padding-left: 2rem;
+                        padding-right: 0.5rem;
+                    }
 
-                    .search-section {
-                        margin-bottom: 10px;
-                        position: fixed;
-                        z-index: 99;
-                        background: #FFF;
-                        width: 60px;
-                        transition: .5s;
-                        padding: 20px 10px 10px 10px;
+                    .form-control-feedback {
+                        position: absolute;
+                        z-index: 2;
+                        display: block;
+                        width: 12px;
+                        height: 12px;
+                        text-align: center;
+                        pointer-events: none;
+                        color: var(--blue);
+                        top: 9px;
+                        left: 9px;
+                        border: none;
+                    }
 
-                        .form-group {
-                            margin: 0;
-                            position: relative;
-                            display: inline-block;
-                            vertical-align: middle;
-                            width: 100%;
+                    input {
+                        margin: 0;
+                        border-bottom: none;
+                        border: 1px solid #e7f2fc;
+                        box-sizing: inherit;
+                        font-size: 14px;
+                        height: auto;
+                        padding: 8px 0;
+                        border-radius: 10px;
+                        width: 38px;
+                        transition: 0.5s !important;
 
-                            &.has-search {
-                                .form-control {
-                                    padding-left: 2rem;
-                                }
+                        &::placeholder {
+                            opacity: 0;
+                        }
 
-                                .form-control-feedback {
-                                    position: absolute;
-                                    z-index: 2;
-                                    display: block;
-                                    width: 12px;
-                                    height: 12px;
-                                    text-align: center;
-                                    pointer-events: none;
-                                    color: $primaryColor;
-                                    top: 9px;
-                                    left: 9px;
-                                    border: none;
-                                }
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
 
-                                input {
-                                    margin: 0;
-                                    border-bottom: none;
-                                    border: 1px solid #E7F2FC;
-                                    box-sizing: inherit;
-                                    font-size: 14px;
-                                    height: auto;
-                                    padding: 8px 0;
-                                    border-radius: 10px;
-                                    width: 38px;
-                                    transition: .5s !important;
+        .dynamic-menu {
+            margin: 70px 0 25px 0;
+            padding-top: 15px;
 
-                                    &::placeholder {
-                                        opacity: 0;
-                                    }
+            .primary-menu-section {
+                padding: 0px 10px 20px 10px !important;
 
-                                    &:focus {
-                                        box-shadow: none;
-                                    }
-                                }
-                            }
+                .primary-menu-section-inner {
+                    display: block;
+                    width: 100%;
+                    line-height: 0;
+                    margin: 2px 0;
+                    position: relative;
+
+                    .primary-menu-icon-inner {
+                        display: inline-block;
+
+                        .primary-icon {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 24px;
+                            width: 24px;
+                            color: #264667;
                         }
                     }
 
-                    .dynamic-menu {
-                        margin: 70px 0 25px 0;
-                        padding-top: 15px;
+                    .right-arrow-icon {
+                        height: 24px;
+                        width: 24px;
+                        transition: 0.5s;
+                    }
 
-                        .primary-menu-section {
-                            padding: 0px 10px 20px 10px !important;
+                    .primary-menu-area-inner {
+                        display: inline-block;
+                        width: 100%;
 
-                            .primary-menu-section-inner {
+                        .primary-menu-name-section {
+                            line-height: 0;
+                            cursor: pointer;
+                            border-radius: 4px;
+                            padding: 10px 8px;
+                            display: flex;
+                            align-items: center;
+
+                            &:hover {
+                                background: var(--bluish-white);
+
+                                .primary-icon {
+                                    color: var(--blue);
+                                }
+
+                                .primary-menu-name {
+                                    color: var(--blue);
+                                }
+                            }
+
+                            .primary-menu-name {
+                                margin: 0;
+                                font-size: 15px;
+                                font-weight: 500;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                width: 100%;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                text-align: left;
+                                color: #264667;
+                                cursor: pointer;
+                                margin-left: 15px;
+                                line-height: 1;
+                                text-transform: uppercase;
+                                transition: 0.5s;
+                                opacity: 0;
+                                transform: scale(0);
+                            }
+                        }
+
+                        .primary-menu-name-section[aria-expanded='true'] {
+                            color: var(--blue) !important;
+
+                            .primary-icon {
+                                color: var(--blue);
+                            }
+
+                            .primary-menu-name {
+                                color: var(--blue) !important;
+
+                                .right-arrow-icon {
+                                    transform: rotate(90deg);
+                                }
+                            }
+                        }
+
+                        .secondary-menu-section {
+                            transition: 0.5s;
+                            opacity: 1;
+                            margin-left: 30px;
+
+                            &.collapse {
+                                &:not(.show) {
+                                    transition: 0.5s;
+                                    display: none;
+                                }
+                            }
+
+                            .secondary-menu-section-inner {
                                 display: block;
                                 width: 100%;
                                 line-height: 0;
                                 margin: 2px 0;
                                 position: relative;
 
-                                .primary-menu-icon-inner {
-                                    display: inline-block;
-
-                                    .primary-icon {
-                                        display: block;
-                                        height: 24px;
+                                .secondary-menu-icon-inner {
+                                    .secondary-icon {
                                         width: 24px;
-                                        color: $sidebarIconTextDefaultColor;
+                                        height: 24px;
+
+                                        .shape {
+                                            width: 16px;
+                                            height: 8px;
+                                            background: #264667;
+                                            display: block;
+                                            border-radius: 6px;
+                                            cursor: pointer;
+                                        }
                                     }
                                 }
 
-                                .right-arrow-icon {
-                                    height: 24px;
-                                    width: 24px;
-                                    transition: .5s;
-                                }
-
-                                .primary-menu-area-inner {
+                                .secondary-menu-area-inner {
                                     display: inline-block;
                                     width: 100%;
 
-                                    .primary-menu-name-section {
+                                    .secondary-menu-name-section {
                                         line-height: 0;
                                         cursor: pointer;
-                                        border-radius: 4px;
                                         padding: 10px 8px;
+                                        border-radius: 4px;
                                         display: flex;
                                         align-items: center;
+                                        justify-content: space-between;
 
                                         &:hover {
-                                            background: $bluishWhite;
-
-                                            .primary-icon {
-                                                color: $primaryColor;
-                                            }
-
-                                            .primary-menu-name {
-                                                color: $primaryColor;
-                                            }
+                                            background: var(--bluish-white);
+                                            color: var(--blue);
                                         }
 
-                                        .primary-menu-name {
+                                        .secondary-menu-name {
                                             margin: 0;
-                                            font-size: 15px;
+                                            font-size: 14px;
                                             font-weight: 500;
                                             display: inline-block;
                                             width: 100%;
                                             white-space: nowrap;
-                                            overflow: hidden;
+                                            overflow: hidden !important;
                                             text-overflow: ellipsis;
                                             text-align: left;
-                                            color: $sidebarIconTextDefaultColor;
                                             cursor: pointer;
-                                            margin-left: 15px;
                                             line-height: 1;
-                                            text-transform: uppercase;
-                                            transition: .5s;
-                                            opacity: 0;
-                                            transform: scale(0);
+                                            position: relative;
+                                            margin-left: 6px;
+                                            color: #000;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: space-between;
                                         }
                                     }
 
-                                    .primary-menu-name-section[aria-expanded="true"] {
-                                        color: $primaryColor !important;
+                                    .secondary-menu-name-section[aria-expanded='true'] {
+                                        color: var(--blue) !important;
 
-                                        .primary-icon {
-                                            color: $primaryColor;
-                                        }
-
-                                        .primary-menu-name {
-                                            color: $primaryColor !important;
+                                        .secondary-menu-name {
+                                            color: var(--blue) !important;
 
                                             .right-arrow-icon {
                                                 transform: rotate(90deg);
                                             }
                                         }
-                                    }
 
-                                    .secondary-menu-section {
-                                        transition: .5s;
-                                        opacity: 1;
-                                        margin-left: 30px;
-
-                                        &.collapse {
-                                            &:not(.show) {
-                                                transition: .5s;
-                                                display: none;
+                                        .secondary-menu-icon-inner {
+                                            .secondary-icon {
+                                                .shape {
+                                                    background: var(--blue);
+                                                }
                                             }
                                         }
+                                    }
 
-                                        .secondary-menu-section-inner {
+                                    .tertiary-menu-section {
+                                        margin-left: 30px;
+
+                                        .tertiary-menu-section-inner {
                                             display: block;
                                             width: 100%;
                                             line-height: 0;
                                             margin: 2px 0;
                                             position: relative;
 
-                                            .secondary-menu-icon-inner {
-                                                .secondary-icon {
-                                                    width: 24px;
+                                            .tertiary-menu-icon-inner {
+                                                .tertiary-icon {
                                                     height: 24px;
+                                                    width: 18px;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: flex-start;
+                                                    color: #264667;
 
                                                     .shape {
                                                         width: 16px;
@@ -769,26 +603,30 @@ body {
                                                 }
                                             }
 
-                                            .secondary-menu-area-inner {
+                                            .tertiary-menu-area-inner {
                                                 display: inline-block;
                                                 width: 100%;
 
-                                                .secondary-menu-name-section {
+                                                .tertiary-menu-name-section {
                                                     line-height: 0;
                                                     cursor: pointer;
-                                                    padding: 10px 8px;
                                                     border-radius: 4px;
+                                                    padding: 8px 8px;
+                                                    display: flex;
+                                                    align-items: center;
 
                                                     &:hover {
-                                                        background: $bluishWhite;
-                                                        color: $primaryColor;
+                                                        background: var(--bluish-white);
+                                                        color: var(--blue);
                                                     }
 
-                                                    .secondary-menu-name {
+                                                    .tertiary-menu-name {
                                                         margin: 0;
                                                         font-size: 14px;
-                                                        font-weight: 500;
-                                                        display: inline-block;
+                                                        font-weight: normal;
+                                                        display: flex;
+                                                        align-items: center;
+                                                        justify-content: space-between;
                                                         width: 100%;
                                                         white-space: nowrap;
                                                         overflow: hidden !important;
@@ -797,81 +635,63 @@ body {
                                                         cursor: pointer;
                                                         line-height: 1;
                                                         position: relative;
-                                                        margin-left: 6px;
-                                                        color: #000
+                                                        margin-left: 5px;
                                                     }
                                                 }
 
-                                                .secondary-menu-name-section[aria-expanded="true"] {
-                                                    color: $primaryColor !important;
+                                                .tertiary-menu-name-section[aria-expanded='true'] {
+                                                    color: var(--blue) !important;
 
-                                                    .secondary-menu-name {
-                                                        color: $primaryColor !important;
-
+                                                    .tertiary-menu-name {
                                                         .right-arrow-icon {
                                                             transform: rotate(90deg);
                                                         }
                                                     }
-
-                                                    .secondary-menu-icon-inner {
-                                                        .secondary-icon {
-                                                            .shape {
-                                                                background: $primaryColor;
-                                                            }
-                                                        }
-                                                    }
                                                 }
 
-                                                .tertiary-menu-section {
+                                                .tertiary-poly-menu-section {
+                                                    // display: block;
                                                     margin-left: 30px;
 
-                                                    .tertiary-menu-section-inner {
+                                                    .tertiary-poly-menu-section-inner {
                                                         display: block;
                                                         width: 100%;
                                                         line-height: 0;
                                                         margin: 2px 0;
                                                         position: relative;
 
-                                                        .tertiary-menu-icon-inner {
-                                                            .tertiary-icon {
+                                                        .tertiary-poly-menu-icon-inner {
+                                                            .tertiary-poly-icon {
                                                                 height: 24px;
-                                                                width: 18px;
+                                                                width: 24px;
                                                                 display: flex;
                                                                 align-items: center;
                                                                 justify-content: flex-start;
-                                                                color: #264667;
 
-                                                                .shape {
-                                                                    width: 16px;
-                                                                    height: 8px;
-                                                                    background: #264667;
-                                                                    display: block;
-                                                                    border-radius: 6px;
-                                                                    cursor: pointer;
+                                                                span.material-icons {
+                                                                    font-size: 20px;
                                                                 }
                                                             }
                                                         }
 
-                                                        .tertiary-menu-area-inner {
+                                                        .tertiary-poly-menu-area-inner {
                                                             display: inline-block;
                                                             width: 100%;
 
-                                                            .tertiary-menu-name-section {
+                                                            .tertiary-poly-menu-name-section {
                                                                 line-height: 0;
                                                                 cursor: pointer;
                                                                 border-radius: 4px;
-                                                                padding: 8px 8px;
-                                                                display: flex;
-                                                                align-items: center;
+                                                                padding: 6px 5px;
 
                                                                 &:hover {
-                                                                    background: $bluishWhite;
-                                                                    color: $primaryColor;
+                                                                    background: var(--bluish-white);
+                                                                    color: var(--blue);
                                                                 }
 
-                                                                .tertiary-menu-name {
+                                                                .tertiary-poly-menu-name {
                                                                     margin: 0;
-                                                                    font-size: 14px;
+                                                                    font-size: 13px;
                                                                     font-weight: normal;
                                                                     display: inline-block;
                                                                     width: 100%;
@@ -881,76 +701,6 @@ body {
                                                                     text-align: left;
                                                                     cursor: pointer;
                                                                     line-height: 1;
-                                                                    position: relative;
-                                                                    margin-left: 5px;
-                                                                }
-                                                            }
-
-                                                            .tertiary-menu-name-section[aria-expanded="true"] {
-                                                                color: $primaryColor !important;
-
-                                                                .tertiary-menu-name {
-                                                                    .right-arrow-icon {
-                                                                        transform: rotate(90deg);
-                                                                    }
-                                                                }
-                                                            }
-
-                                                            .tertiary-poly-menu-section {
-                                                                // display: block;
-                                                                margin-left: 30px;
-
-                                                                .tertiary-poly-menu-section-inner {
-                                                                    display: block;
-                                                                    width: 100%;
-                                                                    line-height: 0;
-                                                                    margin: 2px 0;
-                                                                    position: relative;
-
-                                                                    .tertiary-poly-menu-icon-inner {
-                                                                        .tertiary-poly-icon {
-                                                                            height: 24px;
-                                                                            width: 24px;
-                                                                            display: flex;
-                                                                            align-items: center;
-                                                                            justify-content: flex-start;
-
-                                                                            span.material-icons {
-                                                                                font-size: 20px;
-                                                                            }
-                                                                        }
-                                                                    }
-
-                                                                    .tertiary-poly-menu-area-inner {
-                                                                        display: inline-block;
-                                                                        width: 100%;
-
-                                                                        .tertiary-poly-menu-name-section {
-                                                                            line-height: 0;
-                                                                            cursor: pointer;
-                                                                            border-radius: 4px;
-                                                                            padding: 6px 5px;
-
-                                                                            &:hover {
-                                                                                background: $bluishWhite;
-                                                                                color: $primaryColor;
-                                                                            }
-
-                                                                            .tertiary-poly-menu-name {
-                                                                                margin: 0;
-                                                                                font-size: 13px;
-                                                                                font-weight: normal;
-                                                                                display: inline-block;
-                                                                                width: 100%;
-                                                                                white-space: nowrap;
-                                                                                overflow: hidden !important;
-                                                                                text-overflow: ellipsis;
-                                                                                text-align: left;
-                                                                                cursor: pointer;
-                                                                                line-height: 1;
-                                                                            }
-                                                                        }
-                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -963,327 +713,240 @@ body {
                             }
                         }
                     }
-
-                    .bottom-logo-section {
-                        position: fixed;
-                        bottom: 32px;
-                        width: 60px;
-                        background: #FFFFFF;
-                        z-index: 99;
-                        border-top: 1px solid #E7F2FC;
-                        height: 32px;
-                        // text-align: center;
-                        // display: flex;
-                        // align-items: center;
-                        font-size: 11px;
-                        // justify-content: center;
-                        transition: .5s;
-
-                        .app-info {
-                            display: block;
-                            position: absolute;
-                            height: 24px;
-                            width: 24px;
-                            color: #DEDEDE;
-                        }
-
-                        .app-version {
-                            transition: .5s;
-                            opacity: 0;
-                            transform: scale(0);
-
-                            .app-name {
-                                color: $primaryColor;
-                            }
-                        }
-                    }
-
-
                 }
             }
         }
 
-        &.expanded {
-            width: 350px !important;
-            transition: .5s !important;
+        .bottom-logo-section {
+            position: fixed;
+            bottom: 28px;
+            width: 60px;
+            background: #ffffff;
+            z-index: 99;
+            border-top: 1px solid #e7f2fc;
+            font-size: 11px;
+            transition: 0.5s;
 
-            .side-nav-menu-section {
-                .menu-section-area {
-                    .menu-section-inner {
-                        width: 350px !important;
-                        transition: .5s !important;
+            .app-info {
+                display: block;
+                position: absolute;
+                height: 24px;
+                width: 24px;
+                color: #dedede;
+            }
 
-                        .search-section {
-                            width: 350px !important;
-                            transition: .5s !important;
-                            padding: 20px 10px 10px 10px !important;
+            .app-version {
+                transition: 0.5s;
+                opacity: 0;
+                transform: scale(0);
 
-                            input {
-                                width: 100% !important;
-                                transition: .5s !important;
-                                border-radius: 4px !important;
-
-                                &::placeholder {
-                                    opacity: 1 !important;
-                                }
-                            }
-                        }
-
-                        .primary-menu-section-inner {
-                            .primary-menu-name-section {
-                                .primary-menu-name {
-                                    transition: .5s !important;
-                                    opacity: 1 !important;
-                                    transform: scale(1) !important;
-                                }
-                            }
-
-                        }
-
-                        .bottom-logo-section {
-                            width: 350px !important;
-
-                            .app-info {
-                                display: none;
-                            }
-
-                            .app-version {
-                                opacity: 1 !important;
-                                transform: scale(1) !important;
-                            }
-                        }
-                    }
+                .app-name {
+                    color: var(--blue);
                 }
             }
-        }
-
-        // hover style
-
-        &:hover {
-            width: 350px !important;
-            transition: .5s !important;
-
-            .side-nav-menu-section {
-                .menu-section-area {
-                    .menu-section-inner {
-                        width: 350px !important;
-                        transition: .5s !important;
-
-                        .search-section {
-                            width: 350px !important;
-                            transition: .5s !important;
-                            padding: 20px 10px 10px 10px !important;
-
-                            input {
-                                width: 100% !important;
-                                transition: .5s !important;
-                                border-radius: 4px !important;
-
-                                &::placeholder {
-                                    opacity: 1 !important;
-                                }
-                            }
-                        }
-
-                        .primary-menu-section-inner {
-                            .primary-menu-name-section {
-                                .primary-menu-name {
-                                    transition: .5s !important;
-                                    transform: scale(1) !important;
-                                    opacity: 1 !important;
-                                }
-                            }
-
-                        }
-
-                        .bottom-logo-section {
-                            width: 350px !important;
-
-                            .app-info {
-                                display: none;
-                            }
-
-                            .app-version {
-                                opacity: 1 !important;
-                                transform: scale(1) !important;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        &:not(:hover) {
-            .side-nav-menu-section {
-                .menu-section-area {
-                    .menu-section-inner {
-                        .primary-menu-section-inner {
-                            .secondary-menu-section {
-                                opacity: 0;
-                                transition: .5s !important;
-                                display: none !important;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        &::-webkit-scrollbar {
-            width: 0px;
-        }
-
-        &::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 5px grey;
-            border-radius: 10px;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background: #168fff;
-            border-radius: 10px;
-        }
-
-        &::-webkit-scrollbar-thumb:hover {
-            background: #004e98;
         }
     }
 
-    .main-section {
-        transition: margin-left 0.5s;
-        margin-left: $main_section_margin_left;
-        margin-top: $main_section_margin_top;
-        margin-bottom: $main_section_margin_bottom;
-        min-height: calc(100vh - (74px + 32px));
+    &.expanded {
+        width: $sidebarWidth !important;
+        transition: 0.5s !important;
+
+        .menu-section-inner {
+            width: $sidebarWidth !important;
+            transition: 0.5s !important;
+
+            .search-section {
+                width: $sidebarWidth !important;
+                transition: 0.5s !important;
+                padding: 20px 10px 10px 10px !important;
+
+                input {
+                    width: 100% !important;
+                    transition: 0.5s !important;
+                    border-radius: 4px !important;
+
+                    &::placeholder {
+                        opacity: 1 !important;
+                    }
+                }
+            }
+
+            .primary-menu-section-inner {
+                .primary-menu-name-section {
+                    .primary-menu-name {
+                        transition: 0.5s !important;
+                        opacity: 1 !important;
+                        transform: scale(1) !important;
+                    }
+                }
+            }
+
+            .bottom-logo-section {
+                width: $sidebarWidth !important;
+
+                .app-info {
+                    display: none;
+                }
+
+                .app-version {
+                    opacity: 1 !important;
+                    transform: scale(1) !important;
+                }
+            }
+        }
     }
 
-    .footer-section {
-        width: 100%;
-        position: fixed;
-        bottom: 0;
-        font-size: 12px;
-        height: 32px;
-        background-color: $primaryColor;
+    &:not(:hover) {
+        .menu-section-inner {
+            .primary-menu-section-inner {
+                .secondary-menu-section {
+                    opacity: 0;
+                    transition: 0.5s !important;
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #168fff;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #004e98;
     }
 }
 
-@media only screen and (max-width: 1000px) {
-    #master-layout {
-        .header.section {
-            .header-inner {
-                .header-left-section {
-                    .logo-section {
-                        width: 180px;
+.main-section {
+    transition: margin-left 0.5s;
+    margin-left: 60px;
+    margin-top: 48px;
+    margin-bottom: 28px;
+    min-height: calc(100vh - (48px + 28px));
+}
 
-                        img {
-                            width: 100% !important;
-                        }
+.footer-section {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    font-size: 12px;
+    height: 28px;
+    background-color: var(--blue);
+
+    &.development {
+        background-color: var(--red);
+    }
+
+    &.testing {
+        background-color: var(--yellow);
+    }
+
+    &.production {
+        background-color: var(--blue);
+    }
+
+    &.staging {
+        background-color: var(--red);
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .header-section {
+        .logo-section {
+            max-width: 180px;
+
+            img {
+                width: 100% !important;
+            }
+        }
+
+        .group-name-section {
+            p {
+                &.group-name {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .profile-section {
+            .profile-img-section {
+                margin-right: 10px;
+            }
+
+            .profile-desc-section {
+                p {
+                    &.profile-name {
+                        font-size: 12px;
                     }
 
-                    .group-name-section {
-                        p {
-                            &.group-name {
-                                font-size: 18px;
-                            }
-                        }
+                    &.profile-designation {
+                        font-size: 10px;
                     }
                 }
 
-                .header-right-section {
-                    .chat-section {
-                        .chat-icon-chat {
-                            font-size: 20px;
-                        }
-
-                        span {
-                            &.chat-circle {
-                                width: 10px;
-                                height: 10px;
-                                margin-left: -4px;
-                            }
-                        }
-                    }
-
-                    .notification-section {
-                        .bell-icon-bell {
-                            font-size: 22px;
-                        }
-
-                        span {
-                            &.bell-circle {
-                                width: 10px;
-                                height: 10px;
-                                margin-left: -8px;
-                            }
-                        }
-                    }
-
-                    .profile-section {
-                        .profile-img-section {
-                            margin-right: 10px;
-
-                            img {
-                                &.user-icon {
-                                    width: 26px;
-                                }
-                            }
-                        }
-
-                        .profile-desc-section {
-                            p {
-                                &.profile-name {
-                                    font-size: 12px;
-                                }
-
-                                &.profile-designation {
-                                    font-size: 10px;
-                                }
-                            }
-
-                            span {
-                                &.profile-arrow {
-                                    i {
-                                        font-size: 18px;
-                                    }
-                                }
-                            }
+                span {
+                    &.profile-arrow {
+                        i {
+                            font-size: 18px;
                         }
                     }
                 }
             }
         }
     }
-
 }
 
 @media only screen and (max-width: 850px) {
-    #master-layout {
-        .header-section {
-            .header-inner {
-                .header-right-section {
-                    .profile-section {
-                        .profile-desc-section {
-                            p {
-                                &.profile-name {
-                                    width: 140px;
-                                    white-space: nowrap;
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                }
-                            }
-                        }
+    .header-section {
+        .profile-section {
+            .profile-desc-section {
+                p {
+                    &.profile-name {
+                        width: 140px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                 }
             }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .header-section {
+        .group-name-section {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .header-section {
+        .logo-section {
+            display: none;
         }
     }
 }
 
 .router-link-exact-active.active {
-    color: $primaryColor !important;
+    color: var(--blue) !important;
 }
 
 .router-link-exact-active.active .secondary-menu-name {
-    color: $primaryColor !important;
+    color: var(--blue) !important;
 }
 
 .text-22 {
@@ -1292,4 +955,23 @@ body {
 
 .icon-size-24 {
     font-size: 24px !important;
+}
+
+body:has(.master-layout) {
+    height: 100vh;
+    overflow: hidden;
+}
+
+body:has(.report-layout.loading) {
+    overflow: hidden;
+}
+
+@media print {
+    body:has(.report-layout) {
+        margin: 0;
+    }
+}
+
+.layout-container {
+    padding: 10px 0px !important;
 }

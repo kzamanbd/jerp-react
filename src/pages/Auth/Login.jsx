@@ -3,39 +3,30 @@ import { useNavigate } from 'react-router-dom';
 
 import Logo from '@/assets/images/JMI-ERP-Logo.svg';
 import CompanyLogo from '@/assets/images/logo.svg';
-import login from '@/hooks/useLogin';
+import { useLoginMutation } from '@/features/auth/authApi';
 import './login.css';
 
 function Login() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [login, { isLoading }] = useLoginMutation();
+
+    const [username, setUsername] = useState('03183');
+    const [password, setPassword] = useState('123333');
 
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         // validate username and password
         if (!username || !password) {
             console.log('Please enter username and password');
         } else {
-            setIsLoading(true);
             // call login api
-            login(username, password)
-                .then((response) => {
-                    setIsLoading(false);
-                    // if success
-                    console.log(response);
-                    if (response.data.code === 200) {
-                        localStorage.setItem('token', response.data.data.token.access_token);
-                        navigate('/features/users/dashboard');
-                    } else {
-                        console.log(response.data.message);
-                    }
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+            try {
+                await login({ username, password }).unwrap();
+                navigate('/features/users/dashboard');
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 

@@ -1,14 +1,37 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import AuthRoute from '@/components/AuthRoute';
+import GuestRoute from '@/components/GuestRoute';
+import { useGetCurrentUserQuery } from '@/features/auth/authApi';
+import { updateCurrentUser } from '@/features/auth/authSlice';
 import Login from '@/pages/Auth/Login';
 import Dashboard from '@/pages/Dashboard/Dashboard';
 import OrderApproval from '@/pages/Orders/Approval/OrderApproval';
 import OrderCreate from '@/pages/Orders/CreateNew/OrderCreate';
 import PageNotFound from '@/pages/PageNotFound';
-import AuthRoute from '@/utils/AuthRoute';
-import GuestRoute from '@/utils/GuestRoute';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-function JerpApp() {
+function App() {
+    const dispatch = useDispatch();
+    const { isLoading, error } = useGetCurrentUserQuery(undefined, {
+        skip: !localStorage.getItem('token'),
+    });
+
+    useEffect(() => {
+        if (error?.status === 401) {
+            localStorage.removeItem('token');
+            dispatch(updateCurrentUser(null));
+        }
+    }, [error, dispatch]);
+
+    if (isLoading) {
+        return (
+            <div className="vh-100 d-flex align-items-center justify-content-center">
+                Loading...
+            </div>
+        );
+    }
     return (
         <BrowserRouter>
             <Routes>
@@ -60,4 +83,4 @@ function JerpApp() {
     );
 }
 
-export default JerpApp;
+export default App;

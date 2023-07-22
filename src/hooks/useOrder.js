@@ -1,4 +1,4 @@
-import axios from '@/config/useAxios';
+import axios from '@/utils/axios';
 
 export const getTerritoryList = () => axios.get('/api/web/get-territory-list');
 

@@ -1,6 +1,4 @@
-import { decrement, increment } from '@/features/counter';
 import Chart from 'react-apexcharts';
-import { useDispatch, useSelector } from 'react-redux';
 import './dashboard.css';
 
 function Dashboard() {
@@ -138,9 +136,6 @@ function Dashboard() {
         day: 'numeric',
     });
 
-    const count = useSelector((state) => state.counter.value);
-    const dispatch = useDispatch();
-
     return (
         <div className="layout-container dic-dashboard-bg">
             <div className="container-fluid">
@@ -155,21 +150,6 @@ function Dashboard() {
                                             <h5>
                                                 Good Morning, <span>John Doe!</span>
                                             </h5>
-                                            <div className="my-3 d-flex align-items-center">
-                                                <button
-                                                    type="button"
-                                                    className="mx-2"
-                                                    onClick={() => dispatch(increment())}>
-                                                    Increment ++
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    className="mx-2"
-                                                    onClick={() => dispatch(decrement())}>
-                                                    Decrement --
-                                                </button>
-                                                page count: {count}
-                                            </div>
                                         </div>
                                         <div className="col-lg-6 col-12 dashboard-option">
                                             <div className="option-group">
