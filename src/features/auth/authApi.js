@@ -39,14 +39,14 @@ export const authApi = apiSlice.injectEndpoints({
 
         logout: builder.mutation({
             query: () => ({
-                url: '/logout',
+                url: '/api/logout',
                 method: 'GET',
             }),
             async onQueryStarted(arg, { dispatch, queryFulfilled }) {
                 try {
                     await queryFulfilled;
-                    localStorage.removeItem('loggedIn');
-                    dispatch(updateCurrentUser(null));
+                    localStorage.clear();
+                    dispatch(updateCurrentUser({ menu: [], user: {} }));
                 } catch (error) {
                     console.error(error);
                 }

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function SideBarMenu({ menuList }) {
+export default function SideBarMenu({ menuList = [] }) {
     return (
         <div className="sidenav-menu-section">
             <div className="menu-section-area">

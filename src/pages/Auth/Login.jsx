@@ -120,7 +120,9 @@ function Login() {
                                                 <button
                                                     type="submit"
                                                     disabled={isLoading}
-                                                    className="btn btn-primary text-light btn-block submit-btn">
+                                                    className={`btn btn-primary text-light btn-block submit-btn ${
+                                                        isLoading && 'disabled'
+                                                    }`}>
                                                     Log In
                                                     <i className="fas fa-circle-notch spin-animation d-none" />
                                                 </button>

@@ -1,4 +1,5 @@
 import SideBarMenu from '@/components/SideBarMenu';
+import { useLogoutMutation } from '@/features/auth/authApi';
 
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -6,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function AppLayout({ children }) {
     const navigate = useNavigate();
+    const [logout] = useLogoutMutation();
 
     const [isOpen, setIsOpen] = useState(false);
     const { currentUser: { menu = [], user: userInfo = {} } = {} } = useSelector(
@@ -17,7 +19,8 @@ function AppLayout({ children }) {
     };
 
     const onClickLogout = () => {
-        localStorage.removeItem('token');
+        logout();
+        localStorage.clear();
         navigate('/login');
     };
 
@@ -109,7 +112,7 @@ function AppLayout({ children }) {
                                     </span>
                                 </div>
                                 <p className="profile-designation">
-                                    {userInfo.role_name} ({userInfo.wh_code})
+                                    {userInfo.role_name} ({userInfo?.user_area?.display_code})
                                 </p>
                             </div>
 
