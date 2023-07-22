@@ -1,24 +1,24 @@
 import React from 'react';
 import ReactSelect from 'react-select';
 
-import { jerpConfirm, jerpSuccess, jerpWarning } from 'utils';
+import { jerpConfirm, jerpSuccess, jerpWarning } from '@/utils';
 
 import {
-    createNewOrder,
     areaListByUser,
+    createNewOrder,
+    customerInfoForDepot,
+    findProductOffer,
+    getAllCustomersForOrderByDepotTerritory,
     getDICWiseUsers,
     getTerritoryList,
     orderOfferAmount,
-    findProductOffer,
     searchProductDataList,
-    customerInfoForDepot,
-    getAllCustomersForOrderByDepotTerritory,
-} from 'hooks/useOrder';
+} from '@/hooks/useOrder';
 
-import JerpBreadcrumb from 'components/JerpBreadcrumb';
-import esTerritory from 'assets/images/es_icons/es_territory.svg';
-import esCustomer from 'assets/images/es_icons/es_customer.svg';
-import esAddProduct from 'assets/images/es_icons/es_add_product.svg';
+import esAddProduct from '@/assets/images/es_icons/es_add_product.svg';
+import esCustomer from '@/assets/images/es_icons/es_customer.svg';
+import esTerritory from '@/assets/images/es_icons/es_territory.svg';
+import JerpBreadcrumb from '@/components/JerpBreadcrumb';
 import './OrderCreate.css';
 
 class OrderCreate extends React.Component {

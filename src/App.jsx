@@ -1,12 +1,12 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import AuthRoute from 'utils/AuthRoute';
-import GuestRoute from 'utils/GuestRoute';
-import Dashboard from 'pages/Dashboard/Dashboard';
-import Login from 'pages/Auth/Login';
-import PageNotFound from 'pages/PageNotFound';
-import OrderCreate from 'pages/Orders/CreateNew/OrderCreate';
-import OrderApproval from 'pages/Orders/Approval/OrderApproval';
+import Login from '@/pages/Auth/Login';
+import Dashboard from '@/pages/Dashboard/Dashboard';
+import OrderApproval from '@/pages/Orders/Approval/OrderApproval';
+import OrderCreate from '@/pages/Orders/CreateNew/OrderCreate';
+import PageNotFound from '@/pages/PageNotFound';
+import AuthRoute from '@/utils/AuthRoute';
+import GuestRoute from '@/utils/GuestRoute';
 
 function JerpApp() {
     return (

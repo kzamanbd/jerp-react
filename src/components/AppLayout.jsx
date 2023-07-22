@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import SideBarMenu from '@/components/SideBarMenu';
+import { webMenuWithUser } from '@/hooks/useSidebar';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { webMenuWithUser } from 'hooks/useSidebar';
-import SideBarMenu from 'components/SideBarMenu';
 
 function AppLayout({ children }) {
     const navigate = useNavigate();

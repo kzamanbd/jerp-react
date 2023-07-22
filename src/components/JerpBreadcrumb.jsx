@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function JerpBreadcrumb({ title, breadcrumb }) {
     return (
         <div className="layout-breadcrumb">

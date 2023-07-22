@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import JerpBreadcrumb from 'components/JerpBreadcrumb';
-import { dateFormat } from 'utils';
+import JerpBreadcrumb from '@/components/JerpBreadcrumb';
+import { dateFormat } from '@/utils';
+import { useEffect, useState } from 'react';
 
+import esOrder from '@/assets/images/es_icons/es_order.svg';
 import './OrderApproval.css';
-import esOrder from 'assets/images/es_icons/es_order.svg';
 
-import { pendingApprovalOrderCustomerList, pendingOrderDetails } from 'hooks/useOrder';
+import { pendingApprovalOrderCustomerList, pendingOrderDetails } from '@/hooks/useOrder';
 
 function OrderApproval() {
     const [pendingOrderCustomerList, setPendingOrderCustomerList] = useState([]);

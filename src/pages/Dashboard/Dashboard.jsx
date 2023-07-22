@@ -1,7 +1,6 @@
-import React from 'react';
+import { decrement, increment } from '@/features/counter';
 import Chart from 'react-apexcharts';
-import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment } from 'features/counter';
+import { useDispatch, useSelector } from 'react-redux';
 import './dashboard.css';
 
 function Dashboard() {

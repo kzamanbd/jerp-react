@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Logo from '@/assets/images/JMI-ERP-Logo.svg';
+import CompanyLogo from '@/assets/images/logo.svg';
+import login from '@/hooks/useLogin';
 import './login.css';
-import Logo from 'assets/images/JMI-ERP-Logo.svg';
-import CompanyLogo from 'assets/images/logo.svg';
-import login from 'hooks/useLogin';
 
 function Login() {
     const [username, setUsername] = useState('');

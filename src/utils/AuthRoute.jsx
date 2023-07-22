@@ -1,7 +1,6 @@
-import React from 'react';
+import AppLayout from '@/components/AppLayout';
+import useAuth from '@/hooks/useAuth';
 import { Navigate } from 'react-router-dom';
-import useAuth from 'hooks/useAuth';
-import AppLayout from 'components/AppLayout';
 
 export default function AuthRoute({ children }) {
     const isLoggedIn = useAuth();
