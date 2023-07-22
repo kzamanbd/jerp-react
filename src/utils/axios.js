@@ -2,7 +2,7 @@
 import axios from 'axios';
 // set default value on axios
 const useAxios = axios.create({
-    baseURL: 'https://devapi.jerpbd.com',
+    baseURL: import.meta.env.VITE_API_URL,
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
