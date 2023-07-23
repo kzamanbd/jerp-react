@@ -25,7 +25,7 @@ export default function JerpBreadcrumb({ title, breadcrumb }) {
                             {array.length - 1 == index ? (
                                 <span className="breadcrumb-link">{item}</span>
                             ) : (
-                                <Link to={`/${generatedPath(index)}`} class="breadcrumb-link">
+                                <Link to={`/${generatedPath(index)}`} className="breadcrumb-link">
                                     {item}
                                 </Link>
                             )}
